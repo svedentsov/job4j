@@ -4,6 +4,7 @@ public class SqMax {
     public static int max(int first, int second, int third, int forth) {
         int result = forth;
         if (first > second) {
+            result = third;
             if (first > third) {
                 if (first > forth) {
                     result = first;

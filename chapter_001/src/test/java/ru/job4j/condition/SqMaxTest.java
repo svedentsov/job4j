@@ -26,6 +26,13 @@ public class SqMaxTest {
     }
 
     @Test
+    public void whenMaxThird2() {
+        int expected = 11;
+        int out = SqMax.max(8, 5, 11, 2);
+        Assert.assertEquals(expected, out);
+    }
+
+    @Test
     public void whenMaxForth() {
         int expected = 21;
         int out = SqMax.max(3, 5, 11, 21);
