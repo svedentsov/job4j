@@ -1,5 +1,12 @@
 package ru.job4j.calculator;
 
+/**
+ * Класс содержит методы для выполнения сложения, вычитания, умножения и деления.
+ *
+ * @author Igor Svedentsov (svedentsov@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class Calculator {
 
     public static void add(double first, double second) {
@@ -22,6 +29,11 @@ public class Calculator {
         System.out.println(first + " - " + second + " = " + result);
     }
 
+    /**
+     * Method main
+     *
+     * @param args args.
+     */
     public static void main(String[] args) {
         add(1, 1);
         div(4, 2);
