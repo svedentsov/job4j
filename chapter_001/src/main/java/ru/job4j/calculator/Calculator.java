@@ -8,22 +8,45 @@ package ru.job4j.calculator;
  * @since 0.1
  */
 public class Calculator {
-
+    /**
+     * Метод производит операцию сложения first и second и выводит результат в консоль.
+     *
+     * @param first
+     * @param second
+     */
     public static void add(double first, double second) {
         double result = first + second;
         System.out.println(first + " + " + second + " = " + result);
     }
 
+    /**
+     * Метод производит операцию деления first на second и выводит результат в консоль.
+     *
+     * @param first
+     * @param second
+     */
     public static void div(double first, double second) {
         double result = first / second;
         System.out.println(first + " / " + second + " = " + result);
     }
 
+    /**
+     * Метод производит операцию умножения first на second и выводит результат в консоль.
+     *
+     * @param first
+     * @param second
+     */
     public static void multiply(double first, double second) {
         double result = first * second;
         System.out.println(first + " * " + second + " = " + result);
     }
 
+    /**
+     * Метод производит операцию вычитания second из first и выводит результат в консоль.
+     *
+     * @param first
+     * @param second
+     */
     public static void subtrack(double first, double second) {
         double result = first - second;
         System.out.println(first + " - " + second + " = " + result);
