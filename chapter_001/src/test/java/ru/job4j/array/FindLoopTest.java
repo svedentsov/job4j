@@ -44,4 +44,34 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
+
+    /**
+     * Число 2 присутствует в массиве с индексом 3.
+     */
+    @Test
+    public void whenFind3() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[]{5, 2, 10, 2, 4};
+        int value = 2;
+        int start = 2;
+        int finish = 4;
+        int result = find.indexOf(input, value, start, finish);
+        int expect = 3;
+        assertThat(result, is(expect));
+    }
+
+    /**
+     * ЧИсло 42 отсутствует в массиве, метод FindLoop возвращает -1.
+     */
+    @Test
+    public void whenArrayNotHaveNumber42() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[]{5, 2, 10, 2, 4};
+        int value = 42;
+        int start = 0;
+        int finish = 4;
+        int result = find.indexOf(input, value, start, finish);
+        int expect = -1;
+        assertThat(result, is(expect));
+    }
 }
