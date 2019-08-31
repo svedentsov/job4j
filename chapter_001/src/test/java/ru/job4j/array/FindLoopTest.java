@@ -74,4 +74,28 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
+
+    /**
+     * Сортировка масссива из 3 чисел.
+     */
+    @Test
+    public void whenSort3() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[]{312, 2, 11};
+        int result[] = find.sort(input);
+        int[] expect = new int[]{2, 11, 312};
+        assertThat(result, is(expect));
+    }
+
+    /**
+     * Сортировка масссива из 5 чисел.
+     */
+    @Test
+    public void whenSort5() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[]{3, 4, 1, 2, 5};
+        int result[] = find.sort(input);
+        int[] expect = new int[]{1, 2, 3, 4, 5};
+        assertThat(result, is(expect));
+    }
 }

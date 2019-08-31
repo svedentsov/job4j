@@ -43,4 +43,24 @@ public class FindLoop {
         }
         return rst;
     }
+
+    /**
+     * Сортирока массива выборкой.
+     *
+     * @param data массив для сортировки
+     * @return отсортированный массив
+     */
+    public int[] sort(int[] data) {
+        for (int i = 0; i < data.length; i++) {
+            int minValue = data[i];
+            for (int j = i + 1; j < data.length; j++) {
+                minValue = data[j] < minValue ? data[j] : minValue;
+            }
+            int minIndex = indexOf(data, minValue, i, data.length - 1);
+            int temp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = temp;
+        }
+        return data;
+    }
 }
