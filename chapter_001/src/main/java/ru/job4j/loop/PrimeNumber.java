@@ -11,7 +11,9 @@ public class PrimeNumber {
                     break;
                 }
             }
-            if (prime) count++;
+            if (prime) {
+                count++;
+            }
         }
         return count;
     }
