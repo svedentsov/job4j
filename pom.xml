@@ -10,8 +10,9 @@
     <version>3.0</version>
 
     <modules>
-        <module>chapter_001</module>
         <module>puzzle</module>
+        <module>chapter_001</module>
+        <module>chapter_002</module>
     </modules>
 
     <properties>
