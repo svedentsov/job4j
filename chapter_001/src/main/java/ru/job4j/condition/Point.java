@@ -1,17 +1,46 @@
 package ru.job4j.condition;
 
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+
+/**
+ * @author Igor Svedentsov (svedensov@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class Point {
-    public static double distance(int x1, int y1, int x2, int y2) {
-        double first = Math.pow(x2 - x1, 2);
-        double second = Math.pow(y2 - y1, 2);
-        return Math.sqrt(first + second);
+    private int x;
+    private int y;
+
+    /**
+     * Конструктор принимающий координаты объекта "точка".
+     *
+     * @param first  координата x.
+     * @param second координата y.
+     */
+    public Point(int first, int second) {
+        this.x = first;
+        this.y = second;
+    }
+
+    public double distance(Point that) {
+        return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2));
+    }
+
+    public void info() {
+        System.out.println(String.format("Point[%s, %s]", this.x, this.y));
     }
 
     public static void main(String[] args) {
-        double result = distance(0, 0, 2, 0);
+        Point first = new Point(0, 0);
+        Point second = new Point(0, 0);
+        double result = first.distance(second);
+//        double result = distance(0, 0, 2, 0);
         System.out.println("result (0, 0) to (2, 0) " + result);
-        double result2 = distance(2, 0, 0, 0);
+        Point first2 = new Point(2, 0);
+        Point second2 = new Point(0, 0);
+        double result2 = first2.distance(second2);
+//        double result2 = distance(2, 0, 0, 0);
         System.out.println("result (2, 0) to (0, 0) " + result2);
-        System.out.println("result (4, 3) to (2, 1) " + distance(4, 3, 2, 1));
     }
 }
