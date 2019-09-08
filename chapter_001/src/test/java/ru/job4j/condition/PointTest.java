@@ -60,4 +60,20 @@ public class PointTest {
         double result = first.distance(second);
         assertThat(result, is(2.8284271247461903));
     }
+
+    @Test
+    public void distance4() {
+        Point first = new Point(-1, 3, 3);
+        Point second = new Point(6, 2, -2);
+        double result = first.distance3d(second);
+        assertThat(result, is(8.660254037844387));
+    }
+
+    @Test
+    public void distance5() {
+        Point first = new Point(0, 0, 0);
+        Point second = new Point(2, 0, 0);
+        double result = first.distance3d(second);
+        assertThat(result, is(2.0));
+    }
 }
