@@ -17,28 +17,17 @@ public class Merge {
      */
     public int[] merge(int[] left, int[] right) {
         int[] rsl = new int[left.length + right.length];
-        int first = 0;
-        int second = 0;
-        int index = 0;
-        while (first < left.length && second < right.length) {
-            if (left[first] < right[second]) {
-                rsl[index] = left[first];
-                first++;
+        int leftPoint = 0;
+        int rightPoint = 0;
+        int rslPoint = 0;
+        while (leftPoint + rightPoint != rsl.length) {
+            if (leftPoint != left.length && rightPoint != right.length) {
+                rsl[rslPoint++] = left[leftPoint] < right[rightPoint] ? left[leftPoint++] : right[rightPoint++];
+            } else if (leftPoint != left.length) {
+                rsl[rslPoint++] = left[leftPoint++];
             } else {
-                rsl[index] = right[second];
-                second++;
+                rsl[rslPoint++] = right[rightPoint++];
             }
-            index++;
-        }
-        while (first < left.length) {
-            rsl[index] = left[first];
-            first++;
-            index++;
-        }
-        while (second < right.length) {
-            rsl[index] = right[second];
-            second++;
-            index++;
         }
         return rsl;
     }
