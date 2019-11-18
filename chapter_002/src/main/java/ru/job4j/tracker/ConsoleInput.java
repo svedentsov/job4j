@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 /**
- * Класс StubInput реализует интерфейс Input.
+ * Класс ConsoleInput реализует интерфейс Input.
  *
  * @author Igor Svedentsov (svedensov@gmail.com)
  * @version $Id$
