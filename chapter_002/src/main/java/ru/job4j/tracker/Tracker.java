@@ -56,14 +56,17 @@ public class Tracker {
      * @return true если заявка удалена, иначе false.
      */
     public boolean delete(String id) {
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getName().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, position - 1 - i);
-                this.items[position - 1] = null;
-                return true;
+        boolean result = false;
+        for (int i = 0; i < position && items[i] != null; i++) {
+            if (items[i].getId().equals(id)) {
+                items[i] = null;
+                System.arraycopy(items, i + 1, items, i, position - i);
+                position--;
+                result = true;
+                break;
             }
         }
-        return false;
+        return result;
     }
 
     /**

@@ -2,14 +2,19 @@ package ru.job4j.tracker;
 
 
 /**
- * Класс StartUI является консольным приложение для работы с классом Tracker.
+ * Класс StartUI является консольным приложением для работы с классом Tracker.
  *
  * @author Igor Svedentsov (svedensov@gmail.com)
  * @version $Id$
  * @since 0.1
  */
 public class StartUI {
-
+    /**
+     * Добавление заявки.
+     *
+     * @param input   заявка.
+     * @param tracker массив заявок.
+     */
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         System.out.print("Enter name: ");
@@ -18,6 +23,11 @@ public class StartUI {
         tracker.add(item);
     }
 
+    /**
+     * Получение списка всех заявок.
+     *
+     * @param tracker массив заявок.
+     */
     public static void showAllItems(Tracker tracker) {
         System.out.println("=== Show all items ===");
         for (Item item : tracker.findAll()) {
@@ -25,7 +35,13 @@ public class StartUI {
         }
     }
 
-    public static void editItem(Input input, Tracker tracker) {
+    /**
+     * Редактирование заявки.
+     *
+     * @param input   заявка.
+     * @param tracker массив заявок.
+     */
+    public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
         System.out.print("Enter id: ");
         String id = input.askStr("");
@@ -40,6 +56,12 @@ public class StartUI {
         }
     }
 
+    /**
+     * Удаление заявки.
+     *
+     * @param input   название заявки.
+     * @param tracker массив заявок.
+     */
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         System.out.print("Enter item name: ");
@@ -51,6 +73,12 @@ public class StartUI {
         }
     }
 
+    /**
+     * Получение заявок найденных по id.
+     *
+     * @param input   id заявки.
+     * @param tracker массик заявок.
+     */
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ===");
         System.out.print("Enter id: ");
@@ -64,6 +92,12 @@ public class StartUI {
         }
     }
 
+    /**
+     * Получение заявок найденных по имени.
+     *
+     * @param input   имя заявки.
+     * @param tracker массив заявок.
+     */
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ===");
         System.out.print("Enter name: ");
@@ -84,7 +118,7 @@ public class StartUI {
             } else if (select == 1) {
                 StartUI.showAllItems(tracker);
             } else if (select == 2) {
-                StartUI.editItem(input, tracker);
+                StartUI.replaceItem(input, tracker);
             } else if (select == 3) {
                 StartUI.deleteItem(input, tracker);
             } else if (select == 4) {
@@ -98,6 +132,9 @@ public class StartUI {
         }
     }
 
+    /**
+     * Меню отображаемое пользователю.
+     */
     private void showMenu() {
         System.out.println("=== Menu ===");
         System.out.println("0. Add new Item");
@@ -109,6 +146,10 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
 
+    /**
+     * Запуск программы.
+     * @param args
+     */
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();

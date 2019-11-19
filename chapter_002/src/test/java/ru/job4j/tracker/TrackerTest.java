@@ -37,12 +37,12 @@ public class TrackerTest {
      * Проверка успешного удаления заявки.
      */
     @Test
-    public void whenDeleteItemThenReturnTrue() {
+    public void deleteItem() {
         Tracker tracker = new Tracker();
-        Item first = new Item("test1");
-        tracker.add(first);
-        boolean result = tracker.delete(first.getName());
-        assertThat(result, is(true));
+        Item first = tracker.add(new Item("first"));
+        Item second = tracker.add(new Item("second"));
+        tracker.delete(second.getId());
+        assertThat(tracker.findAll(), is(new Item[]{first}));
     }
 
     /**
