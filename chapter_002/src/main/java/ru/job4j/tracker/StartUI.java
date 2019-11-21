@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-
 /**
  * Класс StartUI является консольным приложением для работы с классом Tracker.
  *
@@ -132,6 +131,16 @@ public class StartUI {
         }
     }
 
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
+        boolean run = true;
+        while (run) {
+            this.showMenu(actions);
+            int select = input.askInt("Select: ");
+            UserAction action = actions[select];
+            run = action.execute(input, tracker);
+        }
+    }
+
     /**
      * Меню отображаемое пользователю.
      */
@@ -146,13 +155,30 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
 
+    private void showMenu(UserAction[] actions) {
+        System.out.println("Menu.");
+        for (int index = 0; index < actions.length; index++) {
+            System.out.println(index + ". " + actions[index].name());
+        }
+    }
+
     /**
      * Запуск программы.
+     *
      * @param args
      */
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        UserAction[] actions = {
+                new CreateAction(),
+                new ShowAllItemsAction(),
+                new ReplaceItemAction(),
+                new DeleteItemAction(),
+                new FindItemByIdAction(),
+                new FindItemByNameAction(),
+                new ExitAction()
+        };
+        new StartUI().init(input, tracker, actions);
     }
 }
