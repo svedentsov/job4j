@@ -48,4 +48,12 @@ public class StartUITest {
         Item result = null;
         assertThat(deleted, is(result));
     }
+
+    @Test
+    public void whenExit() {
+        StubInput input = new StubInput(new String[]{"0"});
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
+        assertThat(action.isCall(), is(true));
+    }
 }
