@@ -21,8 +21,8 @@ public class SquareTest {
                 is(
                         new StringBuilder()
                                 .append("++++")
-                                .append("+     +")
-                                .append("+     +")
+                                .append("++++")
+                                .append("++++")
                                 .append("++++")
                                 .toString()
                 )
