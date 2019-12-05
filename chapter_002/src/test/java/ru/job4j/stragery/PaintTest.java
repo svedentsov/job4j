@@ -18,22 +18,18 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class PaintTest {
-    // Поле содержит дефолтный вывод в консоль.
-    private final PrintStream stdout = System.out;
-    // Буфер для результата.
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream(); // Буфер для результата.
+    private final PrintStream stdout = System.out; // Поле содержит дефолтный вывод в консоль.
 
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
-        // Заменяем стандартный вывод на вывод в пямять для тестирования.
-        System.setOut(new PrintStream(this.out));
+        System.setOut(new PrintStream(this.out)); // Заменяем стандартный вывод на вывод в пямять для тестирования.
     }
 
     @After
     public void backOutput() {
-        // Возвращаем обратно стандартный вывод в консоль.
-        System.setOut(this.stdout);
+        System.setOut(this.stdout); // Возвращаем обратно стандартный вывод в консоль.
         System.out.println("execute after method");
     }
 

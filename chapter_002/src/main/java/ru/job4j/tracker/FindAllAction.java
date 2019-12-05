@@ -1,13 +1,13 @@
 package ru.job4j.tracker;
 
 /**
- * Класс ShowAllItems. Получение списка всех заявок.
+ * Класс FindAllAction. Получение списка всех заявок.
  *
  * @author Igor Svedentsov (svedensov@gmail.com)
  * @version $Id$
  * @since 0.1
  */
-public class ShowAllItemsAction implements UserAction {
+public class FindAllAction implements UserAction {
     @Override
     public String name() {
         return "=== Show all items ===";
