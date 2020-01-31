@@ -25,4 +25,18 @@ public class ValidateInputTest {
         );
         System.setOut(out);
     }
+
+    @Test
+    public void whenOutOfMenu() {
+        ByteArrayOutputStream mem = new ByteArrayOutputStream();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(mem));
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"10", "3"}));
+        input.askInt("Enter", 5);
+        assertThat(
+                mem.toString(),
+                is(String.format("Please select key from menu.%n")));
+        System.setOut(out);
+    }
 }
