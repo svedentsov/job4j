@@ -8,6 +8,7 @@ package ru.job4j.tracker;
  * @since 0.1
  */
 public class FindByNameAction implements UserAction {
+
     @Override
     public String name() {
         return "=== Find items by name ===";
