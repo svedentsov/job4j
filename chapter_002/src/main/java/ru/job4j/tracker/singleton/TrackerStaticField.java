@@ -24,8 +24,4 @@ public class TrackerStaticField {
         }
         return instance;
     }
-
-    public Item add(Item model) {
-        return model;
-    }
 }

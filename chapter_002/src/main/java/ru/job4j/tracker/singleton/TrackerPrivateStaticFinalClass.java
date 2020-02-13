@@ -20,10 +20,6 @@ public class TrackerPrivateStaticFinalClass {
         return Holder.INSTANCE;
     }
 
-    public Item add(Item model) {
-        return model;
-    }
-
     private static final class Holder {
         private static final Tracker INSTANCE = new Tracker();
     }

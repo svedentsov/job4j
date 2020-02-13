@@ -1,6 +1,7 @@
 package ru.job4j.tracker.singleton;
 
 import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Tracker;
 
 /**
  * Enum singleton
@@ -12,8 +13,9 @@ import ru.job4j.tracker.Item;
  */
 public enum TrackerEnum {
     INSTANCE;
+    private static final Tracker TRACKER = new Tracker();
 
-    public Item add(Item model) {
-        return model;
+    public Tracker getTracker() {
+        return TRACKER;
     }
 }

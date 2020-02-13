@@ -21,8 +21,4 @@ public class TrackerStaticFinalField {
     public static Tracker getInstance() {
         return INSTANCE;
     }
-
-    public Item add(Item model) {
-        return model;
-    }
 }
