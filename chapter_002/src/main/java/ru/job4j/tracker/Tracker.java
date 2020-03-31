@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -14,35 +15,31 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final List<Item> items = new ArrayList<>();
 
     /**
-     * Добавление заявки.
+     * Добавление заявки в хранилище.
      *
      * @param item новая заявка.
-     * @return
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
     /**
-     * Редактирование заявки.
+     * Замена заявки в хранилище.
      *
-     * @param id   заданный id.
-     * @param item заданная заявка.
+     * @param id   id заявки.
+     * @param item новая заявка.
      * @return true - заявка заменена, иначе false.
      */
     public boolean replace(String id, Item item) {
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                items[i] = item;
+        for (int i = 0; i != this.items.size(); i++) {
+            if (this.items.get(i).getId().equals(id)) {
+                this.items.set(i, item);
+                item.setId(id);
                 return true;
             }
         }
@@ -56,74 +53,54 @@ public class Tracker {
      * @return true если заявка удалена, иначе false.
      */
     public boolean delete(String id) {
-        boolean result = false;
-        for (int i = 0; i < position && items[i] != null; i++) {
-            if (items[i].getId().equals(id)) {
-                items[i] = null;
-                System.arraycopy(items, i + 1, items, i, position - i);
-                position--;
-                result = true;
-                break;
-            }
-        }
-        return result;
+        Item item = findById(id);
+        return items.remove(item);
     }
 
     /**
-     * Получение списка всех заявок.
+     * Получить все заявки.
      *
      * @return список всех заявок.
      */
-    public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null) {
-                result[i] = this.items[i];
-            } else {
-                result = null;
-            }
-        }
-        return result;
+    public List<Item> findAll() {
+        return items;
     }
 
     /**
-     * Получение заявки по id.
+     * Поиск заявки по id.
      *
      * @param id идентификатор заявки.
      * @return найденная заявка.
      */
     public Item findById(String id) {
-        Item result = null;
-        for (Item item : this.items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                return item;
             }
         }
-        return result;
+        return null;
     }
 
     /**
-     * Получение списка по имени.
+     * Поиск заявок по имени.
      *
      * @param key имя для поиска.
      * @return массив заявлок совпадающих по имени.
      */
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
-        int count = 0;
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getName().equals(key)) {
-                result[count] = this.items[i];
-                count++;
+    public List<Item> findByName(String key) {
+        List<Item> foundItems = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().contains(key)) {
+                foundItems.add(item);
             }
         }
-        return Arrays.copyOf(result, count);
+        return foundItems;
     }
 
     /**
-     * Генерация уникального ключа для заявки.
+     * Генерация уникального ключа заявки.
      *
-     * @return
+     * @return уникальный ключ
      */
     private String generateId() {
         Random rm = new Random();

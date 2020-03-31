@@ -2,13 +2,23 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Тестирование класса Tracker.
+ *
+ * @author Igor Svedentsov (svedensov@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class TrackerTest {
     /**
-     * Проверка добавления новой заявки.
+     * Добавления новой заявки.
      */
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
@@ -20,7 +30,7 @@ public class TrackerTest {
     }
 
     /**
-     * Проверка замены существующей заявки.
+     * Замены существующей заявки.
      */
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -34,15 +44,20 @@ public class TrackerTest {
     }
 
     /**
-     * Проверка успешного удаления заявки.
+     * Успешное удаление заявки.
      */
     @Test
-    public void deleteItem() {
+    public void whenDeleteItemSuccess() {
         Tracker tracker = new Tracker();
-        Item first = tracker.add(new Item("first"));
-        Item second = tracker.add(new Item("second"));
-        tracker.delete(second.getId());
-        assertThat(tracker.findAll(), is(new Item[]{first}));
+        Item previous = new Item("test1");
+        Item previous1 = new Item("test2");
+        tracker.add(previous);
+        tracker.add(previous1);
+        tracker.delete(previous1.getId());
+        List<Item> resul=tracker.findAll();
+        List<Item> n=new ArrayList<Item>();
+        n.add(previous);
+        assertArrayEquals(resul.toArray(),n.toArray());
     }
 
     /**
@@ -63,25 +78,13 @@ public class TrackerTest {
     @Test
     public void whenFindByName() {
         Tracker tracker = new Tracker();
-        Item first = new Item("test1");
-        Item second = new Item("test2");
-        tracker.add(first);
-        tracker.add(second);
-        assertThat(tracker.findByName("test1"), is(new Item[]{first}));
-    }
-
-    /**
-     * Проверка поиска всех элементов массива.
-     */
-    @Test
-    public void whenFindAll() {
-        Tracker tracker = new Tracker();
-        Item first = new Item("test1");
-        Item second = new Item("test2");
-        tracker.add(first);
-        tracker.add(second);
-        Item[] result = tracker.findAll();
-        Item[] expected = {second, first};
-        assertThat(result, arrayContainingInAnyOrder(expected));
+        Item previous = new Item("test1");
+        Item previous1 = new Item("test2");
+        tracker.add(previous);
+        tracker.add(previous1);
+        List<Item> resul=tracker.findByName("test2");
+        List<Item> n=new ArrayList<Item>();
+        n.add(previous1);
+        assertArrayEquals(resul.toArray(),n.toArray());
     }
 }
