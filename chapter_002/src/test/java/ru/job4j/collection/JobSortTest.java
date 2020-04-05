@@ -11,6 +11,9 @@ import static org.junit.Assert.assertThat;
  * Тестирование сортировки объектов класса Job.
  */
 public class JobSortTest {
+    /**
+     * Проверка сортировки по полю имя (по возрастанию)
+     */
     @Test
     public void whenSortByNameAsc() {
         Comparator<Job> cmpName = new JobSortByNameAsc();
@@ -21,6 +24,9 @@ public class JobSortTest {
         assertThat(rsl, greaterThan(0));
     }
 
+    /**
+     * Проверка сортировки по полю имя (по убыванию)
+     */
     @Test
     public void whenSortByNameDesc() {
         Comparator<Job> cmpName = new JobSortByNameDesc();
@@ -31,6 +37,9 @@ public class JobSortTest {
         assertThat(rsl, lessThan(0));
     }
 
+    /**
+     * Проверка сортировки по полю приотет (по возрастанию)
+     */
     @Test
     public void whenSortByPriorityAsc() {
         Comparator<Job> cmpPriority = new JobSortByPriorityAsc();
@@ -41,6 +50,9 @@ public class JobSortTest {
         assertThat(rsl, is(greaterThan(0)));
     }
 
+    /**
+     * Проверка сортировки по полю приотет (по убыванию)
+     */
     @Test
     public void whenSortByPriorityDesc() {
         Comparator<Job> cmpPriority = new JobSortByPriorityDesc();
@@ -51,23 +63,30 @@ public class JobSortTest {
         assertThat(rsl, is(lessThan(0)));
     }
 
+    /**
+     * Проверка совместной сортировки по полям имя и приотет (по возрастанию)
+     */
     @Test
-    public void whenSortByNameAndProrityDesc() {
-        Comparator<Job> cmpNamePriority = new JobSortByNameDesc().thenComparing(new JobSortByPriorityDesc());
+    public void whenSortByNameAndPriorityAsc() {
+        Comparator<Job> cmpNamePriority = new JobSortByNameAsc().thenComparing(new JobSortByPriorityAsc());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
-                new Job("Fix bug", 1)
+                new Job("A", 0),
+                new Job("A", 1)
         );
         assertThat(rsl, lessThan(0));
     }
 
+    /**
+     * Проверка совместной сортировки по полям имя и приотет (по убыванию)
+     */
     @Test
-    public void whenSortByNameAndPrority() {
-        Comparator<Job> cmpNamePriority = new JobSortByNameAsc().thenComparing(new JobSortByPriorityAsc());
+    public void whenSortByNameAndPriorityDesc() {
+        Comparator<Job> cmpNamePriority = new JobSortByNameAsc().thenComparing(new JobSortByPriorityDesc());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
-                new Job("Fix bug", 1)
+                new Job("A", 0),
+                new Job("A", 1)
         );
+        System.out.println(rsl);
         assertThat(rsl, greaterThan(0));
     }
 }
