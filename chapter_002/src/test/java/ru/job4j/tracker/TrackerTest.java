@@ -54,10 +54,10 @@ public class TrackerTest {
         tracker.add(previous);
         tracker.add(previous1);
         tracker.delete(previous1.getId());
-        List<Item> resul=tracker.findAll();
-        List<Item> n=new ArrayList<Item>();
+        List<Item> resul = tracker.findAll();
+        List<Item> n = new ArrayList<Item>();
         n.add(previous);
-        assertArrayEquals(resul.toArray(),n.toArray());
+        assertArrayEquals(resul.toArray(), n.toArray());
     }
 
     /**
@@ -82,9 +82,9 @@ public class TrackerTest {
         Item previous1 = new Item("test2");
         tracker.add(previous);
         tracker.add(previous1);
-        List<Item> resul=tracker.findByName("test2");
-        List<Item> n=new ArrayList<Item>();
+        List<Item> resul = tracker.findByName("test2");
+        List<Item> n = new ArrayList<Item>();
         n.add(previous1);
-        assertArrayEquals(resul.toArray(),n.toArray());
+        assertArrayEquals(resul.toArray(), n.toArray());
     }
 }
