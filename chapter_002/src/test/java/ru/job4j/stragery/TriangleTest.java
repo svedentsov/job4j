@@ -20,10 +20,10 @@ public class TriangleTest {
                 triangle.draw(),
                 is(
                         new StringBuilder()
-                                .append("+\r\n")
-                                .append("++\r\n")
-                                .append("+++\r\n")
-                                .append("++++\r\n")
+                                .append("+\n")
+                                .append("++\n")
+                                .append("+++\n")
+                                .append("++++\n")
                                 .append("+++++")
                                 .toString()
                 )
