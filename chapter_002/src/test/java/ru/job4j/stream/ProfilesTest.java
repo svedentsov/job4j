@@ -14,9 +14,12 @@ import static org.junit.Assert.assertThat;
 public class ProfilesTest {
     Profiles profiles = new Profiles();
     List<Profile> profileList = List.of(
-            new Profile(new Address("Moscow", "Lenana", 12, 5)),
-            new Profile(new Address("Saint Petersburg", "Puskina", 1, 31)),
-            new Profile(new Address("Novosibirsk", "Kalinina", 11, 31))
+            new Profile(new Address("City 1", "Lenana", 12, 5)),
+            new Profile(new Address("City 3", "Puskina", 1, 31)),
+            new Profile(new Address("City 3", "Puskina", 1, 31)),
+            new Profile(new Address("City 3", "Puskina", 1, 31)),
+            new Profile(new Address("City 2", "Kalinina", 11, 31)),
+            new Profile(new Address("City 2", "Kalinina", 11, 31))
     );
 
     /**
@@ -25,9 +28,9 @@ public class ProfilesTest {
     @Test
     public void createAddressListFromProfileList() {
         List<Address> expected = Arrays.asList(
-                new Address("Moscow", "Lenana", 12, 5),
-                new Address("Saint Petersburg", "Puskina", 1, 31),
-                new Address("Novosibirsk", "Kalinina", 11, 31)
+                new Address("City 1", "Lenana", 12, 5),
+                new Address("City 2", "Kalinina", 11, 31),
+                new Address("City 3", "Puskina", 1, 31)
         );
         List<Address> actual = profiles.collect(profileList);
         assertThat(actual, is(expected));
