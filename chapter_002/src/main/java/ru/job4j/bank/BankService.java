@@ -19,12 +19,24 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     /**
-     * Добавление пользователя.
+     * Добавление пользователя, если его нет базе.
      *
      * @param user пользователь.
      */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
+    }
+
+    /**
+     * Поиск пользователя по номеру паспорта.
+     *
+     * @param passport номер паспорта.
+     * @return найденный пользователь.
+     */
+    public User findByPassport(String passport) {
+        return users.keySet().stream()
+                .filter(o -> o.getPassport().equals(passport))
+                .findFirst().orElse(null);
     }
 
     /**
@@ -41,37 +53,19 @@ public class BankService {
     }
 
     /**
-     * Поиск пользователя по номеру паспорта.
-     *
-     * @param passport номер паспорта.
-     * @return найденный пользователь, иначе false.
-     */
-    public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    /**
      * Поиск счёта пользователя по реквизитам.
      *
      * @param passport  номер паспорта.
      * @param requisite реквизиты.
-     * @return найденный счёт, иначе false.
+     * @return найденный счёт.
      */
     public Account findByRequisite(String passport, String requisite) {
-        Account account = null;
         User user = findByPassport(passport);
+        Account account = null;
         if (user != null) {
-            for (Account acc : users.get(user)) {
-                if (acc.getRequisite().equals(requisite)) {
-                    account = acc;
-                    break;
-                }
-            }
+            account = users.get(user).stream()
+                    .filter(o -> o.getRequisite().equals(requisite))
+                    .findFirst().orElse(null);
         }
         return account;
     }
@@ -84,7 +78,7 @@ public class BankService {
      * @param destPassport  номер паспорта счёта зачисления.
      * @param destRequisite реквизиты счёта зачисления.
      * @param amount        сумма перевода.
-     * @return true если осуществлен перевод, иначе false.
+     * @return результат перевода.
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite,
@@ -98,14 +92,5 @@ public class BankService {
             rsl = true;
         }
         return rsl;
-    }
-
-    public static void main(String[] args) {
-        List<Account> accounts = new ArrayList<>();
-        String requisite = "3fdsbb9";
-        accounts.add(new Account("3fdsbb9", 140));
-        int index = accounts.indexOf(new Account(requisite, -1));
-        Account find = accounts.get(index);
-        System.out.println(find.getRequisite() + " -> " + find.getBalance());
     }
 }
