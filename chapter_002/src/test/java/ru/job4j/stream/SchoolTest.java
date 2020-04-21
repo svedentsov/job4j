@@ -52,4 +52,14 @@ public class SchoolTest {
         Map<String, Student> result = school.convertListToMap(students);
         assertThat(result.get("Студент 3").getScore(), is(50));
     }
+
+    @Test
+    public void listStudentsScore() {
+        List<Student> expected = List.of(
+                new Student("Студент 6", 100),
+                new Student("Студент 5", 60)
+        );
+        List<Student> actual = new School().levelOf(students, 50);
+        assertThat(actual, is(expected));
+    }
 }
