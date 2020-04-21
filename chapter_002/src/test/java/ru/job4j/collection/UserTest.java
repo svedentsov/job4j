@@ -13,9 +13,12 @@ import static org.junit.Assert.assertThat;
 public class UserTest {
     @Test
     public void whenAsc() {
-        Set<User> users = new TreeSet<>();
-        users.add(new User("Petr", 32));
-        users.add(new User("Ivan", 31));
+        Set<User> users = new TreeSet<>(
+                Set.of(
+                        new User("Petr", 32),
+                        new User("Ivan", 31)
+                )
+        );
         Iterator<User> it = users.iterator();
         assertThat(it.next(), is(new User("Ivan", 31)));
         assertThat(it.next(), is(new User("Petr", 32)));
@@ -23,9 +26,12 @@ public class UserTest {
 
     @Test
     public void whenSortByAge() {
-        Set<User> users = new TreeSet<>();
-        users.add(new User("Yuriy", 37));
-        users.add(new User("Yuriy", 31));
+        Set<User> users = new TreeSet<>(
+                Set.of(
+                        new User("Yuriy", 37),
+                        new User("Yuriy", 31)
+                )
+        );
         Iterator<User> it = users.iterator();
         assertThat(it.next(), is(new User("Yuriy", 31)));
         assertThat(it.next(), is(new User("Yuriy", 37)));
