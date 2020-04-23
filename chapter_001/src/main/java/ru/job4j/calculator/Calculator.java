@@ -2,10 +2,6 @@ package ru.job4j.calculator;
 
 /**
  * Класс содержит методы для выполнения сложения, вычитания, умножения и деления.
- *
- * @author Igor Svedentsov (svedentsov@gmail.com)
- * @version $Id$
- * @since 0.1
  */
 public class Calculator {
     /**

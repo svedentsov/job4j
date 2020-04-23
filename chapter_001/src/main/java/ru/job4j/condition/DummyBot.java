@@ -1,10 +1,5 @@
 package ru.job4j.condition;
 
-/**
- * @author Igor Svedentsov (svedentsov@gmail.com)
- * @version $Id$
- * @since 0.1
- */
 public class DummyBot {
     /**
      * Отвечает на вопросы.

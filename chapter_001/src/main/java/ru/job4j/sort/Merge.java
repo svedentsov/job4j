@@ -2,11 +2,6 @@ package ru.job4j.sort;
 
 import java.util.Arrays;
 
-/**
- * @author Igor Svedentsov (svedensov@gmail.com)
- * @version $Id$
- * @since 0.1
- */
 public class Merge {
     /**
      * Объединение двух отсортированных по возрастанию массивов в один.

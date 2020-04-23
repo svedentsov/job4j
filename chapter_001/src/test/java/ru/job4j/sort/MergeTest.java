@@ -6,11 +6,6 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author Igor Svedentsov (svedensov@gmail.com)
- * @version $Id$
- * @since 0.1
- */
 @Ignore
 public class MergeTest {
     @Test

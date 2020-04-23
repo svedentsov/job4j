@@ -2,10 +2,6 @@ package ru.job4j.condition;
 
 /**
  * Класс содержит метод, который возвращает больше число из двух, трех или четырех чисел.
- *
- * @author Igor Svedentsov (svedentsov@gmail.com)
- * @version $Id$
- * @since 0.1
  */
 public class Max {
     /**

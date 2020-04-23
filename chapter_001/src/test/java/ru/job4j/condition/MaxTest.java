@@ -5,11 +5,6 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author Igor Svedentsov (svedentsov@gmail.com)
- * @version $Id$
- * @since 0.1
- */
 public class MaxTest {
     @Test
     public void whenMax1To2Then2() {

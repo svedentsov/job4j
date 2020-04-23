@@ -3,11 +3,6 @@ package ru.job4j.condition;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
-/**
- * @author Igor Svedentsov (svedensov@gmail.com)
- * @version $Id$
- * @since 0.1
- */
 public class Point {
     private int x;
     private int y;
