@@ -1,8 +1,18 @@
-package ru.job4j.collection;
+package ru.job4j.list;
 
 import java.util.List;
 
+/**
+ * Преобразования списка в двухмерный массив.
+ */
 public class ConvertList2Array {
+    /**
+     * Преобразование списка в массив.
+     *
+     * @param list  список
+     * @param cells ячеек в строке
+     * @return массив
+     */
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
@@ -16,16 +26,5 @@ public class ConvertList2Array {
             }
         }
         return array;
-    }
-
-    public static void main(String[] args) {
-        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7);
-        int[][] rsl = toArray(list, 3);
-        for (int[] row : rsl) {
-            for (int cell : row) {
-                System.out.print(cell + " ");
-            }
-            System.out.println();
-        }
     }
 }

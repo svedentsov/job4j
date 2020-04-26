@@ -1,42 +1,45 @@
 package ru.job4j.array;
 
+/**
+ * Поиск по массиву.
+ */
 public class FindLoop {
     /**
-     * Метод ищет в массиве data число el и возврата индекс найденного числа.
+     * Поиск в массиве индекса элемента.
      *
-     * @param data массив для поиска
-     * @param el   число для поиска
-     * @return индекс найденного числа в массиве (-1 если число в массиве не найдено)
+     * @param data    массив для поиска
+     * @param element число для поиска
+     * @return индекс найденного числа
      */
-    public int indexOf(int[] data, int el) {
-        int rst = -1;
-        for (int index = 0; index < data.length; index++) {
-            if (data[index] == el) {
-                rst = index;
+    public int indexOf(int[] data, int element) {
+        int result = -1;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] == element) {
+                result = i;
                 break;
             }
         }
-        return rst;
+        return result;
     }
 
     /**
-     * Поиск в массиве data элемента el между индексами start и finish и возврат индекса найденного числа.
+     * Поиск в массиве индекса элемента между индексами.
      *
-     * @param data   массив для поиска
-     * @param el     число для поиска
-     * @param start  индекс с которого начинается поиск
-     * @param finish индекс которым заканчивается поиск
-     * @return индекс найденного числа в массиве (-1 если число в массиве не найдено)
+     * @param data    массив для поиска
+     * @param element число для поиска
+     * @param start   индекс с которого начинается поиск
+     * @param finish  индекс которым заканчивается поиск
+     * @return индекс найденного числа
      */
-    public int indexOf(int[] data, int el, int start, int finish) {
-        int rst = -1;
-        for (int index = start; index <= finish; index++) {
-            if (data[index] == el) {
-                rst = index;
+    public int indexOf(int[] data, int element, int start, int finish) {
+        int result = -1;
+        for (int i = start; i <= finish; i++) {
+            if (data[i] == element) {
+                result = i;
                 break;
             }
         }
-        return rst;
+        return result;
     }
 
     /**

@@ -1,12 +1,12 @@
-package ru.job4j.collection;
+package ru.job4j.list;
 
+import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ConvertListTest {
@@ -19,7 +19,7 @@ public class ConvertListTest {
                 )
         );
         List<Integer> expect = Arrays.asList(1, 2, 3);
-        assertThat(ConvertList.convert(in), is(expect));
+        assertThat(ConvertList.convert(in), Is.is(expect));
     }
 
     @Test
@@ -32,6 +32,6 @@ public class ConvertListTest {
                 )
         );
         List<Integer> expect = Arrays.asList(1, 2, 3, 4, 5, 6);
-        assertThat(ConvertList.convert(in), is(expect));
+        assertThat(ConvertList.convert(in), Is.is(expect));
     }
 }

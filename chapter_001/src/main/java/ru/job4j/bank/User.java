@@ -23,7 +23,7 @@ public class User {
     /**
      * Получить номер паспорта.
      *
-     * @return номер парпорта.
+     * @return номер парпорта
      */
     public String getPassport() {
         return passport;
@@ -32,7 +32,7 @@ public class User {
     /**
      * Установить номер паспорта.
      *
-     * @param passport номер паспорта.
+     * @param passport номер паспорта
      */
     public void setPassport(String passport) {
         this.passport = passport;
@@ -41,7 +41,7 @@ public class User {
     /**
      * Получить имя пользователя.
      *
-     * @return имя пользователя.
+     * @return имя пользователя
      */
     public String getUsername() {
         return username;
@@ -50,7 +50,7 @@ public class User {
     /**
      * Установить имя пользователя.
      *
-     * @param username имя пальзователя.
+     * @param username имя пальзователя
      */
     public void setUsername(String username) {
         this.username = username;

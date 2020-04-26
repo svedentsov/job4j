@@ -1,5 +1,8 @@
 package ru.job4j.array;
 
+/**
+ * Заполнение массива степенями чисел.
+ */
 public class Square {
     /**
      * Метод заполняет массив элементами от 1 до bound возведенными в квадрат
@@ -8,10 +11,10 @@ public class Square {
      * @return
      */
     public int[] calculate(int bound) {
-        int[] rst = new int[bound];
+        int[] result = new int[bound];
         for (int i = 0; i < bound; i++) {
-            rst[i] = (int) Math.pow(i + 1, 2);
+            result[i] = (int) Math.pow(i + 1, 2);
         }
-        return rst;
+        return result;
     }
 }

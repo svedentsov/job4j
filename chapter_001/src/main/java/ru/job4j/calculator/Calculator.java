@@ -1,11 +1,11 @@
 package ru.job4j.calculator;
 
 /**
- * Класс содержит методы для выполнения сложения, вычитания, умножения и деления.
+ * Калькулятор.
  */
 public class Calculator {
     /**
-     * Метод производит операцию сложения first и second и выводит результат в консоль.
+     * Сложение.
      *
      * @param first
      * @param second
@@ -16,7 +16,7 @@ public class Calculator {
     }
 
     /**
-     * Метод производит операцию деления first на second и выводит результат в консоль.
+     * Деление.
      *
      * @param first
      * @param second
@@ -27,7 +27,7 @@ public class Calculator {
     }
 
     /**
-     * Метод производит операцию умножения first на second и выводит результат в консоль.
+     * Умножение.
      *
      * @param first
      * @param second
@@ -38,7 +38,7 @@ public class Calculator {
     }
 
     /**
-     * Метод производит операцию вычитания second из first и выводит результат в консоль.
+     * Вычитание.
      *
      * @param first
      * @param second
@@ -48,15 +48,10 @@ public class Calculator {
         System.out.println(first + " - " + second + " = " + result);
     }
 
-    /**
-     * Method main
-     *
-     * @param args args.
-     */
     public static void main(String[] args) {
         add(1, 1);
-        div(4, 2);
+        subtrack(9, 5);
         multiply(2, 1);
-        subtrack(10, 5);
+        div(4, 2);
     }
 }

@@ -3,15 +3,16 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 /**
- * Класс ConsoleInput реализует интерфейс Input.
+ * Ввод данных в консоль.
  */
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     /**
      * Запросить у пользователя ввод данных.
-     * @param question  вопрос
-     * @return  возвщает введенные данные
+     *
+     * @param question вопрос
+     * @return возвщает введенные данные
      */
     @Override
     public String askStr(String question) {

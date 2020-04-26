@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Класс StartUI является консольным приложением для работы с классом Tracker.
+ * Пользовательский интерфейс.
  */
 public class StartUI {
+    /**
+     * Основной цикл программы.
+     * @param input
+     * @param tracker
+     * @param actions
+     */
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
@@ -18,7 +24,7 @@ public class StartUI {
     }
 
     /**
-     * Пользовательское меню.
+     * Меню.
      */
     private void showMenu(List<UserAction> actions) {
         System.out.println("Menu.");
@@ -30,7 +36,7 @@ public class StartUI {
     /**
      * Запуск программы.
      *
-     * @param args
+     * @param args входные параметры
      */
     public static void main(String[] args) {
         Input input = new ConsoleInput();

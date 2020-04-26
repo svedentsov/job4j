@@ -6,7 +6,6 @@ import java.util.Arrays;
  * Расчет сдачи в кофе-машине.
  */
 public class Machine {
-
     private final int[] coins = {10, 5, 2, 1};
 
     public int[] change(int money, int price) {

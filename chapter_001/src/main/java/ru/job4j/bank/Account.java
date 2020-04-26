@@ -18,8 +18,8 @@ public class Account {
     /**
      * Конструктор банковского счёта.
      *
-     * @param requisite реквизиты.
-     * @param balance   баланс.
+     * @param requisite реквизиты
+     * @param balance   баланс
      */
     public Account(String requisite, double balance) {
         this.requisite = requisite;
@@ -29,7 +29,7 @@ public class Account {
     /**
      * Получить реквизиты.
      *
-     * @return реквизиты.
+     * @return реквизиты
      */
     public String getRequisite() {
         return requisite;
@@ -38,7 +38,7 @@ public class Account {
     /**
      * Задать реквизиты.
      *
-     * @param requisite реквизиты.
+     * @param requisite реквизиты
      */
     public void setRequisite(String requisite) {
         this.requisite = requisite;
@@ -47,7 +47,7 @@ public class Account {
     /**
      * Получить баланс.
      *
-     * @return баланс.
+     * @return баланс
      */
     public double getBalance() {
         return balance;
@@ -56,7 +56,7 @@ public class Account {
     /**
      * Задать баланс.
      *
-     * @param balance баланс.
+     * @param balance баланс
      */
     public void setBalance(double balance) {
         this.balance = balance;
