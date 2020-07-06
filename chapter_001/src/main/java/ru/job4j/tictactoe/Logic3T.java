@@ -1,25 +1,34 @@
 package ru.job4j.tictactoe;
 
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
  * Класс Logic3T - отвечает за проверку логики.
  */
 public class Logic3T {
+    /**
+     * Поле для игры.
+     */
     private final Figure3T[][] table;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param table поле для игры
+     */
     public Logic3T(Figure3T[][] table) {
         this.table = table;
     }
 
     /**
-     * @param predicate поведение.
-     * @param startX    положение начальной точки по X.
-     * @param startY    положение начальной точки по Y.
-     * @param deltaX    движение по X.
-     * @param deltaY    движение по Y.
-     * @return результат
+     * Универсальный метод ля проверки ячейки.
+     *
+     * @param predicate интерфейс Predicate.
+     * @param startX    начальная точка по оси Х.
+     * @param startY    начальная точка по оси Y.
+     * @param deltaX    направление движения по оси X.
+     * @param deltaY    направление движения по оси Y.
+     * @return true если ячейки содержат одинаковую фигуру. Иначе false.
      */
     public boolean fillBy(Predicate<Figure3T> predicate, int startX, int startY, int deltaX, int deltaY) {
         boolean result = true;
@@ -36,45 +45,49 @@ public class Logic3T {
     }
 
     /**
-     * Проверить есть ли в поле выигрышные комбинации для Крестика.
+     * Проверить победил ли "X".
      *
-     * @return результат.
+     * @return true если побудил О. Иначе false.
      */
     public boolean isWinnerX() {
-        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0)
-                || this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0)
-                || this.fillBy(Figure3T::hasMarkX, 0, 2, 1, 0)
-                || this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkX, 2, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
+        return isWinner(Figure3T::hasMarkX);
     }
 
     /**
-     * Проверить есть ли в поле выигрышные комбинации для Нолика.
+     * Проверить победил ли "О".
      *
-     * @return результат.
+     * @return true если побудил О. Иначе false.
      */
     public boolean isWinnerO() {
-        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, 2, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, 2, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
+        return isWinner(Figure3T::hasMarkO);
+    }
+
+    public boolean isWinner(Predicate<Figure3T> hasMark) {
+        return this.fillBy(hasMark, 0, 0, 1, 0)
+                || this.fillBy(hasMark, 0, 1, 1, 0)
+                || this.fillBy(hasMark, 0, 2, 1, 0)
+                || this.fillBy(hasMark, 0, 0, 0, 1)
+                || this.fillBy(hasMark, 1, 0, 0, 1)
+                || this.fillBy(hasMark, 2, 0, 0, 1)
+                || this.fillBy(hasMark, 0, 0, 1, 1)
+                || this.fillBy(hasMark, this.table.length - 1, 0, -1, 1);
     }
 
     /**
-     * Проверить есть ли пустые клетки для новых ходов.
+     * Проверить есть ли еще доступные ходы.
      *
-     * @return результат.
+     * @return true если есть ходы. Иначе false.
      */
     public boolean hasGap() {
-        return Arrays.stream(this.table)
-                .flatMap(Arrays::stream)
-                .anyMatch(cell -> (cell.hasMarkX() || cell.hasMarkO()));
+        boolean rsl = false;
+        for (int i = 0; i < this.table.length; i++) {
+            for (int i1 = 0; i1 < this.table[i].length; i1++) {
+                if (!table[i][i1].hasMarkO() && !table[i][i1].hasMarkX()) {
+                    rsl = true;
+                    break;
+                }
+            }
+        }
+        return rsl;
     }
 }
