@@ -1,5 +1,6 @@
 package ru.job4j.tictactoe;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
@@ -28,7 +29,7 @@ public class Logic3T {
      * @param startY    начальная точка по оси Y.
      * @param deltaX    направление движения по оси X.
      * @param deltaY    направление движения по оси Y.
-     * @return true если ячейки содержат одинаковую фигуру. Иначе false.
+     * @return true, если ячейки содержат одинаковую фигуру, иначе - false.
      */
     public boolean fillBy(Predicate<Figure3T> predicate, int startX, int startY, int deltaX, int deltaY) {
         boolean result = true;
@@ -47,7 +48,7 @@ public class Logic3T {
     /**
      * Проверить победил ли "X".
      *
-     * @return true если побудил О. Иначе false.
+     * @return true, если побудил О, иначе - false.
      */
     public boolean isWinnerX() {
         return isWinner(Figure3T::hasMarkX);
@@ -56,7 +57,7 @@ public class Logic3T {
     /**
      * Проверить победил ли "О".
      *
-     * @return true если побудил О. Иначе false.
+     * @return true, если побудил О, иначе - false.
      */
     public boolean isWinnerO() {
         return isWinner(Figure3T::hasMarkO);
@@ -74,20 +75,13 @@ public class Logic3T {
     }
 
     /**
-     * Проверить есть ли еще доступные ходы.
+     * Проверить есть ли пустые клетки.
      *
-     * @return true если есть ходы. Иначе false.
+     * @return true, если есть ходы, иначе - false.
      */
     public boolean hasGap() {
-        boolean rsl = false;
-        for (int i = 0; i < this.table.length; i++) {
-            for (int i1 = 0; i1 < this.table[i].length; i1++) {
-                if (!table[i][i1].hasMarkO() && !table[i][i1].hasMarkX()) {
-                    rsl = true;
-                    break;
-                }
-            }
-        }
-        return rsl;
+        return Arrays.stream(this.table)
+                .flatMap(Arrays::stream)
+                .anyMatch(cell -> !cell.hasMarkX() && !cell.hasMarkO());
     }
 }
