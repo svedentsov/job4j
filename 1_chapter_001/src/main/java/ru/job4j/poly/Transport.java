@@ -1,0 +1,12 @@
+package ru.job4j.poly;
+
+/**
+ * Интерфейс Transport.
+ */
+public interface Transport {
+    void drive();
+
+    void passengers(int count);
+
+    double refuel(int gas);
+}
