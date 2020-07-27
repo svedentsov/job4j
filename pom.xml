@@ -10,7 +10,10 @@
     <version>3.0</version>
 
     <modules>
-        <module>chapter_001</module>
+        <module>1_chapter_001</module>
+        <module>1_chapter_002</module>
+        <module>1_chapter_003</module>
+        <module>1_chapter_004</module>
     </modules>
 
     <properties>
@@ -51,6 +54,12 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
