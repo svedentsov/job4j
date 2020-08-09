@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Сервисы банка.
+ * Класс BankService.
+ * Выполняет различные операции со счетами пользователей.
  */
 public class BankService {
     /**
@@ -32,7 +33,8 @@ public class BankService {
     public User findByPassport(String passport) {
         return users.keySet().stream()
                 .filter(o -> o.getPassport().equals(passport))
-                .findFirst().orElse(null);
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -61,7 +63,8 @@ public class BankService {
         if (user != null) {
             account = users.get(user).stream()
                     .filter(o -> o.getRequisite().equals(requisite))
-                    .findFirst().orElse(null);
+                    .findFirst()
+                    .orElse(null);
         }
         return account;
     }

@@ -7,11 +7,11 @@ import java.util.Objects;
  */
 public class Account {
     /**
-     * Реквизиты.
+     * Реквизиты счёта.
      */
     private String requisite;
     /**
-     * Баланс.
+     * Баланс счёта.
      */
     private double balance;
 
