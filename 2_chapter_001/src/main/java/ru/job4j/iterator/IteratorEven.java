@@ -4,28 +4,24 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Итератор для двухмерного массива int[][].
+ * Класс IteratorEven, возвращает только четные числа.
  */
-public class IteratorForArray implements Iterator {
+public class IteratorEven implements Iterator {
     /**
-     * Массив значений
+     * Массив значений.
      */
-    private final int[][] array;
+    private final int[] array;
     /**
-     * Первый индекс.
+     * Позиция массива.
      */
-    private int i = 0;
-    /**
-     * Второй индекс.
-     */
-    private int j = 0;
+    private int index = 0;
 
     /**
      * Конструктор.
      *
      * @param array массив значений.
      */
-    public IteratorForArray(int[][] array) {
+    public IteratorEven(int[] array) {
         this.array = array;
     }
 
@@ -36,25 +32,27 @@ public class IteratorForArray implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        return array.length > i && array[i].length > j;
+        boolean result = false;
+        for (int i = index; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                this.index = i;
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     /**
-     * Метод возвращает следующий элемент массива.
+     * Получение следующего элемента массива.
      *
      * @return элемент массива.
      */
     @Override
     public Object next() {
-        if (!hasNext()) {
+        if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
-        int result = array[i][j];
-        j++;
-        if (array[i].length == j) {
-            j = 0;
-            i++;
-        }
-        return result;
+        return array[index++];
     }
 }
