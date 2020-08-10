@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
  * Класс IteratorEven, возвращает только четные числа.
  */
 public class IteratorEven implements Iterator {
+
     /**
      * Массив значений.
      */
@@ -33,6 +34,9 @@ public class IteratorEven implements Iterator {
     @Override
     public boolean hasNext() {
         boolean result = false;
+        if (array.length == 0) {
+            result = false;
+        }
         for (int i = index; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 this.index = i;

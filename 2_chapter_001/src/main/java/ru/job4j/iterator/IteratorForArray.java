@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
  * Итератор для двухмерного массива int[][].
  */
 public class IteratorForArray implements Iterator {
+
     /**
      * Массив значений
      */
@@ -14,11 +15,11 @@ public class IteratorForArray implements Iterator {
     /**
      * Первый индекс.
      */
-    private int i = 0;
+    private int row = 0;
     /**
      * Второй индекс.
      */
-    private int j = 0;
+    private int column = 0;
 
     /**
      * Конструктор.
@@ -36,7 +37,7 @@ public class IteratorForArray implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        return array.length > i && array[i].length > j;
+        return array.length > row && array[row].length > column;
     }
 
     /**
@@ -49,11 +50,11 @@ public class IteratorForArray implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        int result = array[i][j];
-        j++;
-        if (array[i].length == j) {
-            j = 0;
-            i++;
+        int result = array[row][column];
+        column++;
+        if (array[row].length == column) {
+            column = 0;
+            row++;
         }
         return result;
     }
