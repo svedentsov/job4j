@@ -1,27 +1,30 @@
 package ru.job4j.generic;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Класс SimpleArray. Обертка над массивом.
  */
-public class SimpleArray<T> {
+public class SimpleArray<T> implements Iterable<T> {
     /**
      * Размер массива по умолчанию.
      */
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_SIZE = 10;
     /**
      * Массив всех элементов.
      */
-    private Object[] values;
+    private Object[] array;
     /**
      * Индекс для корректного перемещения по массиву.
      */
     private int index = 0;
 
     /**
-     * Конструктор класса по умолчанию
+     * Конструктор по умолчанию.
      */
     public SimpleArray() {
-        this(DEFAULT_CAPACITY);
+        this(DEFAULT_SIZE);
     }
 
     /**
@@ -30,87 +33,113 @@ public class SimpleArray<T> {
      * @param size размер массива.
      */
     public SimpleArray(int size) {
-        this.values = new Object[size];
+        this.array = new Object[size];
     }
 
     /**
-     * Метод добавляет новое значение в массив.
+     * Добавить новое значение в массив.
      *
      * @param value новый значение.
      */
     public void add(T value) {
         if (!this.validate(this.index)) {
-            this.ensureCapacity();
+            this.ensureSize();
         }
-        this.values[this.index++] = value;
+        this.array[this.index++] = value;
     }
 
     /**
-     * Метод возвращает элемент по индексу.
+     * Получить элемент по индексу.
      *
-     * @param position индекс который используется для доступа к массиву.
+     * @param index индекс который используется для доступа к массиву.
      * @return значение полученное по индексу.
      */
-    public T get(int position) {
-        if (!this.validate(position)) {
+    public T get(int index) {
+        if (!this.validate(index)) {
             throw new IllegalArgumentException("Out of bound");
         }
-        return (T) this.values[position];
+        return (T) this.array[index];
     }
 
     /**
-     * Метод обновляет текущий элемент массива.
+     * Записать элемент по индексу.
      *
-     * @param position позиция старого элемента.
-     * @param value    новое значение для элемента массива.
+     * @param index позиция старого элемента.
+     * @param model новое значение для элемента массива.
      */
-    public void update(int position, T value) {
-        if (!this.validate(position)) {
+    public void set(int index, T model) {
+        if (!this.validate(index)) {
             throw new IllegalArgumentException("Out of bound");
         }
-        this.values[position] = value;
+        this.array[index] = model;
     }
 
     /**
-     * Метод удаляет элемент в занной позиции.
+     * Удалить элемент по индексу.
      *
-     * @param position позиция удаляемого элемента.
+     * @param index позиция удаляемого элемента.
      */
-    public void delete(int position) {
-        if (!this.validate(position)) {
+    public void delete(int index) {
+        if (!this.validate(index)) {
             throw new IllegalArgumentException("Out of bound");
         }
-        this.values[position] = null;
+        int nextIndex = index + 1;
+        System.arraycopy(array, nextIndex, array, index, array.length - (index + 1));
         this.index--;
     }
 
     /**
-     * Метод проверяет расположение значения между нулем и текущей длинной массива.
+     * Проверить расположение значения между нулем и текущей длинной массива.
      *
      * @param position номер позиции для проверки.
      * @return true - если значение находится между нулем и длинной массива, иначе - false.
      */
     private boolean validate(int position) {
-        return ((position >= 0) && (position < this.values.length));
+        return ((position >= 0) && (position < this.array.length));
     }
 
     /**
-     * Метод увеличивает размер массива для корректного добавления нового значения.
+     * Увеличить размер массива для корректного добавления нового значения.
      */
-    private void ensureCapacity() {
-        int length = (this.values.length * 3) / 2 + 1;
+    private void ensureSize() {
+        int length = (this.array.length * 3) / 2 + 1;
         Object[] expandValues = new Object[length];
-        System.arraycopy(this.values, 0, expandValues, 0, this.values.length);
-        this.index = this.values.length + 1;
-        this.values = expandValues;
+        System.arraycopy(this.array, 0, expandValues, 0, this.array.length);
+        this.index = this.array.length + 1;
+        this.array = expandValues;
     }
 
     /**
-     * Метод возвращает текущую длину массива.
+     * Получить текущую длину массива.
      *
      * @return длинна массива.
      */
     public int size() {
-        return this.values.length;
+        return this.array.length;
+    }
+
+    /**
+     * Итератор.
+     *
+     * @return Итератор.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int iter = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (iter < index);
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (T) array[iter++];
+            }
+        };
     }
 }

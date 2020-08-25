@@ -24,7 +24,7 @@ public class SimpleArrayTest {
         SimpleArray<String> list = new SimpleArray<>();
         String expected = "Updated!";
         list.add("Not update!");
-        list.update(0, expected);
+        list.set(0, expected);
         String actual = list.get(0);
         assertThat(actual, is(expected));
     }
@@ -54,7 +54,7 @@ public class SimpleArrayTest {
         list.add("three");
         list.delete(1);
         String actual = list.get(1);
-        assertThat(actual, is(nullValue()));
+        assertThat(actual, is("three"));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -66,6 +66,6 @@ public class SimpleArrayTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenTryUpdateElementWithNegativeIndexShouldCheckThatListThrowException() {
         SimpleArray<String> string = new SimpleArray<>();
-        string.update(-1, "new string");
+        string.set(-1, "new string");
     }
 }
