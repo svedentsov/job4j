@@ -37,7 +37,7 @@ public class SimpleArrayList<E> {
         if (size == 0) {
             throw new NoSuchElementException();
         }
-        E result = this.first.date;
+        E result = this.first.data;
         this.first = this.first.next;
         this.size--;
         return result;
@@ -57,7 +57,7 @@ public class SimpleArrayList<E> {
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
-        return result.date;
+        return result.data;
     }
 
     /**
@@ -75,11 +75,11 @@ public class SimpleArrayList<E> {
      * @param <E> тип элемента хранения.
      */
     private static class Node<E> {
-        E date;
+        E data;
         Node<E> next;
 
         Node(E date) {
-            this.date = date;
+            this.data = date;
         }
     }
 }
