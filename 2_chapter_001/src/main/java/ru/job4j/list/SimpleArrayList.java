@@ -19,7 +19,7 @@ public class SimpleArrayList<E> {
      * Добавление данных в начало списка.
      * Осуществляется сдвиг всех элементов вправо, новый элемент добавляется слева.
      *
-     * @param date добавляемые данные.
+     * @param date добавляемые данные
      */
     public void add(E date) {
         Node<E> newLink = new Node<>(date);
@@ -29,25 +29,10 @@ public class SimpleArrayList<E> {
     }
 
     /**
-     * Удаление первого элемента списка.
-     *
-     * @return возвращает удаленный элемент.
-     */
-    public E delete() {
-        if (size == 0) {
-            throw new NoSuchElementException();
-        }
-        E result = this.first.data;
-        this.first = this.first.next;
-        this.size--;
-        return result;
-    }
-
-    /**
      * Получение элемента по индексу.
      *
-     * @param index искомое значение.
-     * @return найденный элемент.
+     * @param index искомое значение
+     * @return найденный элемент
      */
     public E get(int index) {
         if (size == 0 || index < 0 || size <= index) {
@@ -61,9 +46,24 @@ public class SimpleArrayList<E> {
     }
 
     /**
+     * Удаление первого элемента списка.
+     *
+     * @return получить удаленный элемент
+     */
+    public E delete() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        E result = this.first.data;
+        this.first = this.first.next;
+        this.size--;
+        return result;
+    }
+
+    /**
      * Получение размера коллекции.
      *
-     * @return размер коллекции.
+     * @return размер коллекции
      */
     public int getSize() {
         return this.size;
@@ -72,7 +72,7 @@ public class SimpleArrayList<E> {
     /**
      * Класс предназначенный для хранения данных.
      *
-     * @param <E> тип элемента хранения.
+     * @param <E> тип элемента хранения
      */
     private static class Node<E> {
         E data;

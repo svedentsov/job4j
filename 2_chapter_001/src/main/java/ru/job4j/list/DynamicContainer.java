@@ -9,6 +9,9 @@ import java.util.NoSuchElementException;
  * Структура данных на основе массива с динамическим расширением.
  */
 public class DynamicContainer<E> implements Iterable<E> {
+    /**
+     * Контейнер.
+     */
     private Object[] container;
     private int size = 0;
     private int modCount;
@@ -22,9 +25,9 @@ public class DynamicContainer<E> implements Iterable<E> {
     }
 
     /**
-     * Добавление значение в контейнер.
+     * Добавить значение в контейнер.
      *
-     * @param value добавляемое значение.
+     * @param value добавляемое значение
      */
     public void add(E value) {
         this.modCount++;
@@ -33,7 +36,7 @@ public class DynamicContainer<E> implements Iterable<E> {
     }
 
     /**
-     * Увеличение размера контейнера.
+     * Увеличить размера контейнера.
      */
     private void ensureCapacity() {
         if (size >= container.length) {
@@ -42,10 +45,10 @@ public class DynamicContainer<E> implements Iterable<E> {
     }
 
     /**
-     * Получение значения по индексу.
+     * Получить значение по индексу.
      *
-     * @param index индекс искомого значения.
-     * @return найденный элемент.
+     * @param index индекс искомого значения
+     * @return найденный элемент
      */
     public E get(int index) {
         return (E) container[index];
@@ -54,7 +57,7 @@ public class DynamicContainer<E> implements Iterable<E> {
     /**
      * Получить размер коллекции.
      *
-     * @return размер коллекции.
+     * @return размер коллекции
      */
     public int getLength() {
         return container.length;

@@ -9,9 +9,6 @@ import java.util.Iterator;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- *  * Модульные тесты класса DynamicContainer.
- */
 public class DynamicContainerTest {
     private DynamicContainer<Integer> container;
 
