@@ -2,70 +2,90 @@ package ru.job4j.generic;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.core.IsNull.nullValue;
 
 /**
  * Модульные тесты класса SimpleArray.java.
  */
 public class SimpleArrayTest {
     @Test
-    public void whenTryAddValuesToTheSimpleArrayShouldCheckThatAddedCorrect() {
-        SimpleArray<String> list = new SimpleArray<>();
-        String expected = "first value";
-        list.add(expected);
-        String actual = list.get(0);
-        assertThat(actual, is(expected));
+    public void whenAddElementsInContainerShouldGetSameElements() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+        simpleArray.add("test");
+        String result = simpleArray.get(0);
+        assertThat(result, is("test"));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenAddElementInFullContainerShouldReturnException() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+        simpleArray.add("test1");
+        simpleArray.add("test2");
     }
 
     @Test
-    public void whenTryUpdateSomeValueInListShouldCheckThatValueIsUpdate() {
-        SimpleArray<String> list = new SimpleArray<>();
-        String expected = "Updated!";
-        list.add("Not update!");
-        list.set(0, expected);
-        String actual = list.get(0);
-        assertThat(actual, is(expected));
+    public void whenAddAndSetElementInContainerShouldGetSetElement() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+        simpleArray.add("test1");
+        simpleArray.set(0, "test2");
+        String result = simpleArray.get(0);
+        assertThat(result, is("test2"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void whenTryUpdateUseBadPositionShouldCheckThatMethodUpdateThrowException() {
-        SimpleArray<String> list = new SimpleArray<>();
-        list.get(-1);
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenSetWithoutAddElementsShouldReturnException() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(2);
+        simpleArray.set(0, "test");
     }
 
-    @Test
-    public void whenTryAddNewValueToTheListButListIsFullShouldCheckThatListIsResize() {
-        SimpleArray<String> list = new SimpleArray<>(2);
-        int expected = 4;
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        int actual = list.size();
-        assertThat(actual, is(expected));
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenRemoveWithoutAddElementsShouldReturnException() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(2);
+        simpleArray.remove(0);
     }
 
     @Test
-    public void whenTryDeleteValueFromListShouldCheckThatValueWasRemoved() {
-        SimpleArray<String> list = new SimpleArray<>();
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        list.delete(1);
-        String actual = list.get(1);
-        assertThat(actual, is("three"));
+    public void whenAddAndRemove1ElementInContainerShouldGetNull() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(2);
+        simpleArray.add("test");
+        simpleArray.remove(0);
+        assertNull(simpleArray.get(0));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void whenTryDeleteElementUsingBadPositionShouldCheckThatMethodThrowException() {
-        SimpleArray<String> list = new SimpleArray<>();
-        list.delete(-1);
+    @Test
+    public void whenAdd3AndRemoveMiddleElementInContainerShouldGetLastElement() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(4);
+        simpleArray.add("test1");
+        simpleArray.add("test2");
+        simpleArray.add("test3");
+        simpleArray.remove(1);
+        assertThat(simpleArray.get(1), is("test3"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void whenTryUpdateElementWithNegativeIndexShouldCheckThatListThrowException() {
-        SimpleArray<String> string = new SimpleArray<>();
-        string.set(-1, "new string");
+    @Test
+    public void whenAdd2ElementsInContainerShouldGet2ElementsUsingIterator() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(2);
+        simpleArray.add("test1");
+        simpleArray.add("test2");
+        String[] expected = new String[]{"test1", "test2"};
+        String[] result = new String[2];
+        Iterator<String> iterator = simpleArray.iterator();
+        result[0] = iterator.next();
+        result[1] = iterator.next();
+        assertThat(result, is(expected));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenUsingIteratorNoNextElementShouldReturnException() {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+        simpleArray.add("test1");
+        Iterator<String> iterator = simpleArray.iterator();
+        iterator.next();
+        iterator.next();
     }
 }

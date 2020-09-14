@@ -1,7 +1,7 @@
 package ru.job4j.generic;
 
 /**
- * Базовый абстрактны класс Base.
+ * Абстрактный класс для моделей c методами String getId().
  */
 public abstract class Base {
     /**
@@ -19,11 +19,11 @@ public abstract class Base {
     }
 
     /**
-     * Получить идентификатор.
+     * Получить id модели, добавленной в массив.
      *
      * @return идентификатор.
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 }

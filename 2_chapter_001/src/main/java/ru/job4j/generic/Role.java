@@ -1,7 +1,7 @@
 package ru.job4j.generic;
 
 /**
- * Класс Role.
+ * Класс инициализирует конструктор абстрактного суперкласса Base.
  */
 public class Role extends Base {
     /**
