@@ -61,8 +61,8 @@ public class User {
     @Override
     public String toString() {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        return "Name = " + name + " | " +
-                "Children = " + children + " | " +
-                "Birthday = " + df.format(birthday.getTime());
+        return "Name = " + name + " | "
+                + "Children = " + children + " | "
+                + "Birthday = " + df.format(birthday.getTime());
     }
 }

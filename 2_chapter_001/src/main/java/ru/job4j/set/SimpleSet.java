@@ -1,6 +1,6 @@
 package ru.job4j.set;
 
-import ru.job4j.list.DynamicContainer;
+import ru.job4j.list.DynamicArrayList;
 
 import java.util.Iterator;
 
@@ -10,13 +10,13 @@ import java.util.Iterator;
  * @param <E>
  */
 public class SimpleSet<E> implements Iterable<E> {
-    private DynamicContainer<E> simpleSet;
+    private DynamicArrayList<E> simpleSet;
 
     /**
      * Конструктор.
      */
     public SimpleSet() {
-        this.simpleSet = new DynamicContainer<E>(10);
+        this.simpleSet = new DynamicArrayList<E>(10);
     }
 
     /**

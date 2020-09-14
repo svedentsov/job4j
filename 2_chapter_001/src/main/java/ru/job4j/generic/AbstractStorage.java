@@ -60,7 +60,7 @@ public abstract class AbstractStorage<T extends Base> implements Store<T> {
     public boolean replace(String id, T model) {
         boolean result = false;
         int index = getIndex(id);
-        if (index != -1){
+        if (index != -1) {
             this.simpleArray.set(index, model);
             result = true;
         }

@@ -3,39 +3,46 @@ package ru.job4j.list;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
+
+/**
+ * Класс тестирует функционал для классов SimpleStack и DynamicLinkedListStackContainer.
+ */
 public class SimpleStackTest {
-    private SimpleStack<Integer> list;
+    private SimpleStack<Integer> simpleStack;
 
     @Before
     public void beforeTest() {
-        list = new SimpleStack<>();
+        simpleStack = new SimpleStack<>();
+        simpleStack.push(1);
+        simpleStack.push(2);
+        simpleStack.push(3);
     }
 
     @Test
     public void whenPushElementAndRemoveElement() {
-        list.push(1);
-        list.push(2);
-        assertThat(list.poll(), is(2));
-        assertThat(list.poll(), is(1));
-    }
-
-    @Test(expected = NoSuchElementException.class)
-    public void whenRemoveElementEmptyStack() {
-        list.push(1);
-        list.poll();
-        list.poll();
+        simpleStack.push(1);
+        simpleStack.push(2);
+        assertThat(simpleStack.poll(), is(2));
+        assertThat(simpleStack.poll(), is(1));
     }
 
     @Test
-    public void whenReplaceElementWithPushAndRemove() {
-        list.push(1);
-        list.poll();
-        list.push(2);
-        assertThat(list.poll(), is(2));
+    public void whenPoll2ElementsShouldGetLIFO() {
+        int[] result = new int[3];
+        result[0] = simpleStack.poll();
+        result[1] = simpleStack.poll();
+        result[2] = simpleStack.poll();
+        int[] expected = new int[]{3, 2, 1};
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenPollElementInEmptyStackContainerShouldGetNull() {
+        simpleStack = new SimpleStack<>();
+        assertNull(simpleStack.poll());
     }
 }

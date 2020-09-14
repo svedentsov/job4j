@@ -1,5 +1,11 @@
 package ru.job4j.list;
 
+/**
+ * Класс реализующий очередь на двух стеках.
+ * Описывается FIFO - первый пришёл, первый ушёл.
+ *
+ * @param <T> параметризуемый тип элемента связанного списка.
+ */
 public class SimpleQueue<T> {
     private SimpleStack<T> inputStack;
     private SimpleStack<T> outputStack;

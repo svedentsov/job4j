@@ -1,11 +1,9 @@
 package ru.job4j.list;
 
-import java.util.NoSuchElementException;
-
 /**
- * Класс SimpleArrayList.
+ * Класс реализует методы для односвязного списка.
  */
-public class SimpleArrayList<E> {
+public class SimpleLinkedList<E> {
     /**
      * Размер контейнера.
      */
@@ -16,7 +14,7 @@ public class SimpleArrayList<E> {
     private Node<E> first;
 
     /**
-     * Добавление данных в начало списка.
+     * Вставить элемент в начало списка.
      * Осуществляется сдвиг всех элементов вправо, новый элемент добавляется слева.
      *
      * @param date добавляемые данные
@@ -29,15 +27,12 @@ public class SimpleArrayList<E> {
     }
 
     /**
-     * Получение элемента по индексу.
+     * Получить элемент по индексу.
      *
      * @param index искомое значение
      * @return найденный элемент
      */
     public E get(int index) {
-        if (size == 0 || index < 0 || size <= index) {
-            throw new NoSuchElementException();
-        }
         Node<E> result = this.first;
         for (int i = 0; i < index; i++) {
             result = result.next;
@@ -46,22 +41,22 @@ public class SimpleArrayList<E> {
     }
 
     /**
-     * Удаление первого элемента списка.
+     * Удалить первый элемент списка.
      *
      * @return получить удаленный элемент
      */
     public E delete() {
-        if (size == 0) {
-            throw new NoSuchElementException();
+        E result = null;
+        if (size > 0) {
+            result = this.first.data;
+            this.first = this.first.next;
+            size--;
         }
-        E result = this.first.data;
-        this.first = this.first.next;
-        this.size--;
         return result;
     }
 
     /**
-     * Получение размера коллекции.
+     * Получить размер коллекции.
      *
      * @return размер коллекции
      */
@@ -70,7 +65,7 @@ public class SimpleArrayList<E> {
     }
 
     /**
-     * Класс предназначенный для хранения данных.
+     * Класс предназначен для хранения данных.
      *
      * @param <E> тип элемента хранения
      */

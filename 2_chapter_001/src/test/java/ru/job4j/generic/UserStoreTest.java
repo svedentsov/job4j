@@ -2,66 +2,63 @@ package ru.job4j.generic;
 
 import org.junit.Test;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 public class UserStoreTest {
     @Test
-    public void whenAddTwoUsersAndFind() {
-        UserStore userStore = new UserStore(4);
-        User result = null;
-        User user1 = new User("FirstUser");
-        User user2 = new User("SecondUser");
+    public void whenAddElementShouldGetSameElementById() {
+        UserStore userStore = new UserStore(1);
+        User user = new User("test");
+        userStore.add(user);
+        User result = userStore.findById("test");
+        assertThat(result, is(user));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenAddElementInFullContainerShouldReturnException() {
+        UserStore userStore = new UserStore(1);
+        User user1 = new User("test1");
+        User user2 = new User("test2");
         userStore.add(user1);
         userStore.add(user2);
-        assertThat(userStore.findById("SecondUser"), is(user2));
-        assertThat(userStore.findById("FirstUser"), is(user1));
-        assertThat(userStore.findById("NoNameUser"), is(result));
     }
 
     @Test
-    public void whenAddThreeUsersAndReplaceAndIterate() {
-        UserStore userStore = new UserStore(4);
-        Iterator<User> it = userStore.iter();
-        User result = null;
-        User user1 = new User("FirstUser");
-        User user2 = new User("SecondUser");
-        User user3 = new User("NewFirstUser");
+    public void whenAddAndReplaceElementShouldReplaceIdAtFind() {
+        UserStore userStore = new UserStore(2);
+        User user1 = new User("test1");
+        User user2 = new User("test2");
         userStore.add(user1);
-        userStore.add(user2);
-        userStore.replace("FirstUser", user3);
-        assertThat(userStore.findById("FirstUser"), is(result));
-        assertThat(userStore.findById("NewFirstUser"), is(user3));
-        assertThat(it.next().getId(), is("NewFirstUser"));
-        assertThat(it.next().getId(), is("SecondUser"));
+        userStore.replace("test1", user2);
+        User result = userStore.findById("test2");
+        assertThat(result, is(user2));
     }
 
     @Test
-    public void whenAddThreeUsersAndDeleteSecondUser() {
-        UserStore userStore = new UserStore(4);
-        Iterator<User> it = userStore.iter();
-        User result = null;
-        User user1 = new User("FirstUser");
-        User user2 = new User("SecondUser");
-        User user3 = new User("ThirdUser");
+    public void whenReplaceElementAndGetReplacedElementShouldReturnNull() {
+        UserStore userStore = new UserStore(2);
+        User user1 = new User("test1");
+        User user2 = new User("test2");
         userStore.add(user1);
-        userStore.add(user2);
-        userStore.add(user3);
-        userStore.delete("SecondUser");
-        assertThat(it.next().getId(), is("FirstUser"));
-        assertThat(it.next().getId(), is("ThirdUser"));
+        assertTrue(userStore.replace("test1", user2));
+        assertThat(userStore.findById("test2"), is(user2));
+        assertNull(userStore.findById("test1"));
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void whenAddOneUserOnly() {
-        UserStore userStore = new UserStore(4);
-        Iterator<User> it = userStore.iter();
-        User user1 = new User("FirstUser");
+    @Test
+    public void whenRemoveWithoutAddElementsShouldReturnFalse() {
+        UserStore userStore = new UserStore(2);
+        User user1 = new User("test1");
         userStore.add(user1);
-        it.next();
-        it.next();
+        assertFalse(userStore.delete("test2"));
+    }
+
+    @Test
+    public void whenFindByIdCannotFindIdShouldReturnNull() {
+        UserStore userStore = new UserStore(2);
+        User user1 = new User("test1");
+        userStore.add(user1);
+        assertNull(userStore.findById("test2"));
     }
 }

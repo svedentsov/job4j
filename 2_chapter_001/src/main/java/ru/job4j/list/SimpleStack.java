@@ -1,40 +1,33 @@
 package ru.job4j.list;
 
+/**
+ * Класс реализует стек.
+ * Описывается LIFO - последний пришёл, первый ушёл.
+ *
+ * @param <T> параметризованный тип элемента связанного списка.
+ */
 public class SimpleStack<T> {
-    private SimpleArrayList<T> simpleArrayList;
-
     /**
-     * Конструктор.
+     * Динамический контейнер на базе связанного списка.
      */
-    public SimpleStack() {
-        this.simpleArrayList = new SimpleArrayList<>();
-    }
+    private SimpleLinkedList<T> stackContainer = new SimpleLinkedList<>();
 
     /**
-     * Удалить значение из коллекции.
+     * Удалить последний элемент в списке и получить его значение.
      *
-     * @return возвращает значение и удаляет его из коллекции
+     * @return значение удаленного элемента
      */
     public T poll() {
-        return simpleArrayList.delete();
+        return stackContainer.delete();
     }
 
     /**
-     * Добавить значение в коллекцию.
+     * Вставить элемент в конец связанного списка.
      *
-     * @param value добавляемое значение
+     * @param value данные хранящиеся в элементе списка
      */
     public void push(T value) {
-        simpleArrayList.add(value);
-    }
-
-    /**
-     * Получить размер коллекции.
-     *
-     * @return размер коллекции
-     */
-    public int size() {
-        return simpleArrayList.getSize();
+        stackContainer.add(value);
     }
 
     /**
@@ -44,5 +37,14 @@ public class SimpleStack<T> {
      */
     public boolean isEmpty() {
         return this.size() == 0;
+    }
+
+    /**
+     * Получить размер коллекции.
+     *
+     * @return размер коллекции
+     */
+    public int size() {
+        return stackContainer.getSize();
     }
 }
