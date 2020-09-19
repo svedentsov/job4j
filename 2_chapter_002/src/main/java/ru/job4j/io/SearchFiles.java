@@ -12,40 +12,32 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class SearchFiles extends SimpleFileVisitor<Path> {
     /**
-     * storage for results
+     * Результат поиска.
      */
     private final List<Path> result = new ArrayList<>();
     /**
-     * file type predicate
+     * Предикат типа файла.
      */
     private final Predicate<Path> predicate;
 
     /**
-     * constructor to create an object of this class
+     * Конструктор создания объекта.
      *
-     * @param predicate predicate
+     * @param predicate предикат
      */
     public SearchFiles(Predicate<Path> predicate) {
         this.predicate = predicate;
     }
 
     /**
-     * method returns the result
+     * Метод возвращает результат.
      *
-     * @return result
+     * @return результат поиска
      */
     public List<Path> getPaths() {
         return result;
     }
 
-    /**
-     * the overridden method saves the file path in the storage
-     * if the file type matches the predicate
-     *
-     * @param file  file path
-     * @param attrs BasicFileAttributes
-     * @return result
-     */
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
         if (this.predicate.test(file)) {
