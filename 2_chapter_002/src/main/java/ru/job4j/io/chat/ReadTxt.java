@@ -1,0 +1,31 @@
+package ru.job4j.io.chat;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * Класс читает файл txt.
+ */
+public class ReadTxt implements Read {
+    private String path;
+
+    public ReadTxt(String path) {
+        this.path = path;
+    }
+
+    @Override
+    public List<String> readFile() {
+        List<String> answers = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
+            answers = reader.lines()
+                    .filter(s -> !s.isEmpty())
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return answers;
+    }
+}
