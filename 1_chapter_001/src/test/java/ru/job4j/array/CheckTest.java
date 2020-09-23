@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class CheckTest {
     /**
-     * Проверка когда массив содержил только true
+     * Проверка когда массив содержит только true
      */
     @Test
     public void whenDataMonoByTrueThenTrue() {
@@ -18,7 +18,7 @@ public class CheckTest {
     }
 
     /**
-     * Проверка когда массив содержил только false
+     * Проверка когда массив содержит только false
      */
     @Test
     public void whenDataNotMonoByFalseThenTrue() {
@@ -29,7 +29,7 @@ public class CheckTest {
     }
 
     /**
-     * Проверка когда массив содержил только true и false
+     * Проверка когда массив содержит true и false
      */
     @Test
     public void whenDataNotMonoByTrueThenFalse() {

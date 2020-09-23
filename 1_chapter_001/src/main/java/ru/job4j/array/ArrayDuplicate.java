@@ -3,14 +3,14 @@ package ru.job4j.array;
 import java.util.Arrays;
 
 /**
- * Удаление дубликатов в массиве.
+ * Класс реализует удаление дубликатов в массиве.
  */
 public class ArrayDuplicate {
     /**
-     * Удаление в массиве повторяющихся элементов.
+     * Метод удаляет дубликаты в массиве.
      *
-     * @param array массив
-     * @return массив без повторяющихся элементов
+     * @param array исходный массив с дубликатами
+     * @return массив без дубликатов
      */
     public String[] remove(String[] array) {
         int unique = array.length;
