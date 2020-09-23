@@ -4,14 +4,24 @@ package ru.job4j.array;
  * Сортировка массива пузырьком.
  */
 public class BubbleSort {
+    /**
+     * Метод реализует сортировку массива методом перестановок или "пузырьковой сортировки".
+     * tmp - временная переменная для перестановок
+     * i-цикл уменьшается справа по мере выталкивания максимальных элементов
+     * j-цикл пробегает внутри i и проверяет условие
+     * Если первый элемент больше второго, то они меняются местами
+     * Таким образом, в конец цикла j выталкивается самый большой элемент, который отсекается циклом i.
+     *
+     * @param array исходный массив
+     * @return отсортированный массив
+     */
     public int[] sort(int[] array) {
-        int temp;
-        for (int i = array.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+        for (int out = 0; out < array.length - 1; out++) {
+            for (int in = 0; in < array.length - out - 1; in++) {
+                if (array[in] > array[in + 1]) {
+                    int temp = array[in];
+                    array[in] = array[in + 1];
+                    array[in + 1] = temp;
                 }
             }
         }
