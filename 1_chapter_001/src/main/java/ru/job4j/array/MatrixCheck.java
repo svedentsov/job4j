@@ -1,11 +1,14 @@
 package ru.job4j.array;
 
+/**
+ *  Квадратный массив заполнен true или false по диагоналям.
+ */
 public class MatrixCheck {
     /**
-     * Проверка все ли элементы по диагонали равны true или false.
+     * Метод проверяет массив заполнен true или false по диагоналям.
      *
-     * @param data проверяемая таблица
-     * @return
+     * @param data заданный массив
+     * @return true если однотипны, иначе false
      */
     public boolean mono(boolean[][] data) {
         boolean result = true;
@@ -14,7 +17,7 @@ public class MatrixCheck {
                 result = false;
                 break;
             }
-            if (data[data.length - 1][0] != data[data.length - i - 1][i]) {
+            if (data[0][data.length - 1] != data[i][data.length - 1 - i]) {
                 result = false;
                 break;
             }

@@ -1,57 +1,57 @@
 package ru.job4j.calculator;
 
 /**
- * Калькулятор.
+ * Программа-элементарный калькулятор.
  */
 public class Calculator {
+    private double result;
+
     /**
-     * Сложение.
+     * Метод сложения чисел
      *
-     * @param first
-     * @param second
+     * @param first  первое число
+     * @param second второе число
      */
-    public static void add(double first, double second) {
-        double result = first + second;
-        System.out.println(first + " + " + second + " = " + result);
+    public void add(double first, double second) {
+        this.result = first + second;
     }
 
     /**
-     * Деление.
+     * Метод вычитания чисел.
      *
-     * @param first
-     * @param second
+     * @param first  первое число
+     * @param second второе число
      */
-    public static void div(double first, double second) {
-        double result = first / second;
-        System.out.println(first + " / " + second + " = " + result);
+    public void subtract(double first, double second) {
+        this.result = first - second;
     }
 
     /**
-     * Умножение.
+     * Метод умножения чисел.
      *
-     * @param first
-     * @param second
+     * @param first  первое число
+     * @param second второе число
      */
-    public static void multiply(double first, double second) {
-        double result = first * second;
-        System.out.println(first + " * " + second + " = " + result);
+    public void multiply(double first, double second) {
+        this.result = first * second;
     }
 
     /**
-     * Вычитание.
+     * Метод деления чисел.
      *
-     * @param first
-     * @param second
+     * @param first  первое число
+     * @param second второе число
      */
-    public static void subtrack(double first, double second) {
-        double result = first - second;
-        System.out.println(first + " - " + second + " = " + result);
+    public void div(double first, double second) {
+        this.result = first / second;
     }
 
-    public static void main(String[] args) {
-        add(1, 1);
-        subtrack(9, 5);
-        multiply(2, 1);
-        div(4, 2);
+    /**
+     * Метод возврата результата.
+     *
+     * @return результат действия
+     */
+    public double getResult() {
+        return this.result;
     }
 }
