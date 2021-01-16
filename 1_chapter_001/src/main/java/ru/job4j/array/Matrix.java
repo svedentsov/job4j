@@ -5,10 +5,10 @@ package ru.job4j.array;
  */
 public class Matrix {
     /**
-     * Создание таблицы состоящей из перемноженных столбцов и строк.
+     * Создание двумерного массива size на size на примере таблицы умножения.
      *
-     * @param size размер таблицы
-     * @return расчитанная матрица
+     * @param size размер таблицы.
+     * @return таблица умножения заданного размера.
      */
     public int[][] multiple(int size) {
         int[][] table = new int[size][size];

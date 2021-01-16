@@ -5,9 +5,13 @@ import org.junit.Test;
 import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Проверка класса ArrayDuplicate.
+ * Метод arrayContainingInAnyOrder() проверяется отсутствие дубликатов в массиве, но не их порядок.
+ */
 public class ArrayDuplicateTest {
     /**
-     * Удаление из массива дубликатов строк.
+     * Проверка удаления дубликатов из массива строк.
      */
     @Test
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
@@ -19,7 +23,7 @@ public class ArrayDuplicateTest {
     }
 
     /**
-     * Удаление из массива дубликатов строк, если уникально только одно слово.
+     * Проверка удаления дубликатов из массива строк, если уникально только одно слово.
      */
     @Test
     public void removeDuplicatesThenInArrayFiveDuplicateWords() {

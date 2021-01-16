@@ -1,15 +1,15 @@
 package ru.job4j.array;
 
 /**
- * Поиск по массиву.
+ * Поиск элемента в массиве.
  */
 public class FindLoop {
     /**
      * Поиск в массиве индекса элемента.
      *
-     * @param data    массив для поиска
-     * @param element число для поиска
-     * @return индекс найденного числа
+     * @param data    массив для поиска.
+     * @param element число для поиска.
+     * @return индекс найденного числа. Если элемента не найден, возвращаем -1.
      */
     public int indexOf(int[] data, int element) {
         int result = -1;
@@ -25,11 +25,11 @@ public class FindLoop {
     /**
      * Поиск в массиве индекса элемента между индексами.
      *
-     * @param data    массив для поиска
-     * @param element число для поиска
-     * @param start   индекс с которого начинается поиск
-     * @param finish  индекс которым заканчивается поиск
-     * @return индекс найденного числа
+     * @param data    массив для поиска.
+     * @param element число для поиска.
+     * @param start   индекс с которого начинается поиск.
+     * @param finish  индекс которым заканчивается поиск.
+     * @return индекс найденного числа. Если элемента не найден, возвращаем -1.
      */
     public int indexOf(int[] data, int element, int start, int finish) {
         int result = -1;
@@ -43,7 +43,7 @@ public class FindLoop {
     }
 
     /**
-     * Сортирока массива выборкой.
+     * Сортировка массива выборкой.
      *
      * @param data массив для сортировки
      * @return отсортированный массив

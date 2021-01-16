@@ -61,7 +61,7 @@ public class FindLoopTest {
     }
 
     /**
-     * ЧИсло 42 отсутствует в массиве, метод FindLoop возвращает -1.
+     * Число 42 отсутствует в массиве, метод FindLoop возвращает -1.
      */
     @Test
     public void whenArrayNotHaveNumber42() {
@@ -76,7 +76,7 @@ public class FindLoopTest {
     }
 
     /**
-     * Сортировка масссива из 3 чисел.
+     * Сортировка массива из 3 чисел.
      */
     @Test
     public void whenSort3() {
@@ -88,7 +88,7 @@ public class FindLoopTest {
     }
 
     /**
-     * Сортировка масссива из 5 чисел.
+     * Сортировка массива из 5 чисел.
      */
     @Test
     public void whenSort5() {

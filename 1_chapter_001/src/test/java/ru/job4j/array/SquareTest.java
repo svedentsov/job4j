@@ -9,22 +9,23 @@ public class SquareTest {
     @Test
     public void whenBound3Then149() {
         int bound = 3;
-        Square square = new Square();
-        int[] rst = square.calculate(bound);
+        int[] result = new Square().calculate(bound);
         int[] expect = new int[]{1, 4, 9};
-        assertThat(rst, is(expect));
+        assertThat(result, is(expect));
     }
 
     @Test
     public void whenBound5Then1491625() {
-        int[] result = new Square().calculate(5);
+        int bound = 5;
+        int[] result = new Square().calculate(bound);
         int[] expect = new int[]{1, 4, 9, 16, 25};
         assertThat(result, is(expect));
     }
 
     @Test
     public void whenBound7Then14916253649() {
-        int[] result = new Square().calculate(7);
+        int bound = 7;
+        int[] result = new Square().calculate(bound);
         int[] expect = new int[]{1, 4, 9, 16, 25, 36, 49};
         assertThat(result, is(expect));
     }

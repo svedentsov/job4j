@@ -1,11 +1,11 @@
 package ru.job4j.array;
 
 /**
- * Класс реализует проверку, как заполнен массив.
+ * Класс реализует проверку заполненности массива.
  */
 public class Check {
     /**
-     * Метод проверят на однотипность все элементы массива.
+     * Метод проверяет, что все элементы в массиве являются true или false.
      *
      * @param data массив булевых значений
      * @return true если значения однотипны, иначе false
@@ -13,7 +13,7 @@ public class Check {
     public boolean mono(boolean[] data) {
         boolean result = true;
         for (int i = 0; i < data.length; i++) {
-            if (data[0] != data[1]) {
+            if (data[1] != data[0]) {
                 result = false;
                 break;
             }

@@ -2,7 +2,7 @@ package ru.job4j.array;
 
 public class EndsWith {
     /**
-     * Проверяет, что слово word заканчивается постфиксом post
+     * Метод проверяет, что слово word заканчивается постфиксом post.
      *
      * @param word слово
      * @param post постфикс

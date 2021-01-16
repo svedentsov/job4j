@@ -12,7 +12,7 @@ public class ArrayCharTest {
     @Test
     public void whenStartWithPrefixThenTrue() {
         ArrayChar word = new ArrayChar("Hello");
-        boolean result = word.startsWith("He");
+        boolean result = word.startWith("He");
         assertThat(result, is(true));
     }
 
@@ -22,7 +22,7 @@ public class ArrayCharTest {
     @Test
     public void whenNotStartWithPrefixThenFalse() {
         ArrayChar word = new ArrayChar("Hello");
-        boolean result = word.startsWith("Hi");
+        boolean result = word.startWith("Hi");
         assertThat(result, is(false));
     }
 }

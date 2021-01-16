@@ -7,8 +7,8 @@ public class Turn {
     /**
      * Метод переворачивает массив.
      *
-     * @param array массив
-     * @return перевернутый массив
+     * @param array массив.
+     * @return перевернутый массив.
      */
     public int[] back(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
