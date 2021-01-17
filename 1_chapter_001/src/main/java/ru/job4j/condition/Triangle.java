@@ -1,59 +1,59 @@
 package ru.job4j.condition;
 
+/**
+ * Вычисление площади треугольника через полупериметр.
+ * Используем подготовленный ранее класс Point для вычисления расстояний между точками.
+ */
 public class Triangle {
-    private Point first;
-    private Point second;
-    private Point third;
+    private Point a;
+    private Point b;
+    private Point c;
 
-    public Triangle(Point ap, Point bp, Point cp) {
-        this.first = ap;
-        this.second = bp;
-        this.third = cp;
+    public Triangle(Point a, Point b, Point c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
     /**
      * Метод вычисления полупериметра по длинам сторон.
-     * Формула.
-     * <p>
-     * (a + b + c) / 2
+     * Формула (a + b + c) / 2
      *
-     * @param a расстояние между точками a b
-     * @param b расстояние между точками a c
-     * @param c расстояние между точками b c
-     * @return полуперимента.
+     * @param ab расстояние между точками a b.
+     * @param ac расстояние между точками a c.
+     * @param bc расстояние между точками b c.
+     * @return полупериметр.
      */
-    public double period(double a, double b, double c) {
-        return (a + b + c) / 2;
+    public double period(double ab, double ac, double bc) {
+        return (ab + ac + bc) / 2;
     }
 
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
-     * <p>
-     * Подумайте какое надо написать условие, чтобы определить можно ли построить треугольник.
      *
-     * @param a Длина от точки a b.
-     * @param b Длина от точки a c.
-     * @param c Длина от точки b c.
+     * @param ab расстояние между точками a b.
+     * @param ac расстояние между точками a c.
+     * @param bc расстояние между точками b c.
      * @return
      */
-    private boolean exist(double a, double c, double b) {
-        return (a + b > c) && (a + c > b) && (b + c > a);
+    private boolean exist(double ab, double ac, double bc) {
+        return (ab + bc > ac) && (ab + ac > bc) && (bc + ac > ab);
     }
 
     /**
-     * Метод должен вычислить площадь треугольника, по формуле: √ p *(p - a) * (p - b) * (p - c).
+     * Метод вычисляет площадь треугольника по формуле: √ p *(p - a) * (p - b) * (p - c).
      * где √ - корень квадратный, для извлечения корня использовать метод Math.sqrt().
      *
-     * @return Вернуть площадь, если треугольник существует или -1.
+     * @return площадь треугольника, если он существует, иначе -1.
      */
     public double area() {
         double rsl = -1;
-        double a = first.distance(second);
-        double b = second.distance(third);
-        double c = first.distance(third);
-        double p = period(a, b, c);
-        if (this.exist(a, b, c)) {
-            rsl = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        double ab = this.a.distance(this.b);
+        double ac = this.b.distance(this.c);
+        double bc = this.a.distance(this.c);
+        double p = period(ab, ac, bc);
+        if (this.exist(ab, ac, bc)) {
+            rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
         return rsl;
     }

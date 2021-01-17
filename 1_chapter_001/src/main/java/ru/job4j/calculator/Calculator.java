@@ -1,7 +1,7 @@
 package ru.job4j.calculator;
 
 /**
- * Программа-элементарный калькулятор.
+ * Элементарный калькулятор: сложение, вычитание, умножение, деление.
  */
 public class Calculator {
     private double result;

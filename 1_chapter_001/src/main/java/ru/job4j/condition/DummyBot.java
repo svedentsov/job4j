@@ -1,11 +1,14 @@
 package ru.job4j.condition;
 
+/**
+ * Программа "Глупый бот".
+ */
 public class DummyBot {
     /**
      * Отвечает на вопросы.
      *
      * @param question Вопрос от клиента.
-     * @return Ответ.
+     * @return ответ.
      */
     public String answer(String question) {
         String rsl = "Это ставит меня в тупик. Задайте другой вопрос.";

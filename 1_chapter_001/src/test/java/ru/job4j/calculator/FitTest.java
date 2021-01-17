@@ -1,22 +1,20 @@
 package ru.job4j.calculator;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.junit.Assert.assertThat;
 
 public class FitTest {
     @Test
     public void manWeight() {
-        double in = 170;
-        double expected = 80.5;
-        double out = Fit.manWeight(in);
-        Assert.assertEquals(expected, out, 0);
+        double weight = new Fit().manWeight(180);
+        assertThat(weight, closeTo(92.0, 0.1));
     }
 
     @Test
     public void womanWeight() {
-        double in = 161;
-        double expected = 58.65;
-        double out = Fit.womanWeight(in);
-        Assert.assertEquals(expected, out, 0);
+        double weight = new Fit().womanWeight(170);
+        assertThat(weight, closeTo(69.0, 0.1));
     }
 }
