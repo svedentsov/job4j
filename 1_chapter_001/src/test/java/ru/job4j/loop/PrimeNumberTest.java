@@ -8,22 +8,19 @@ import static org.junit.Assert.*;
 public class PrimeNumberTest {
     @Test
     public void when1() {
-        PrimeNumber prime = new PrimeNumber();
-        int count = prime.calc(2);
+        int count = new PrimeNumber().calc(2);
         assertThat(count, is(1));
     }
 
     @Test
     public void when5() {
-        PrimeNumber prime = new PrimeNumber();
-        int count = prime.calc(5);
+        int count = new PrimeNumber().calc(5);
         assertThat(count, is(3));
     }
 
     @Test
     public void when11() {
-        PrimeNumber prime = new PrimeNumber();
-        int count = prime.calc(11);
+        int count = new PrimeNumber().calc(11);
         assertThat(count, is(5));
     }
 }

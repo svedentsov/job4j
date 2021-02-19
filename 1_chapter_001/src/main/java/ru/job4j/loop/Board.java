@@ -1,6 +1,13 @@
 package ru.job4j.loop;
 
 public class Board {
+    /**
+     * Метод строит шахматную доску в псевдографике.
+     *
+     * @param width  ширина.
+     * @param height высота.
+     * @return
+     */
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
