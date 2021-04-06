@@ -1,11 +1,10 @@
 package ru.job4j.generic;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Класс реализует универсальную обертку над массивом.
+ * Класс SimpleArray реализация простой массив.
  */
 public class SimpleArray<T> implements Iterable<T> {
     /**
@@ -27,19 +26,19 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     /**
-     * Добавить элемент в первую свободную ячейку.
+     * Метод добавляет указанный элемент (model) в первую свободную ячейку.
      *
-     * @param model новый значение.
+     * @param model новый элемент.
      */
     public void add(T model) throws ArrayIndexOutOfBoundsException {
         this.objects[this.index++] = model;
     }
 
     /**
-     * Заменить элемент находящийся по указанному индексу.
+     * Метод заменяет указанным элементом (model) элемент, находящийся по индексу position.
      *
-     * @param position позиция старого элемента
-     * @param model    новое значение для элемента массива
+     * @param position позиция старого элемента.
+     * @param model    новый элемент массива.
      */
     public void set(int position, T model) throws ArrayIndexOutOfBoundsException {
         checkSizeContainer(position);
@@ -47,7 +46,7 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     /**
-     * Получить элемент находящийся по указанному индексу.
+     * Метод возвращает элемент, расположенный по указанному индексу.
      *
      * @param position индекс для доступа к значению.
      * @return значение полученное по индексу.
@@ -57,10 +56,10 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     /**
-     * Удалить элемент по указанному индексу.
+     * Метод удаляет элемент по указанному индексу.
      * Все находящиеся справа элементы при этом необходимо сдвинуть на единицу влево.
      *
-     * @param position позиция удаляемого элемента
+     * @param position позиция удаляемого элемента.
      */
     public void remove(int position) throws ArrayIndexOutOfBoundsException {
         checkSizeContainer(position);
@@ -79,48 +78,25 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     /**
-     * Получить текущую длину массива.
-     *
-     * @return длинна массива
-     */
-    public int size() {
-        return this.objects.length;
-    }
-
-    /**
      * Метод возвращает иттератор для обхода данной структуры.
      */
     @Override
     public Iterator<T> iterator() {
-        return new SimpleArrayIterator(index, (Iterator<T>) Arrays.asList(this.objects).iterator());
-    }
+        return new Iterator<T>() {
+            private int iter = 0;
 
-    /**
-     * Класс реализует итератор для массива.
-     */
-    private class SimpleArrayIterator implements Iterator<T> {
-
-        private final int size;
-        private int index = 0;
-        private final Iterator<T> arrayIterator;
-
-        public SimpleArrayIterator(int size, Iterator<T> arrayIterator) {
-            this.size = size;
-            this.arrayIterator = arrayIterator;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return (index <= size - 1) && arrayIterator.hasNext();
-        }
-
-        @Override
-        public T next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("no any next element");
+            @Override
+            public boolean hasNext() {
+                return (iter < index);
             }
-            index++;
-            return arrayIterator.next();
-        }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (T) objects[iter++];
+            }
+        };
     }
 }
