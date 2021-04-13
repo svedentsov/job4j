@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
+/**
+ * Класс тестирует функционал класса UserStore.
+ */
 public class UserStoreTest {
     @Test
     public void whenAddElementShouldGetSameElementById() {

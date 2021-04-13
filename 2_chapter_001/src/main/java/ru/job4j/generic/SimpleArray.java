@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Класс SimpleArray реализация простой массив.
+ * Класс SimpleArray реализует универсальную обертку над массивом.
  */
 public class SimpleArray<T> implements Iterable<T> {
     /**

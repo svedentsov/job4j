@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
- * Модульные тесты класса SimpleArray.java.
+ * Класс тестирует функционал класса SimpleArray
  */
 public class SimpleArrayTest {
     @Test

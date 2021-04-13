@@ -3,11 +3,11 @@ package ru.job4j.generic;
 import java.util.Iterator;
 
 /**
- * Класс реализует общий функционал для классов UserStore и RoleStore.
+ * Класс AbstractStorage реализует общий функционал для классов UserStore и RoleStore.
  */
 public abstract class AbstractStorage<T extends Base> implements Store<T> {
     /**
-     * Хранилище объектов типа T.
+     * Хранилище объектов.
      */
     private final SimpleArray<T> simpleArray;
 
