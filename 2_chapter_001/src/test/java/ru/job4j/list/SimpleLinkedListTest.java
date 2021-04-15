@@ -3,6 +3,8 @@ package ru.job4j.list;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -11,6 +13,7 @@ import static org.junit.Assert.assertThat;
  * Класс тестирует функционал класса SimpleLinkedList.
  */
 public class SimpleLinkedListTest {
+
     private SimpleLinkedList<Integer> list;
 
     @Before
@@ -38,11 +41,14 @@ public class SimpleLinkedListTest {
         assertThat(list.getSize(), is(2));
     }
 
-    @Test
-    public void whenAddThreeElementsAndDeleteFourThenLastDeleteElementReturnNull() {
+    @Test(expected = NoSuchElementException.class)
+    public void whenElementsAreAbsent() {
+        list = new SimpleLinkedList<>();
         list.delete();
-        list.delete();
-        list.delete();
-        assertNull(list.delete());
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenIndexIsNotCorrect() {
+        list.get(3);
     }
 }

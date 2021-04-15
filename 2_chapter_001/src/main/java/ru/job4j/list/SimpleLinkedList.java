@@ -1,21 +1,17 @@
 package ru.job4j.list;
 
+import java.util.NoSuchElementException;
+
 /**
- * Класс реализует методы для односвязного списка.
+ * Класс SimpleLinkedList реализует методы для односвязного списка.
  */
 public class SimpleLinkedList<E> {
-    /**
-     * Размер контейнера.
-     */
+
     private int size;
-    /**
-     * Ссылка на первый хранимый объект, который содержит ссылка на следующий элемент.
-     */
     private Node<E> first;
 
     /**
-     * Вставить элемент в начало списка.
-     * Осуществляется сдвиг всех элементов вправо, новый элемент добавляется слева.
+     * Метод добавлеяет объект в начало коллекции.
      *
      * @param date добавляемые данные
      */
@@ -27,12 +23,15 @@ public class SimpleLinkedList<E> {
     }
 
     /**
-     * Получить элемент по индексу.
+     * Метод получает объект из коллекции по индексу.
      *
      * @param index искомое значение
-     * @return найденный элемент
+     * @return найденный объект
      */
     public E get(int index) {
+        if (size == 0 || index < 0 || index >= size) {
+            throw new NoSuchElementException();
+        }
         Node<E> result = this.first;
         for (int i = 0; i < index; i++) {
             result = result.next;
@@ -41,24 +40,24 @@ public class SimpleLinkedList<E> {
     }
 
     /**
-     * Удалить первый элемент списка.
+     * Метод удаляет объект из коллекции.
      *
-     * @return получить удаленный элемент
+     * @return удаленный элемент.
      */
     public E delete() {
-        E result = null;
-        if (size > 0) {
-            result = this.first.data;
-            this.first = this.first.next;
-            size--;
+        if (size == 0) {
+            throw new NoSuchElementException();
         }
-        return result;
+        Node<E> result = this.first;
+        this.first = this.first.next;
+        this.size--;
+        return result.data;
     }
 
     /**
-     * Получить размер коллекции.
+     * Метод получает размер коллекции.
      *
-     * @return размер коллекции
+     * @return размер коллекции.
      */
     public int getSize() {
         return this.size;
@@ -67,7 +66,7 @@ public class SimpleLinkedList<E> {
     /**
      * Класс предназначен для хранения данных.
      *
-     * @param <E> тип элемента хранения
+     * @param <E> тип элемента хранения.
      */
     private static class Node<E> {
         E data;
