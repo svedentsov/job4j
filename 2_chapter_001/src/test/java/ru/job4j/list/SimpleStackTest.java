@@ -3,6 +3,8 @@ package ru.job4j.list;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -12,6 +14,7 @@ import static org.junit.Assert.assertThat;
  * Класс тестирует функционал для классов SimpleStack и DynamicLinkedListStackContainer.
  */
 public class SimpleStackTest {
+
     private SimpleStack<Integer> simpleStack;
 
     @Before
@@ -40,7 +43,7 @@ public class SimpleStackTest {
         assertThat(result, is(expected));
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void whenPollElementInEmptyStackContainerShouldGetNull() {
         simpleStack = new SimpleStack<>();
         assertNull(simpleStack.poll());

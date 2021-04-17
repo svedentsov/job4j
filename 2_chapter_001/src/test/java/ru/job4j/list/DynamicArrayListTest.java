@@ -10,9 +10,10 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Класс тестирует функционал класса DynamicArrayList.
+ * Класс тестирует функционал для класса DynamicArrayList.
  */
 public class DynamicArrayListTest {
+
     private DynamicArrayList<Integer> dynamicArrayList;
 
     @Before

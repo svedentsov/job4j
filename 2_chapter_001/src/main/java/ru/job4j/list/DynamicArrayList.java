@@ -16,7 +16,7 @@ public class DynamicArrayList<T> implements Iterable<T> {
      */
     private Object[] container;
     /**
-     * Счетчик добавляемых элементов коллекции.
+     * Счетчик добавляемых объектов коллекции.
      */
     private int counter = 0;
     /**
@@ -37,9 +37,9 @@ public class DynamicArrayList<T> implements Iterable<T> {
     }
 
     /**
-     * Добавить объект в коллекцию.
+     * Метод добавляет объект в коллекцию.
      *
-     * @param value добавляемое значение
+     * @param value добавляемые объект
      */
     public void add(T value) {
         ensureCapacity();
@@ -48,7 +48,7 @@ public class DynamicArrayList<T> implements Iterable<T> {
     }
 
     /**
-     * Проверить размер коллекции и если нужно увеличить её.
+     * Метод проверяет размер коллекции, и увеличивает её если нужно.
      */
     private void ensureCapacity() {
         if (counter >= container.length) {
@@ -57,10 +57,10 @@ public class DynamicArrayList<T> implements Iterable<T> {
     }
 
     /**
-     * Получить элемент коллекции по индексу.
+     * Метод получает объект из коллекции по индексу.
      *
-     * @param index индекс искомого значения
-     * @return найденный элемент
+     * @param index индекс объекта.
+     * @return найденный объект.
      */
     public T get(int index) {
         if (index >= counter) {

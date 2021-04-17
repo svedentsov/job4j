@@ -14,6 +14,7 @@ import static org.junit.Assert.assertThat;
  * Класс тестирует функционал класса DynamicLinkedList.
  */
 public class DynamicLinkedListTest {
+
     private DynamicLinkedList<Integer> dynamicLinkedList;
 
     @Before

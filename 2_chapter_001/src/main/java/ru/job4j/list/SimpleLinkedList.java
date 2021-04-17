@@ -13,7 +13,7 @@ public class SimpleLinkedList<E> {
     /**
      * Метод добавлеяет объект в начало коллекции.
      *
-     * @param date добавляемые данные
+     * @param date добавляемые объект
      */
     public void add(E date) {
         Node<E> newLink = new Node<>(date);
@@ -25,8 +25,8 @@ public class SimpleLinkedList<E> {
     /**
      * Метод получает объект из коллекции по индексу.
      *
-     * @param index искомое значение
-     * @return найденный объект
+     * @param index индекс объекта.
+     * @return найденный объект.
      */
     public E get(int index) {
         if (size == 0 || index < 0 || index >= size) {
@@ -42,7 +42,7 @@ public class SimpleLinkedList<E> {
     /**
      * Метод удаляет объект из коллекции.
      *
-     * @return удаленный элемент.
+     * @return удаленный объект.
      */
     public E delete() {
         if (size == 0) {
@@ -66,7 +66,7 @@ public class SimpleLinkedList<E> {
     /**
      * Класс предназначен для хранения данных.
      *
-     * @param <E> тип элемента хранения.
+     * @param <E> тип объекта.
      */
     private static class Node<E> {
         E data;

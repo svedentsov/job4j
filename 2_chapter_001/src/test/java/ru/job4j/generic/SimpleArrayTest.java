@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThat;
  * Класс тестирует функционал класса SimpleArray
  */
 public class SimpleArrayTest {
+
     @Test
     public void whenAddElementsInContainerShouldGetSameElements() {
         SimpleArray<String> simpleArray = new SimpleArray<>(1);
