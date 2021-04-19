@@ -30,9 +30,9 @@ public class DynamicLinkedListTest {
         assertThat(dynamicLinkedList.get(1), is(2));
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoSuchElementException.class)
     public void whenUseGetThreeShouldReturnException() {
-        dynamicLinkedList.get(3);
+        dynamicLinkedList.get(4);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DynamicLinkedListTest {
         assertThat(iterator.next(), is(3));
     }
 
-    @Test (expected = ConcurrentModificationException.class)
+    @Test(expected = ConcurrentModificationException.class)
     public void whenUsingIteratorModifyTheCollectionShouldReturnException() {
         Iterator<Integer> iterator = dynamicLinkedList.iterator();
         iterator.next();
@@ -52,7 +52,7 @@ public class DynamicLinkedListTest {
         iterator.next();
     }
 
-    @Test (expected = NoSuchElementException.class)
+    @Test(expected = NoSuchElementException.class)
     public void whenUsingIteratorNoNextElementShouldReturnException() {
         Iterator<Integer> iterator = dynamicLinkedList.iterator();
         iterator.next();
