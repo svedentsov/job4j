@@ -3,15 +3,15 @@ package ru.job4j.list;
 import java.util.NoSuchElementException;
 
 /**
- * Класс SimpleLinkedList реализует методы для односвязного списка.
+ * Класс реализует методы для односвязного списка.
  */
-public class SimpleLinkedList<E> {
+public class DynamicContainerLL<E> {
 
     private int size;
     private Node<E> first;
 
     /**
-     * Метод добавлеяет объект в начало коллекции.
+     * Метод добавлеяет объект в начало списка.
      *
      * @param date добавляемые объект
      */
@@ -23,7 +23,7 @@ public class SimpleLinkedList<E> {
     }
 
     /**
-     * Метод получает объект из коллекции по индексу.
+     * Метод получает объект из списка по индексу.
      *
      * @param index индекс объекта.
      * @return найденный объект.
@@ -40,7 +40,7 @@ public class SimpleLinkedList<E> {
     }
 
     /**
-     * Метод удаляет объект из коллекции.
+     * Метод возвращает первый объект из списка и удаляет его.
      *
      * @return удаленный объект.
      */
@@ -55,12 +55,19 @@ public class SimpleLinkedList<E> {
     }
 
     /**
-     * Метод получает размер коллекции.
+     * Метод получает размер списка.
      *
-     * @return размер коллекции.
+     * @return размер списка.
      */
     public int getSize() {
         return this.size;
+    }
+
+    /**
+     * Обнуление размера списка.
+     */
+    public boolean isEmpty() {
+        return this.size == 0;
     }
 
     /**

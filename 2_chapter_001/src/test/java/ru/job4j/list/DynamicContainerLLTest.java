@@ -6,19 +6,15 @@ import org.junit.Test;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
-/**
- * Класс тестирует функционал класса SimpleLinkedList.
- */
-public class SimpleLinkedListTest {
+public class DynamicContainerLLTest {
 
-    private SimpleLinkedList<Integer> list;
+    private DynamicContainerLL<Integer> list;
 
     @Before
     public void init() {
-        list = new SimpleLinkedList<>();
+        list = new DynamicContainerLL<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -43,7 +39,7 @@ public class SimpleLinkedListTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenElementsAreAbsent() {
-        list = new SimpleLinkedList<>();
+        list = new DynamicContainerLL<>();
         list.delete();
     }
 
