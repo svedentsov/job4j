@@ -6,7 +6,7 @@ package ru.job4j.list;
  *
  * @param <T> параметризованный тип элемента связанного списка.
  */
-public class SimpleStack<T> {
+public class SimpleStackLIFO<T> {
 
     /**
      * Динамический контейнер на базе связанного списка.

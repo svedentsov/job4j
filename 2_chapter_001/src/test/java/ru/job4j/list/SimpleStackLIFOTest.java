@@ -9,13 +9,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class SimpleStackTest {
+public class SimpleStackLIFOTest {
 
-    private SimpleStack<Integer> stack;
+    private SimpleStackLIFO<Integer> stack;
 
     @Before
     public void beforeTest() {
-        stack = new SimpleStack<>();
+        stack = new SimpleStackLIFO<>();
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -41,7 +41,7 @@ public class SimpleStackTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenPollElementInEmptyStackContainerShouldGetNull() {
-        stack = new SimpleStack<>();
+        stack = new SimpleStackLIFO<>();
         assertNull(stack.poll());
     }
 

@@ -9,33 +9,31 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
-/**
- * Класс тестирует функционал для классов SimpleQueue и DynamicLinkedListStackContainer.
- */
 public class SimpleQueueTest {
-    private SimpleQueue<Integer> simpleQueue;
+
+    private SimpleQueue<Integer> queue;
 
     @Before
     public void beforeTest() {
-        simpleQueue = new SimpleQueue<>();
-        simpleQueue.push(1);
-        simpleQueue.push(2);
-        simpleQueue.push(3);
+        queue = new SimpleQueue<>();
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
     }
 
     @Test
     public void whenPoll3ElementsShouldGetFIFO() {
         int[] result = new int[3];
-        result[0] = simpleQueue.poll();
-        result[1] = simpleQueue.poll();
-        result[2] = simpleQueue.poll();
+        result[0] = queue.poll();
+        result[1] = queue.poll();
+        result[2] = queue.poll();
         int[] expected = new int[]{1, 2, 3};
         assertThat(result, is(expected));
     }
 
     @Test(expected = NoSuchElementException.class)
     public void whenPollElementInEmptyContainerShouldGetNull() {
-        simpleQueue = new SimpleQueue<>();
-        assertNull(simpleQueue.poll());
+        queue = new SimpleQueue<>();
+        assertNull(queue.poll());
     }
 }

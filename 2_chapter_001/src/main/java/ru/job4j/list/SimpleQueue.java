@@ -2,40 +2,43 @@ package ru.job4j.list;
 
 /**
  * Класс реализующий очередь на двух стеках.
- * Описывается FIFO - первый пришёл, первый ушёл.
+ * Описывается FIFO - первый зашел и первый вышел.
  *
  * @param <T> параметризуемый тип элемента связанного списка.
  */
 public class SimpleQueue<T> {
-    private SimpleStack<T> inputStack;
-    private SimpleStack<T> outputStack;
 
-    public SimpleQueue() {
-        this.inputStack = new SimpleStack<>();
-        this.outputStack = new SimpleStack<>();
+    /**
+     * Поле первого стека.
+     */
+    private SimpleStackFIFO<T> stackOne = new SimpleStackFIFO<>();
+    /**
+     * Поле второго стека.
+     */
+    private SimpleStackFIFO<T> stackTwo = new SimpleStackFIFO<>();
+
+    /**
+     * Метод вставляет объект в начало списка, используя первый стек.
+     *
+     * @param data добавляемое значение
+     */
+    public void push(T data) {
+        this.stackOne.push(data);
     }
 
     /**
-     * Удалить значение из коллекции.
+     * Метод удаляет элемент из очереди и возвращает его значение.
      * Если out-коллекция пустая, она заполняется значениями из in-коллекции до тех пор, пока in не будет пустая.
      *
      * @return возвращает значение и удаляет его из коллекции
      */
     public T poll() {
-        if (outputStack.isEmpty()) {
-            while (!inputStack.isEmpty()) {
-                outputStack.push(inputStack.poll());
+        if (stackTwo.size() == 0) {
+            int stackSize = stackOne.size();
+            for (int i = 0; i < stackSize; i++) {
+                stackTwo.push(stackOne.poll());
             }
         }
-        return outputStack.poll();
-    }
-
-    /**
-     * Добавить значение в коллекцию.
-     *
-     * @param value добавляемое значение
-     */
-    public void push(T value) {
-        this.inputStack.push(value);
+        return stackTwo.poll();
     }
 }
