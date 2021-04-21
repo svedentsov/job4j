@@ -5,10 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Класс тестирует зацикленность элементов связанного списка.
- */
 public class NodeTest {
+
     Node<Integer> first = new Node<>(1);
     Node<Integer> two = new Node<>(2);
     Node<Integer> third = new Node<>(3);
