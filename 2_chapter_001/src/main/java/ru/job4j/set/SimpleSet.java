@@ -10,6 +10,7 @@ import java.util.Iterator;
  * @param <E>
  */
 public class SimpleSet<E> implements Iterable<E> {
+
     private DynamicArrayList<E> simpleSet;
 
     /**

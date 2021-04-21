@@ -6,24 +6,25 @@ import java.util.Iterator;
  * Интерфейс описывает контейнеры для хранения объектов.
  */
 public interface Store<T extends Base> {
+
     /**
-     * Добавить элемент.
+     * Метод добавляет указанный элемент массива.
      *
      * @param model элемент
      */
     void add(T model);
 
     /**
-     * Заменить элемент.
+     * Метод заменяет элемент указанным элемент массива.
      *
-     * @param id    идентификатор заменяемого элемента
+     * @param id    идентификатор заменяемого объекта
      * @param model новый элемент
-     * @return true - значение заменено, иначе - false
+     * @return true - значение заменено, иначе false
      */
     boolean replace(String id, T model);
 
     /**
-     * Удалить элемент.
+     * Удалить элемент массива, определяя его индекс по id.
      *
      * @param id идентификатор удаляемого элемента.
      * @return true - элемент удален, иначе - false.
@@ -31,12 +32,15 @@ public interface Store<T extends Base> {
     boolean delete(String id);
 
     /**
-     * Найти элемент по идентификатору.
+     * Метод находит элемент типа T по id.
      *
      * @param id идентификатор элемента.
      * @return найденный элемент.
      */
     T findById(String id);
 
+    /**
+     * return Итератор хранилища.
+     */
     Iterator<T> iter();
 }
