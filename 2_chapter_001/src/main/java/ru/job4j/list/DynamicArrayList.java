@@ -29,6 +29,10 @@ public class DynamicArrayList<T> implements Iterable<T> {
      */
     private Object[] container;
     /**
+     * Размер колелкции по умолчанию.
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+    /**
      * Счетчик добавляемых объектов коллекции.
      */
     private int counter = 0;
@@ -36,6 +40,13 @@ public class DynamicArrayList<T> implements Iterable<T> {
      * Счетчик изменений - для fail-fast поведения итератора.
      */
     private int modCount;
+
+    /**
+     * Конструктор по умолчанию.
+     */
+    public DynamicArrayList() {
+        this(DEFAULT_CAPACITY);
+    }
 
     /**
      * Конструктор с заданной емкостью коллекции.
@@ -80,6 +91,13 @@ public class DynamicArrayList<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException();
         }
         return (T) container[index];
+    }
+
+    /**
+     * Метод возвращает количество элементов в массиве.
+     */
+    public int size() {
+        return this.counter;
     }
 
     /**

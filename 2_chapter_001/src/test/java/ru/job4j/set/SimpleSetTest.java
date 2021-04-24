@@ -10,31 +10,57 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SimpleSetTest {
-    private SimpleSet<Integer> simpleSet;
+
+    private SimpleSet<Integer> container;
 
     @Before
     public void beforeTest() {
-        simpleSet = new SimpleSet<>();
-        simpleSet.add(1);
-        simpleSet.add(2);
-        simpleSet.add(3);
+        container = new SimpleSet<>();
+        container.add(1);
+        container.add(2);
+        container.add(3);
     }
 
     @Test
-    public void whenAddFourElementThenAddTrue() {
-        assertThat(simpleSet.add(4), is(true));
+    public void whenAddThreeDifferentThenSizeThree() {
+        assertThat(container.size(), is(3));
     }
 
     @Test
-    public void whenAddFourSameElementThenAddFalse() {
-        assertThat(simpleSet.add(2), is(false));
+    public void whenAddThreeDifferentAndOneCloneThenSizeThree() {
+        container.add(1);
+        assertThat(container.size(), is(3));
+    }
+
+    @Test
+    public void hasNextNextSequentialInvocation() {
+        Iterator<Integer> it = container.iterator();
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(1));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(2));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(3));
+        assertThat(it.hasNext(), is(false));
+    }
+
+    @Test
+    public void whenAddDuplicateElementsThenSizeDoesNotChange() {
+        assertThat(container.size(), is(3));
+        container.add(3);
+        assertThat(container.size(), is(3));
+        container.add(null);
+        assertThat(container.size(), is(3));
     }
 
     @Test(expected = ConcurrentModificationException.class)
-    public void whenAddFourElementAfterCreateIteratorThenExeption() {
-        Iterator<Integer> it = simpleSet.iterator();
+    public void whenIterateAndModifiedThenException() {
+        container = new SimpleSet<>(2);
+        container.add(1);
+        container.add(2);
+        Iterator<Integer> it = container.iterator();
         assertThat(it.next(), is(1));
-        simpleSet.add(4);
+        container.add(3);
         it.next();
     }
 }

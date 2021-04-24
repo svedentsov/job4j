@@ -3,59 +3,72 @@ package ru.job4j.set;
 import ru.job4j.list.DynamicArrayList;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
- * Коллекция Set на массиве.
+ * Класс реализует коллекцию Set на базе.
  *
- * @param <E>
+ * @param <E> тип данных в коллекции.
  */
 public class SimpleSet<E> implements Iterable<E> {
 
-    private DynamicArrayList<E> simpleSet;
+    private DynamicArrayList<E> container;
 
     /**
-     * Конструктор.
+     * Конструктор, инициализирует хранилище.
      */
     public SimpleSet() {
-        this.simpleSet = new DynamicArrayList<E>(10);
+        this.container = new DynamicArrayList<E>();
     }
 
     /**
-     * Добавить значение в коллекцию, если оно отсутствует.
+     * Конструктор, инициализирует хранилище заданным размером.
      *
-     * @param e добавляемое значение
-     * @return true - значение добавлено, иначе - false
+     * @param size заданный размер.
      */
-    public boolean add(E e) {
-        boolean result = false;
-        if (!contains(e)) {
-            this.simpleSet.add(e);
-            result = true;
-        }
-        return result;
+    public SimpleSet(int size) {
+        this.container = new DynamicArrayList<E>(size);
     }
 
     /**
-     * Проверить наличие значения в коллекции.
+     * Метод добавляет элемент в коллекцию, если он отсутствует.
      *
-     * @param e проверяемое значение
-     * @return true - значение присутствует, иначе - false
+     * @param e вводимый в хранилище элемент.
+     */
+    public void add(E e) {
+        if (!contains(e) && e != null) {
+            this.container.add(e);
+        }
+    }
+
+    /**
+     * Метод выполняет проверку является ли элемент уникальным для коллекции.
+     *
+     * @param e проверяемое значение.
+     * @return true - если значение присутствует,
+     * false - если значение отсутствует.
      */
     private boolean contains(E e) {
-        boolean result = false;
-        if (this.simpleSet != null) {
-            for (E e1 : this.simpleSet) {
-                if (e1.equals(e)) {
-                    result = true;
-                    break;
-                }
+        for (E current : this.container) {
+            if (Objects.equals(current, e)) {
+                return true;
             }
         }
-        return result;
+        return false;
     }
 
+    /**
+     * Метод возвращает количество элементов в массиве.
+     */
+    public int size() {
+        return container.size();
+    }
+
+    /**
+     * Возвращает итератор для обхода коллекции.
+     */
     @Override
     public Iterator<E> iterator() {
-        return this.simpleSet.iterator();
+        return this.container.iterator();
     }
 }
