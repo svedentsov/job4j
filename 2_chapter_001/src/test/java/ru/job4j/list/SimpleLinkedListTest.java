@@ -10,16 +10,13 @@ import java.util.NoSuchElementException;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Класс тестирует функционал класса DynamicLinkedList.
- */
-public class DynamicLinkedListTest {
+public class SimpleLinkedListTest {
 
-    private DynamicLinkedList<Integer> dynamicLinkedList;
+    private SimpleLinkedList<Integer> dynamicLinkedList;
 
     @Before
     public void init() {
-        dynamicLinkedList = new DynamicLinkedList<>();
+        dynamicLinkedList = new SimpleLinkedList<>();
         dynamicLinkedList.add(1);
         dynamicLinkedList.add(2);
         dynamicLinkedList.add(3);

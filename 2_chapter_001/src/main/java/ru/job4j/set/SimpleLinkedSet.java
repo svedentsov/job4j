@@ -1,33 +1,29 @@
 package ru.job4j.set;
 
-import ru.job4j.list.DynamicArrayList;
+import ru.job4j.list.SimpleLinkedList;
 
 import java.util.Iterator;
 import java.util.Objects;
 
-/**
- * Класс реализует коллекцию Set на базе
- *
- * @param <E> тип данных в коллекции.
- */
-public class SimpleSet<E> implements Iterable<E> {
 
-    private DynamicArrayList<E> container;
+/**
+ * 2. Set реализованный на связном списке.
+ * Коллекция должна обеспечивать void add(E e) и реализовывать Iterable<E>.
+ * Коллекция не должна хранить дубликаты.
+ * Set - внутри для хранения данных использует обычные массивы.
+ * Для сокращения кода пользуемся шаблоном проектирования "Композиция".
+ * Внутри класса создаем объект SimpleArrayList,
+ * и работаем с ним.
+ */
+public class SimpleLinkedSet<E> implements Iterable<E> {
+
+    private SimpleLinkedList<E> container;
 
     /**
      * Конструктор, инициализирует хранилище.
      */
-    public SimpleSet() {
-        this.container = new DynamicArrayList<E>();
-    }
-
-    /**
-     * Конструктор, инициализирует хранилище заданным размером.
-     *
-     * @param size заданный размер.
-     */
-    public SimpleSet(int size) {
-        this.container = new DynamicArrayList<E>(size);
+    public SimpleLinkedSet() {
+        this.container = new SimpleLinkedList<E>();
     }
 
     /**
