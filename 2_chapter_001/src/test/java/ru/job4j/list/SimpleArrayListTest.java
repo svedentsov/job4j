@@ -10,28 +10,28 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Класс тестирует функционал для класса DynamicArrayList.
+ * Класс тестирует функционал для класса SimpleArrayList.
  */
-public class DynamicArrayListTest {
+public class SimpleArrayListTest {
 
-    private DynamicArrayList<Integer> dynamicArrayList;
+    private SimpleArrayList<Integer> simpleArrayList;
 
     @Before
     public void init() {
-        dynamicArrayList = new DynamicArrayList<>(3);
-        dynamicArrayList.add(1);
-        dynamicArrayList.add(2);
-        dynamicArrayList.add(3);
+        simpleArrayList = new SimpleArrayList<>(3);
+        simpleArrayList.add(1);
+        simpleArrayList.add(2);
+        simpleArrayList.add(3);
     }
 
     @Test
     public void whenAddThreeElementsThenUseGetOneResultTwo() {
-        assertThat(dynamicArrayList.get(1), is(2));
+        assertThat(simpleArrayList.get(1), is(2));
     }
 
     @Test
     public void whenAddThreeElementsThenUsingIteratorResultThree() {
-        Iterator<Integer> iterator = dynamicArrayList.iterator();
+        Iterator<Integer> iterator = simpleArrayList.iterator();
         iterator.next();
         iterator.next();
         assertThat(iterator.next(), is(3));
@@ -39,10 +39,10 @@ public class DynamicArrayListTest {
 
     @Test(expected = ConcurrentModificationException.class)
     public void whenUsingIteratorModifyTheCollectionShouldReturnException() {
-        Iterator<Integer> iterator = dynamicArrayList.iterator();
+        Iterator<Integer> iterator = simpleArrayList.iterator();
         iterator.next();
         iterator.next();
-        dynamicArrayList.add(4);
+        simpleArrayList.add(4);
         iterator.next();
     }
 }

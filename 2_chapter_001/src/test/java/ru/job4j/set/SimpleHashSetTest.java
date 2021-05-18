@@ -7,13 +7,14 @@ import java.util.stream.IntStream;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-public class HashSetContainerTest {
 
-    private HashSetContainer<Object> set;
+public class SimpleHashSetTest {
+
+    private SimpleHashSet<Object> set;
 
     @Before
     public void beforeTest() {
-        set = new HashSetContainer<>();
+        set = new SimpleHashSet<>();
     }
 
     /**
@@ -71,7 +72,7 @@ public class HashSetContainerTest {
      */
     @Test
     public void whenAddMoreThenDefaultCapacity16ThenNextAddWillOk() {
-        HashSetContainer<Integer> set = new HashSetContainer<>();
+        SimpleHashSet<Integer> set = new SimpleHashSet<>();
         IntStream.rangeClosed(1, 20).forEach(set::add);
         assertThat(set.size(), is(20));
     }

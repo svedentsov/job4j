@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
  *
  * @param <T> тип данных в контейнере.
  */
-public class DynamicArrayList<T> implements Iterable<T> {
+public class SimpleArrayList<T> implements Iterable<T> {
 
     /**
      * Контейнер.
@@ -44,7 +44,7 @@ public class DynamicArrayList<T> implements Iterable<T> {
     /**
      * Конструктор по умолчанию.
      */
-    public DynamicArrayList() {
+    public SimpleArrayList() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -53,7 +53,7 @@ public class DynamicArrayList<T> implements Iterable<T> {
      *
      * @param capacity емкость коллекции
      */
-    public DynamicArrayList(int capacity) {
+    public SimpleArrayList(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Illegal Capacity: " + capacity);
         }
@@ -105,7 +105,7 @@ public class DynamicArrayList<T> implements Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new DynamicArrayList.DynamicArrayIterator();
+        return new SimpleArrayList.DynamicArrayIterator();
     }
 
     /**

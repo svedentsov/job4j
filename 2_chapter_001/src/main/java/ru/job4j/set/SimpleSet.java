@@ -1,24 +1,31 @@
 package ru.job4j.set;
 
-import ru.job4j.list.DynamicArrayList;
+import ru.job4j.list.SimpleArrayList;
 
 import java.util.Iterator;
 import java.util.Objects;
 
 /**
- * Класс реализует коллекцию Set на базе
- *
- * @param <E> тип данных в коллекции.
+ * 1. Реализовать коллекцию Set на массиве.
+ * Коллекция должна обеспечивать void add(E e) и реализовывать Iterable<E>.
+ * Коллекция не должна хранить дубликаты.
+ * Set - внутри для хранения данных использует обычные массивы.
+ * <p>
+ * Контейнер типа Set, позволяющий хранить только уникальные значения элементов.
+ * Реализован на базе массивов.
  */
 public class SimpleSet<E> implements Iterable<E> {
 
-    private DynamicArrayList<E> container;
+    /**
+     * Хранилище элементов на базе массива.
+     */
+    private SimpleArrayList<E> container;
 
     /**
      * Конструктор, инициализирует хранилище.
      */
     public SimpleSet() {
-        this.container = new DynamicArrayList<E>();
+        this.container = new SimpleArrayList<E>();
     }
 
     /**
@@ -27,7 +34,7 @@ public class SimpleSet<E> implements Iterable<E> {
      * @param size заданный размер.
      */
     public SimpleSet(int size) {
-        this.container = new DynamicArrayList<E>(size);
+        this.container = new SimpleArrayList<E>(size);
     }
 
     /**
