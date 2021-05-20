@@ -2,77 +2,85 @@ package ru.job4j.map;
 
 import org.junit.Test;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.GregorianCalendar;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SimpleHashMapTest {
 
-    private SimpleHashMap<Integer, String> map;
+    private User first = new User("petr", 3, new GregorianCalendar(2017, 3, 1));
+    private User duplicate = new User("petr", 3, new GregorianCalendar(2017, 3, 1));
+    private User second = new User("ivan", 1, new GregorianCalendar(2015, 2, 15));
+    private User third = new User("artem", 2, new GregorianCalendar(2007, 6, 24));
 
+    /**
+     * Проверка добавления объекта в контейнер.
+     */
     @Test
-    public void whenAddThreeElementsDuplicateKey() {
-        map = new SimpleHashMap<>();
-        map.insert(1, "one");
-        map.insert(1, "two");
-        map.insert(1, "three");
-        map.insert(1, "four");
-        assertThat(map.get(1), is("four"));
-        assertThat(map.getSize(), is(1));
+    public void whenAddOneElemThenSizeOne() {
+        SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        map.insert(this.first, 1);
+        assertThat(map.size(), is(1));
     }
 
+    /**
+     * Проверка поведения при добавления дубликата в контейнер.
+     */
     @Test
-    public void whenDeleteFourElementsWithDuplicateIndex() {
-        map = new SimpleHashMap<>();
-        map.insert(1, "one");
-        map.insert(2, "two");
-        map.insert(3, "three");
-        map.insert(4, "four");
-        map.insert(5, "five");
-        map.insert(6, "six");
-        assertThat(map.delete(2), is(true));
-        assertThat(map.delete(4), is(true));
-        assertThat(map.delete(5), is(true));
-        assertThat(map.delete(1), is(true));
-        assertThat(map.getSize(), is(2));
+    public void whenAddDuplicateThenSizeOne() {
+        SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        map.insert(this.first, 1);
+        map.insert(this.duplicate, 2);
+        assertThat(map.size(), is(1));
     }
 
+    /**
+     * Проверка поиска элемента по значения.
+     */
     @Test
-    public void whenAddElementsAndResizeArray() {
-        map = new SimpleHashMap<>();
-        map.insert(1, "one");
-        map.insert(2, "two");
-        map.insert(3, "three");
-        map.insert(4, "four");
-        map.insert(5, "five");
-        map.insert(6, "six");
-        map.insert(7, "seven");
-        map.insert(8, "eight");
-        map.insert(9, "nine");
-        map.insert(10, "ten");
-        map.insert(11, "eleven");
-        map.insert(12, "twelve");
-        map.insert(13, "thirteen");
-        map.insert(14, "fourteen");
-        assertThat(map.getLength(), is(32));
+    public void whenCheckToContainsElementThenTrue() {
+        SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        map.insert(this.first, 1);
+        map.insert(this.second, 3);
+        assertThat(map.get(this.first), is(1));
+        assertThat(map.get(this.second), is(3));
+        assertNull(map.get(this.third));
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void whenUseIteratorWithException() {
-        map = new SimpleHashMap<>();
-        map.insert(1, "one");
-        map.insert(2, "two");
-        map.insert(3, "three");
-        Iterator<SimpleHashMap.Node<Integer, String>> it = map.iterator();
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next().getValue(), is("one"));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next().getValue(), is("two"));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next().getValue(), is("three"));
-        assertThat(it.hasNext(), is(false));
-        it.next();
+    /**
+     * Проверка удаления объекта из контейнера.
+     */
+    @Test
+    public void whenRemoveElementThenTrue() {
+        SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        map.insert(this.first, 1);
+        map.insert(this.second, 2);
+        assertThat(map.delete(this.second), is(true));
+        assertThat(map.size(), is(1));
+    }
+
+    /**
+     * Проверка получения false, если объект для удаления отсутствует в контейнере.
+     */
+    @Test
+    public void whenRemoveElementThatNotPresentThenFalse() {
+        SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        map.insert(this.first, 1);
+        map.insert(this.second, 2);
+        assertThat(map.delete(this.third), is(false));
+    }
+
+    /**
+     * Проверка увеличения массив.
+     */
+    @Test
+    public void whenAddMoreThenDefaultCapacity16ThenNextAddWillOk() {
+        SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
+        for (int i = 1; i <= 20; i++) {
+            map.insert(String.valueOf(i), i);
+        }
+        assertThat(map.size(), is(20));
     }
 }
