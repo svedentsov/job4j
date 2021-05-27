@@ -7,22 +7,29 @@ import java.util.List;
  * Узел дерева.
  */
 public class Node<E extends Comparable<E>> {
-    private final List<Node<E>> children = new ArrayList<>();
+
+    /**
+     * Значение узла.
+     */
     private final E value;
+    /**
+     * Дочеринй узел.
+     */
+    private final List<Node<E>> children = new ArrayList<>();
 
     /**
      * Конструктор инициализирует узел.
      *
-     * @param value значение
+     * @param value значение узла.
      */
-    public Node(final E value) {
+    public Node(E value) {
         this.value = value;
     }
 
     /**
      * Добавить дочерний узел.
      *
-     * @param child дочерний узел
+     * @param child дочерний узел.
      */
     public void add(Node<E> child) {
         this.children.add(child);
@@ -31,22 +38,27 @@ public class Node<E extends Comparable<E>> {
     /**
      * Получить список дочерних элементов узла.
      *
-     * @return дочерние элементы
+     * @return список дочерние элементов.
      */
     public List<Node<E>> leaves() {
         return this.children;
     }
 
     /**
-     * Сравнить узлы.
+     * Метод сравнивает значения.
      *
-     * @param that переданное значение
-     * @return true, если значение текущего узла равно переданному значению.
+     * @param that значение для проверки.
+     * @return true - значение текущего узла равно переданому значению, иначе false.
      */
     public boolean eqValue(E that) {
         return this.value.compareTo(that) == 0;
     }
 
+    /**
+     * Получить значение текущего узла.
+     *
+     * @return значение текущего узла.
+     */
     public E getValue() {
         return value;
     }
