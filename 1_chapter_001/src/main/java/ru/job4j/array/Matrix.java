@@ -4,11 +4,12 @@ package ru.job4j.array;
  * Заполнение таблицы умножения.
  */
 public class Matrix {
+
     /**
-     * Создание двумерного массива size на size на примере таблицы умножения.
+     * Создать двумерный массив size на size.
      *
-     * @param size размер таблицы.
-     * @return таблица умножения заданного размера.
+     * @param size размер таблицы
+     * @return таблица умножения заданного размера
      */
     public int[][] multiple(int size) {
         int[][] table = new int[size][size];
