@@ -6,45 +6,48 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.regex.Pattern;
 
 /**
- * Класс позволяет прочесть файл настроек.
+ * Класс реализует чтение файла конфигурации, содержащего пары ключ-знания.
  */
 public class Config {
+
     private final String path;
-    private final Map<String, String> values = new HashMap<String, String>();
+    private final Map<String, String> values = new HashMap<>();
+    private final static Pattern CORRECT_LINE = Pattern.compile("^[a-z][\\w.]*=[^=]+$");
 
     public Config(final String path) {
         this.path = path;
     }
 
+    /**
+     * Загрузить пару ключ-значение в карту Map values.
+     * Пустые строки в файле пропускаются.
+     */
     public void load() {
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            while (br.ready()) {
-                String st = br.readLine();
-                if (!st.startsWith("//") && !st.startsWith("##") && !st.isEmpty()) {
-                    values.put(st.split("=")[0].trim(), st.split("=")[1].trim());
-                }
-            }
-        } catch (IOException e) {
+        try (var read = new BufferedReader(new FileReader(path))) {
+            read.lines()
+                    .filter(s -> !s.isEmpty() && !s.startsWith("#"))
+                    .filter(s -> CORRECT_LINE.matcher(s).matches())
+                    .map(s -> s.split("="))
+                    .forEach(words -> values.put(words[0], words[1]));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public String value(String key) {
-        String result;
-        try {
-            result = values.get(key);
-        } catch (UnsupportedOperationException uoe) {
-            throw new UnsupportedOperationException("Don't impl this method yet!");
+        if (!values.containsKey(key)) {
+            throw new IllegalArgumentException("Неверный ключ или значение");
         }
-        return result;
+        return values.get(key);
     }
 
     @Override
     public String toString() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
-        try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
+        try (var read = new BufferedReader(new FileReader(this.path))) {
             read.lines().forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();
