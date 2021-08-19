@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public class SearchTest {
+
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
@@ -36,14 +37,15 @@ public class SearchTest {
                 Path.of(folder.getRoot() + "/test1.java"),
                 Path.of(folder.getRoot() + "/test4.java")
         );
-        List<Path> result = Search.search(source, "java");
+        List<Path> result = new Search()
+                .search(source, p -> p.toFile().getName().endsWith("java"));
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenFileNotFoundTest() throws IOException {
         Path source = Paths.get(folder.getRoot().toString());
-        List<Path> result = Search.search(source, "pdf");
+        List<Path> result = new Search().search(source, p -> p.toFile().getName().endsWith("pdf"));
         assertTrue(result.isEmpty());
     }
 }

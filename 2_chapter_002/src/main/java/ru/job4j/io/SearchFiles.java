@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
@@ -8,41 +9,45 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static java.nio.file.FileVisitResult.CONTINUE;
-
+/**
+ * Реализация вывода содержимого всей директории, включая вложенные файлы.
+ * Используется встроенный механизм Java - интерфейс FileVisitor.
+ * В интерфейсе FileVisitor использован только метод только visitFile.
+ * Java последовательно передает в visitFile файлы, которые обрабатываются.
+ */
 public class SearchFiles extends SimpleFileVisitor<Path> {
-    /**
-     * Результат поиска.
-     */
-    private final List<Path> result = new ArrayList<>();
-    /**
-     * Предикат типа файла.
-     */
-    private final Predicate<Path> predicate;
 
-    /**
-     * Конструктор создания объекта.
-     *
-     * @param predicate предикат
-     */
-    public SearchFiles(Predicate<Path> predicate) {
-        this.predicate = predicate;
-    }
+    private final List<Path> paths = new ArrayList<>();
+    private final Predicate<Path> condition;
 
-    /**
-     * Метод возвращает результат.
-     *
-     * @return результат поиска
-     */
-    public List<Path> getPaths() {
-        return result;
+    public SearchFiles(Predicate<Path> condition) {
+        this.condition = condition;
     }
 
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-        if (this.predicate.test(file)) {
-            result.add(file);
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attributes) throws IOException {
+        return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        if (condition.test(file)) {
+            paths.add(file);
         }
-        return CONTINUE;
+        return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+        return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+        return FileVisitResult.CONTINUE;
+    }
+
+    public List<Path> getPaths() {
+        return paths;
     }
 }

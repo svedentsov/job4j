@@ -4,22 +4,23 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
- * Класс осуществляет поиск файлов, содержащих выбранное расширение.
+ * Класс осуществляет поиск файлов с определенным расширением в директории и поддиректориях.
  */
 public class Search {
+
     /**
-     * Метод реализует поиск файлов с заданным расширением.
+     * Поиск файлов с заданным расширением.
      *
-     * @param root корневой каталог
-     * @param ext  расширение файла
+     * @param root      корневой каталог поиска
+     * @param condition расширение файла, которое нужно искать
      * @return список имен файлов
-     * @throws IOException
      */
-    public static List<Path> search(Path root, String ext) throws IOException {
-        SearchFiles searchFiles = new SearchFiles((p -> p.toFile().getName().endsWith(ext)));
-        Files.walkFileTree(root, searchFiles);
-        return searchFiles.getPaths();
+    public List<Path> search(Path root, Predicate<Path> condition) throws IOException {
+        SearchFiles searcher = new SearchFiles(condition);
+        Files.walkFileTree(root, searcher);
+        return searcher.getPaths();
     }
 }
