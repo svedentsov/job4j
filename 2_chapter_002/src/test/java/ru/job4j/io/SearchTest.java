@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import ru.job4j.io.searcher.Search;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -37,15 +38,14 @@ public class SearchTest {
                 Path.of(folder.getRoot() + "/test1.java"),
                 Path.of(folder.getRoot() + "/test4.java")
         );
-        List<Path> result = new Search()
-                .search(source, p -> p.toFile().getName().endsWith("java"));
+        List<Path> result = Search.search(source, p -> p.toFile().getName().endsWith("java"));
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenFileNotFoundTest() throws IOException {
         Path source = Paths.get(folder.getRoot().toString());
-        List<Path> result = new Search().search(source, p -> p.toFile().getName().endsWith("pdf"));
+        List<Path> result = Search.search(source, p -> p.toFile().getName().endsWith("pdf"));
         assertTrue(result.isEmpty());
     }
 }

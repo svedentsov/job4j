@@ -1,4 +1,4 @@
-package ru.job4j.io;
+package ru.job4j.io.searcher;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -17,10 +17,11 @@ import java.util.function.Predicate;
  */
 public class SearchFiles extends SimpleFileVisitor<Path> {
 
-    private final List<Path> paths = new ArrayList<>();
+    private final List<Path> paths;
     private final Predicate<Path> condition;
 
     public SearchFiles(Predicate<Path> condition) {
+        this.paths = new ArrayList<>();
         this.condition = condition;
     }
 
