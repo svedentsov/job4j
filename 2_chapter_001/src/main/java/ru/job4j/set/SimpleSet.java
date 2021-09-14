@@ -15,7 +15,6 @@ import java.util.Objects;
  * Реализован на базе массивов.
  */
 public class SimpleSet<E> implements Iterable<E> {
-
     /**
      * Хранилище элементов на базе массива.
      */

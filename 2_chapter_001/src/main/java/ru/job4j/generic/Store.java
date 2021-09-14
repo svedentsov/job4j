@@ -6,7 +6,6 @@ import java.util.Iterator;
  * Интерфейс описывает контейнеры для хранения объектов.
  */
 public interface Store<T extends Base> {
-
     /**
      * Метод добавляет указанный элемент массива.
      *

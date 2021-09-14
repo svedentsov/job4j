@@ -22,7 +22,6 @@ import java.util.NoSuchElementException;
  * @param <E> тип данных в контейнере.
  */
 public class SimpleLinkedList<E> implements Iterable<E> {
-
     /**
      * Первый объект списка.
      */

@@ -14,7 +14,7 @@ public class Cat {
     /**
      * Записать кличку кошки.
      *
-     * @param nick кличка кошки.
+     * @param nick кличка кошки
      */
     public void giveNick(String nick) {
         this.name = nick;
@@ -23,7 +23,7 @@ public class Cat {
     /**
      * Записать название еды.
      *
-     * @param meat название еда.
+     * @param meat название еда
      */
     public void eat(String meat) {
         this.food = meat;

@@ -2,9 +2,9 @@ package ru.job4j.oop;
 
 public class Jukebox {
     /**
-     * Метод выводит в консоль слова выбранной песни.
+     * Вывести в консоль слова выбранной песни.
      *
-     * @param position номер песня.
+     * @param position номер песня
      */
     public void music(int position) {
         if (position == 1) {

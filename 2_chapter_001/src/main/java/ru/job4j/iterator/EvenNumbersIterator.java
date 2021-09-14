@@ -22,9 +22,9 @@ public class EvenNumbersIterator implements Iterator {
     }
 
     /**
-     * Метод проверяет наличие следующего элемента массива.
+     * Проверить наличие следующего элемента массива.
      *
-     * @return true - элемент есть, иначе - false.
+     * @return true если элемент есть, иначе - false.
      */
     @Override
     public boolean hasNext() {
@@ -42,7 +42,7 @@ public class EvenNumbersIterator implements Iterator {
     /**
      * Метод возвращает только четные числа.
      *
-     * @return элемент массива.
+     * @return элемент массива
      */
     @Override
     public Object next() {

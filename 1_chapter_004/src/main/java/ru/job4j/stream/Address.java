@@ -22,15 +22,6 @@ public class Address {
      * Номер квартиры.
      */
     private int apartment;
-
-    /**
-     * Конструктор адреса проживания
-     *
-     * @param city      город.
-     * @param street    улица.
-     * @param home      номер дома.
-     * @param apartment номер квартиры.
-     */
     public Address(String city, String street, int home, int apartment) {
         this.city = city;
         this.street = street;

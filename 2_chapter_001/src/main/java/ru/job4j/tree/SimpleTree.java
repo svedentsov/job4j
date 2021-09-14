@@ -8,7 +8,6 @@ import java.util.Optional;
  * @param <E> тип значения, ограничен в пределах классов реализующих Comparable.
  */
 public interface SimpleTree<E extends Comparable<E>> extends Iterable<E> {
-
     /**
      * Метод находит родительский узел и добавляет в него дочерний узел.
      * Родительский узел может иметь список дочерних узлов.

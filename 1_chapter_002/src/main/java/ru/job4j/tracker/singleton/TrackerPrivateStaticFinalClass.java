@@ -7,7 +7,6 @@ import ru.job4j.tracker.Tracker;
  * Lazy loading (ленивая загрузка)
  */
 public class TrackerPrivateStaticFinalClass {
-
     private TrackerPrivateStaticFinalClass() {
     }
 

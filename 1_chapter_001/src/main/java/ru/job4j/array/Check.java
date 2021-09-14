@@ -5,10 +5,10 @@ package ru.job4j.array;
  */
 public class Check {
     /**
-     * Метод проверяет, что все элементы в массиве являются true или false.
+     * Проверить, что все элементы в массиве являются true или false.
      *
      * @param data массив булевых значений
-     * @return true если значения однотипны, иначе false
+     * @return true - значения однотипны, иначе false
      */
     public boolean mono(boolean[] data) {
         boolean result = true;

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class PriorityQueue {
     private List<Task> tasks = new LinkedList<>();
-
     /**
      * Метод должен вставлять в нужную позицию элемент.
      * Позиция определять по полю приоритет.

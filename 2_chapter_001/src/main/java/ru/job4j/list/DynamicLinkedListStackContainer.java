@@ -30,7 +30,7 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
     /**
      * Вставить элемент в конец связанного списка.
      *
-     * @param value данные хранимые в элементе списка.
+     * @param value данные хранимые в элементе списка
      */
     public void add(E value) {
         Node<E> newElement = new Node<>(value);
@@ -68,7 +68,7 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
     /**
      * Удалить элемент из начала списка и получить его значение.
      *
-     * @return значение удаляемого элемента.
+     * @return значение удаляемого элемента
      */
     public E deleteFirst() {
         E deletedData = null;
@@ -84,7 +84,7 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
     /**
      * Удалить элемент из начала списка и получить его значение.
      *
-     * @return значение удаляемого элемента.
+     * @return значение удаляемого элемента
      */
     public E deleteLast() {
         E deletedData = null;
@@ -103,8 +103,8 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
      * Убирает ссылки на последний элемент.
      * Делает предыдущий элемент последним.
      *
-     * @param node последний элемент в списке.
-     * @return значение удаляемого элемента.
+     * @param node последний элемент в списке
+     * @return значение удаляемого элемента
      */
     private E unlink(Node<E> node) {
         E deletedData = node.data;
@@ -203,11 +203,6 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
         }
     }
 
-    /**
-     * Метод возвращает размер списка.
-     *
-     * @return - размер списка.
-     */
     public int size() {
         return size;
     }

@@ -9,14 +9,14 @@ import java.util.Random;
  */
 public class Tracker {
     /**
-     * Массив для хранение заявок.
+     * Массив для хранения заявок.
      */
     private final List<Item> items = new ArrayList<>();
 
     /**
      * Добавление заявки в хранилище.
      *
-     * @param item новая заявка.
+     * @param item новая заявка
      */
     public Item add(Item item) {
         item.setId(this.generateId());
@@ -27,9 +27,9 @@ public class Tracker {
     /**
      * Замена заявки в хранилище.
      *
-     * @param id   id заявки.
-     * @param item новая заявка.
-     * @return true - заявка заменена, иначе false.
+     * @param id   id заявки
+     * @param item новая заявка
+     * @return true если заявка заменена, иначе false
      */
     public boolean replace(String id, Item item) {
         for (int i = 0; i != this.items.size(); i++) {
@@ -45,8 +45,8 @@ public class Tracker {
     /**
      * Удаление заявки.
      *
-     * @param id название заявки.
-     * @return true если заявка удалена, иначе false.
+     * @param id название заявки
+     * @return true если заявка удалена, иначе false
      */
     public boolean delete(String id) {
         Item item = findById(id);
@@ -63,10 +63,10 @@ public class Tracker {
     }
 
     /**
-     * Поиск заявки по id.
+     * Поиск заявки по ID.
      *
-     * @param id идентификатор заявки.
-     * @return найденная заявка.
+     * @param id идентификатор заявки
+     * @return найденная заявка
      */
     public Item findById(String id) {
         for (Item item : items) {
@@ -80,8 +80,8 @@ public class Tracker {
     /**
      * Поиск заявок по имени.
      *
-     * @param key имя для поиска.
-     * @return массив заявлок совпадающих по имени.
+     * @param key имя для поиска
+     * @return массив заявок совпадающих по имени
      */
     public List<Item> findByName(String key) {
         List<Item> foundItems = new ArrayList<>();

@@ -4,10 +4,11 @@ package ru.job4j.calculator;
  * Элементарный калькулятор: сложение, вычитание, умножение, деление.
  */
 public class Calculator {
+
     private double result;
 
     /**
-     * Метод сложения чисел
+     * Сложить числа.
      *
      * @param first  первое число
      * @param second второе число
@@ -17,7 +18,7 @@ public class Calculator {
     }
 
     /**
-     * Метод вычитания чисел.
+     * Вычесть числа.
      *
      * @param first  первое число
      * @param second второе число
@@ -27,7 +28,7 @@ public class Calculator {
     }
 
     /**
-     * Метод умножения чисел.
+     * Умножить числа.
      *
      * @param first  первое число
      * @param second второе число
@@ -37,7 +38,7 @@ public class Calculator {
     }
 
     /**
-     * Метод деления чисел.
+     * Поделить числа.
      *
      * @param first  первое число
      * @param second второе число
@@ -47,7 +48,7 @@ public class Calculator {
     }
 
     /**
-     * Метод возврата результата.
+     * Получить результат.
      *
      * @return результат действия
      */

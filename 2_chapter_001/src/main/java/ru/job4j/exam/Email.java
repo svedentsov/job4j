@@ -50,12 +50,6 @@ public class Email {
          */
         List<String> emails;
 
-        /**
-         * Конструктор.
-         *
-         * @param name   имя пользователя
-         * @param emails адреса электронной почты
-         */
         public User(String name, List<String> emails) {
             this.name = name;
             this.emails = emails;

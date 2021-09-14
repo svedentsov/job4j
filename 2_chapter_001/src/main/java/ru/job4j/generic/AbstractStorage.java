@@ -13,17 +13,10 @@ import java.util.Iterator;
  * Класс реализует общий функционал для классов UserStore и RoleStore.
  */
 public abstract class AbstractStorage<T extends Base> implements Store<T> {
-
     /**
      * Хранилище объектов.
      */
     private final SimpleArray<T> container;
-
-    /**
-     * Конструктор нового хранилища с заданным размером.
-     *
-     * @param size размер хранилища
-     */
     public AbstractStorage(int size) {
         this.container = new SimpleArray<>(size);
     }

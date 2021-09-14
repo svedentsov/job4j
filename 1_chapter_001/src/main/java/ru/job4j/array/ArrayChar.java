@@ -4,22 +4,23 @@ package ru.job4j.array;
  * Обертка над строкой.
  */
 public class ArrayChar {
+
     private final char[] data;
 
     /**
-     * Конструктор. Преобразует строку в массив символов и присваивает его массиву data.
+     * Преобразовать строку в массив символов и присваивает его массиву data.
      *
-     * @param line строка содержащая полное слово.
+     * @param line строка содержащая полное слово
      */
     public ArrayChar(String line) {
         this.data = line.toCharArray();
     }
 
     /**
-     * Метод проверяет, что слово начинается с префикса.
+     * Проверка, что слово начинается с префикса.
      *
-     * @param prefix строка содержащая часть слова.
-     * @return true - слово начинается с префикса, иначе false.
+     * @param prefix строка содержащая часть слова
+     * @return true - слово начинается с префикса, иначе false
      */
     public boolean startWith(String prefix) {
         boolean result = true;

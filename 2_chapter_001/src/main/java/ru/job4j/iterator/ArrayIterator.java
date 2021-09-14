@@ -28,7 +28,7 @@ public class ArrayIterator implements Iterator {
     /**
      * Метод проверяет наличие следующего элемента массива.
      *
-     * @return true - элемент есть, иначе - false.
+     * @return true если элемент найден, иначе - false
      */
     @Override
     public boolean hasNext() {
@@ -39,7 +39,7 @@ public class ArrayIterator implements Iterator {
     /**
      * Метод возвращает следующий элемент массива.
      *
-     * @return элемент массива.
+     * @return элемент массива
      */
     @Override
     public Integer next() {

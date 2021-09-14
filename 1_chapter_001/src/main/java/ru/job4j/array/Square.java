@@ -5,10 +5,10 @@ package ru.job4j.array;
  */
 public class Square {
     /**
-     * метод расчета массива
+     * Заполнить массив степенями чисел.
      *
-     * @param bound заполнить массив через цикл элементами от 1 до bound возведенными в квадрат.
-     * @return результат расчета.
+     * @param bound заполнить массив через цикл элементами от 1 до bound возведенными в квадрат
+     * @return результат расчета
      */
     public int[] calculate(int bound) {
         int[] result = new int[bound];

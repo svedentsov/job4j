@@ -2,10 +2,10 @@ package ru.job4j.loop;
 
 public class Factorial {
     /**
-     * Метод возвращает факториал указанного числа.
+     * Получить факториал указанного числа.
      *
-     * @param n число.
-     * @return факториал.
+     * @param n число
+     * @return факториал
      */
     public int calc(int n) {
         int result = 1;

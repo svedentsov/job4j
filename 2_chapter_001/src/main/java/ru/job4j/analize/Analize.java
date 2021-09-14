@@ -52,12 +52,6 @@ public class Analize {
          */
         String name;
 
-        /**
-         * Конструктор.
-         *
-         * @param id   идентификатор пользователя
-         * @param name имя пользователя
-         */
         public User(int id, String name) {
             this.id = id;
             this.name = name;

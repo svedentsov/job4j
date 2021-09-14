@@ -16,7 +16,6 @@ import java.util.NoSuchElementException;
  * Контейнер на базе ассоциативного массива, который хранит пары типа "ключ - значение".
  */
 public class SimpleHashMap<K, V> implements Iterable<K> {
-
     /**
      * Ассоциативный массив, хранящий пары типа "ключ - значение"
      */

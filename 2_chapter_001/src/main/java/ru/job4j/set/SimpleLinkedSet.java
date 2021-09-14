@@ -18,7 +18,6 @@ import java.util.Objects;
  * Реализован на базе свявзного списка.
  */
 public class SimpleLinkedSet<E> implements Iterable<E> {
-
     /**
      * Главное хранилище.
      */

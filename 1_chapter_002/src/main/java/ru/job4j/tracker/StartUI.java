@@ -9,9 +9,6 @@ import java.util.List;
 public class StartUI {
     /**
      * Основной цикл программы.
-     * @param input
-     * @param tracker
-     * @param actions
      */
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;

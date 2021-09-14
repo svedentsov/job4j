@@ -7,7 +7,6 @@ package ru.job4j.list;
  * @param <T> параметризуемый тип элемента связанного списка.
  */
 public class SimpleQueue<T> {
-
     /**
      * Поле первого стека.
      */

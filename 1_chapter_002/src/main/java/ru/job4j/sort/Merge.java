@@ -6,9 +6,9 @@ public class Merge {
     /**
      * Объединение двух отсортированных по возрастанию массивов в один.
      *
-     * @param left  первый отсортированный массив.
-     * @param right второй отсортированный массив.
-     * @return итоговый массив.
+     * @param left  первый отсортированный массив
+     * @param right второй отсортированный массив
+     * @return итоговый массив
      */
     public int[] merge(int[] left, int[] right) {
         int[] rsl = new int[left.length + right.length];

@@ -13,7 +13,6 @@ import java.util.Objects;
  * Модель типового пользователя.
  */
 public class User {
-
     /**
      * Имя пользователя.
      */

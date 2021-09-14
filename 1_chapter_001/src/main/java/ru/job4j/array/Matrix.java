@@ -4,7 +4,6 @@ package ru.job4j.array;
  * Заполнение таблицы умножения.
  */
 public class Matrix {
-
     /**
      * Создать двумерный массив size на size.
      *

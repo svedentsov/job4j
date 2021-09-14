@@ -18,7 +18,7 @@ public class BankService {
     /**
      * Добавление пользователя, если его нет базе.
      *
-     * @param user пользователь.
+     * @param user пользователь
      */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
@@ -27,8 +27,8 @@ public class BankService {
     /**
      * Поиск пользователя по номеру паспорта.
      *
-     * @param passport номер паспорта.
-     * @return найденный пользователь.
+     * @param passport номер паспорта
+     * @return найденный пользователь
      */
     public User findByPassport(String passport) {
         return users.keySet().stream()
@@ -40,8 +40,8 @@ public class BankService {
     /**
      * Добавление счёта к пользователю.
      *
-     * @param passport номер паспорта.
-     * @param account  банковский счёт.
+     * @param passport номер паспорта
+     * @param account  банковский счёт
      */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
@@ -53,9 +53,9 @@ public class BankService {
     /**
      * Поиск счёта пользователя по реквизитам.
      *
-     * @param passport  номер паспорта.
-     * @param requisite реквизиты.
-     * @return найденный счёт.
+     * @param passport  номер паспорта
+     * @param requisite реквизиты
+     * @return найденный счёт
      */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
@@ -72,24 +72,26 @@ public class BankService {
     /**
      * Перевод между счетами.
      *
-     * @param srcPassport   номер паспорта счёта списания.
-     * @param srcRequisite  реквизиты счёта списания.
-     * @param destPassport  номер паспорта счёта зачисления.
-     * @param destRequisite реквизиты счёта зачисления.
-     * @param amount        сумма перевода.
-     * @return результат перевода.
+     * @param srcPassport   номер паспорта счёта списания
+     * @param srcRequisite  реквизиты счёта списания
+     * @param destPassport  номер паспорта счёта зачисления
+     * @param destRequisite реквизиты счёта зачисления
+     * @param amount        сумма перевода
+     * @return результат перевода
      */
-    public boolean transferMoney(String srcPassport, String srcRequisite,
-                                 String destPassport, String destRequisite,
+    public boolean transferMoney(String srcPassport,
+                                 String srcRequisite,
+                                 String destPassport,
+                                 String destRequisite,
                                  double amount) {
-        boolean rsl = false;
+        boolean result = false;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
         if (srcAccount != null && destAccount != null && srcAccount.getBalance() >= amount) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
-            rsl = true;
+            result = true;
         }
-        return rsl;
+        return result;
     }
 }

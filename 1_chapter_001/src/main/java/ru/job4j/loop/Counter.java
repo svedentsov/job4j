@@ -2,11 +2,10 @@ package ru.job4j.loop;
 
 public class Counter {
     /**
-     * Метод возвращает сумму всех чётных значений от start до finish.
+     * Получить сумму всех чётных значений от start до finish.
      *
-     * @param start  начальное значение.
-     * @param finish конечное значение.
-     * @return сумма
+     * @param start  начальное значение
+     * @param finish конечное значение
      */
     public int add(int start, int finish) {
         int sum = 0;

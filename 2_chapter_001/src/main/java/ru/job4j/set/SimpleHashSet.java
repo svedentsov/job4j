@@ -8,7 +8,6 @@ package ru.job4j.set;
  * Основа контейнера массив односвязных списков типа Entry.
  */
 public class SimpleHashSet<E> {
-
     /**
      * Массив односвязных списков.
      */

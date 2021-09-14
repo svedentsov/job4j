@@ -5,10 +5,10 @@ package ru.job4j.array;
  */
 public class Turn {
     /**
-     * Метод переворачивает массив.
+     * Перевернуть массив задом наперёд.
      *
-     * @param array массив.
-     * @return перевернутый массив.
+     * @param array первоначальный массив
+     * @return перевернутый массив
      */
     public int[] back(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {

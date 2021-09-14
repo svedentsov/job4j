@@ -4,7 +4,6 @@ package ru.job4j.tracker;
  * Класс FindItemById. Получение заявок найденных по id.
  */
 public class FindByIDAction implements UserAction {
-
     @Override
     public String name() {
         return "=== Find item by Id ===";

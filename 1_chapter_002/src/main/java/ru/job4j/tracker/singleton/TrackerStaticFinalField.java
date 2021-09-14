@@ -8,7 +8,6 @@ import ru.job4j.tracker.Tracker;
  * Eager loading (энергичная загрузка).
  */
 public class TrackerStaticFinalField {
-
     private static final Tracker INSTANCE = new Tracker();
 
     private TrackerStaticFinalField() {

@@ -23,7 +23,6 @@ import java.util.NoSuchElementException;
  * @param <T> тип данных в контейнере.
  */
 public class SimpleArrayList<T> implements Iterable<T> {
-
     /**
      * Контейнер.
      */
@@ -47,7 +46,6 @@ public class SimpleArrayList<T> implements Iterable<T> {
     public SimpleArrayList() {
         this(DEFAULT_CAPACITY);
     }
-
     /**
      * Конструктор с заданной емкостью коллекции.
      *

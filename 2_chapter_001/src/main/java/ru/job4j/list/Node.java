@@ -23,8 +23,8 @@ public class Node<T> {
     /**
      * Метод позволяет определить, содержит ли список замыкания.
      *
-     * @param first - первый узел списка.
-     * @return - true, если список содержит замыкания и false, если не содержит.
+     * @param first первый узел списка.
+     * @return true, если список содержит замыкания и false, если не содержит.
      */
     public boolean hasCycle(Node<T> first) {
         boolean result = false;

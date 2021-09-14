@@ -6,12 +6,11 @@ import java.util.NoSuchElementException;
  * Класс реализует методы для односвязного списка.
  */
 public class DynamicContainerLL<E> {
-
     private int size;
     private Node<E> first;
 
     /**
-     * Метод добавлеяет объект в начало списка.
+     * Добавить объект в начало списка.
      *
      * @param date добавляемые объект
      */
@@ -23,10 +22,10 @@ public class DynamicContainerLL<E> {
     }
 
     /**
-     * Метод получает объект из списка по индексу.
+     * Получить объект из списка по индексу.
      *
-     * @param index индекс объекта.
-     * @return найденный объект.
+     * @param index индекс объекта
+     * @return найденный объект
      */
     public E get(int index) {
         if (size == 0 || index < 0 || index >= size) {
@@ -40,9 +39,9 @@ public class DynamicContainerLL<E> {
     }
 
     /**
-     * Метод возвращает первый объект из списка и удаляет его.
+     * Получить первый объект из списка и удаляет его.
      *
-     * @return удаленный объект.
+     * @return удаленный объект
      */
     public E delete() {
         if (size == 0) {
@@ -54,11 +53,6 @@ public class DynamicContainerLL<E> {
         return result.data;
     }
 
-    /**
-     * Метод получает размер списка.
-     *
-     * @return размер списка.
-     */
     public int getSize() {
         return this.size;
     }
@@ -73,7 +67,7 @@ public class DynamicContainerLL<E> {
     /**
      * Класс предназначен для хранения данных.
      *
-     * @param <E> тип объекта.
+     * @param <E> тип объекта
      */
     private static class Node<E> {
         E data;

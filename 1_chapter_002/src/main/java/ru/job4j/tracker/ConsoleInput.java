@@ -12,7 +12,7 @@ public class ConsoleInput implements Input {
      * Запросить у пользователя ввод данных.
      *
      * @param question вопрос
-     * @return возвщает введенные данные
+     * @return возвещает введенные данные
      */
     @Override
     public String askStr(String question) {

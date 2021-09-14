@@ -9,20 +9,10 @@ public class Profile {
      */
     private Address address;
 
-    /**
-     * Получить адрес проживания.
-     *
-     * @return адрес проживания.
-     */
     public Address getAddress() {
         return address;
     }
 
-    /**
-     * Конструктор профиля клиента.
-     *
-     * @param address адрес клиента.
-     */
     public Profile(Address address) {
         this.address = address;
     }

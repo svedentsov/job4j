@@ -16,7 +16,7 @@ public class PhoneDictionary {
     /**
      * Добавить абонента.
      *
-     * @param person абонент.
+     * @param person абонент
      */
     public void add(Person person) {
         this.persons.add(person);
@@ -25,8 +25,8 @@ public class PhoneDictionary {
     /**
      * Получить пользователей, содержащие key в любом из полей.
      *
-     * @param key ключ поиска.
-     * @return список пользователей.
+     * @param key ключ поиска
+     * @return список пользователей
      */
     public ArrayList<Person> find(String key) {
         Predicate<Person> name = person -> person.getName().contains(key);

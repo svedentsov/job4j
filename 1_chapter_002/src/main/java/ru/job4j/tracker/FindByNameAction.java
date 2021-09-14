@@ -4,7 +4,6 @@ package ru.job4j.tracker;
  * Класс FindItemByName. Получение заявок найденных по имени.
  */
 public class FindByNameAction implements UserAction {
-
     @Override
     public String name() {
         return "=== Find items by name ===";
