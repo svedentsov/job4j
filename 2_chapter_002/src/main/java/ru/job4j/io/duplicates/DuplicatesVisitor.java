@@ -17,7 +17,6 @@ import java.util.Set;
 public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
 
     private final Set<FileProperty> propertyAll = new HashSet<>();
-
     /**
      * Метод вызывается каждый раз, когда встречается файл.
      * Используем этот метод, чтобы проверить файл на наличие дубля.

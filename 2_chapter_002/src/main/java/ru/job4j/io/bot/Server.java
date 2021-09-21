@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class Server {
     /**
-     * Сокетю
+     * Сокет.
      */
     private final Socket socket;
     /**
