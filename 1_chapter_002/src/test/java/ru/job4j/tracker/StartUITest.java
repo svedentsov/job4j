@@ -2,53 +2,64 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringJoiner;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
- * Проверка класса StartUI.
+ * Используется для проверки поведения пользователя.
  */
 public class StartUITest {
     @Test
-    public void whenExit() {
-        StubInput input = new StubInput(new String[]{"0"});
-        StubAction action = new StubAction();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(action);
-        new StartUI().init(input, new Tracker(), actions);
-        assertThat(action.isCall(), is(true));
+    public void whenEmpty() {
+        ITracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"1", "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().isEmpty(), is(true));
     }
 
-    /**
-     * Проверка метода StartUI.init.
-     */
     @Test
-    public void whenPrtMenu() {
-        // Замена вывода на наш буфер.
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
-        // Выполнение действия с выводом на консоль.
-        StubInput input = new StubInput(
-                new String[]{"0"}
-        );
-        StubAction action = new StubAction();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(action);
-        new StartUI().init(input, new Tracker(), actions);
-        // Проверка содержимого вывода.
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("Menu.")
-                .add("0. Stub action")
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
-        // Вернуть системный вывод.
-        System.setOut(def);
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+        ITracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "test name", "test desc", "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
+    }
+
+    @Test
+    public void whenUpdateThenTrackerHasUpdatedValue() {
+        ITracker tracker = new Tracker();
+        Item item = new Item("name", "test");
+        tracker.add(item);
+        Input input = new StubInput(new String[]{"2", item.getId(), "fresh name", "update", "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().get(0).getName(), is("fresh name"));
+    }
+
+    @Test
+    public void whenDeleteOnlyItemThenTrackerHasNoItem() {
+        ITracker tracker = new Tracker();
+        Item item = new Item("name", "test");
+        tracker.add(item);
+        Input input = new StubInput(new String[]{"3", item.getId(), "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().size(), is(0));
+    }
+
+    @Test
+    public void whenTryToUpdateNonexistentItemThenTrackerHasNoChange() {
+        ITracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"2", "123", "fresh", "update", "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().size(), is(0));
+    }
+
+    @Test
+    public void whenTryToDeleteNonexistentItemThenTrackerHasNoChange() {
+        ITracker tracker = new Tracker();
+        Item item = new Item("name", "desc");
+        tracker.add(item);
+        Input input = new StubInput(new String[]{"3", "123", "6", "y"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll().size(), is(1));
     }
 }

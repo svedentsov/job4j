@@ -1,10 +1,28 @@
 package ru.job4j.tracker;
 
 /**
- * Интерфейс UserAction.
+ * Пользовательское действие, возможное при работе с программой Трекер.
  */
 public interface UserAction {
-    String name();
+    /**
+     * Получить ключ для запуска действия.
+     *
+     * @return ключ
+     */
+    int key();
 
-    boolean execute(Input input, Tracker tracker);
+    /**
+     * Основной метод.
+     *
+     * @param input   получение данных от пользователя
+     * @param tracker хранилище заявок
+     */
+    void execute(Input input, ITracker tracker);
+
+    /**
+     * Получить информацию о данном пользовательском действии.
+     *
+     * @return строка меню
+     */
+    String info();
 }

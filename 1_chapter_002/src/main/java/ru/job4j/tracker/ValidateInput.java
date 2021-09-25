@@ -1,47 +1,32 @@
 package ru.job4j.tracker;
 
 /**
- * Класс ValidateInput переопределяет поведение класса ConsoleInput .
+ * Расширенный класс для ввода пользовательских данных из консоли, ввод проверяется на соответствие логике программы.
  */
 public class ValidateInput implements Input {
     private final Input input;
 
-    public ValidateInput(Input input) {
+    public ValidateInput(final Input input) {
         this.input = input;
     }
 
     @Override
-    public String askStr(String question) {
-        return input.askStr(question);
+    public String ask(String question) {
+        return this.input.ask(question);
     }
 
     @Override
-    public int askInt(String question) {
+    public int ask(String question, int[] range) {
         boolean invalid = true;
         int value = -1;
         do {
             try {
-                value = input.askInt(question);
+                value = this.input.ask(question, range);
                 invalid = false;
-            } catch (NumberFormatException nfe) {
-                System.out.println("Please enter validate data again.");
-            }
-        } while (invalid);
-        return value;
-    }
-
-    @Override
-    public int askInt(String question, int max) {
-        boolean invalid = true;
-        int value = -1;
-        do {
-            try {
-                value = input.askInt(question, max);
-                invalid = false;
-            } catch (IllegalStateException moe) {
+            } catch (MenuOutException moe) {
                 System.out.println("Please select key from menu.");
             } catch (NumberFormatException nfe) {
-                System.out.println("Please enter validate data again.");
+                System.out.println("Please enter valid data again.");
             }
         } while (invalid);
         return value;

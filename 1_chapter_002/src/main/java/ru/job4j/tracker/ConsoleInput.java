@@ -3,34 +3,37 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 /**
- * Ввод данных в консоль.
+ * Используется для ввода пользовательских данных из консоли.
  */
 public class ConsoleInput implements Input {
-    private Scanner scanner = new Scanner(System.in);
-
     /**
-     * Запросить у пользователя ввод данных.
-     *
-     * @param question вопрос
-     * @return возвещает введенные данные
+     * объект для считывания данных с консоли
      */
+    private final Scanner scanner = new Scanner(System.in);
+
     @Override
-    public String askStr(String question) {
+    public String ask(String question) {
         System.out.print(question);
-        return scanner.nextLine();
+        return this.scanner.nextLine();
     }
 
     @Override
-    public int askInt(String question) {
-        return Integer.valueOf(askStr(question));
-    }
-
-    @Override
-    public int askInt(String question, int max) {
-        int select = askInt(question);
-        if (select < 0 || select >= max) {
-            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
+    public int ask(String question, int[] range) {
+        int key = Integer.valueOf(this.ask(question));
+        if (isNotCorrect(key, range)) {
+            throw new MenuOutException("Out of menu range.");
         }
-        return select;
+        return key;
+    }
+
+    public boolean isNotCorrect(int key, int[] range) {
+        boolean exist = true;
+        for (int value : range) {
+            if (value == key) {
+                exist = false;
+                break;
+            }
+        }
+        return exist;
     }
 }

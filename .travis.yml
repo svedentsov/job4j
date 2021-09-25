@@ -1,12 +1,18 @@
-# используем язык java. Travis CI поддерживает другие языки тоже.
+# Используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
-jdk:
-  - openjdk13
 
-# используем режим обычного пользователя для сборки проекта.
+jdk: openjdk11
+
+# Используем режим обычного пользователя для сборки проекта.
 sudo: false
 
-# после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
+services:
+  - postgresql
+
+before_install:
+  - psql -c 'create database tracker;' -U postgres
+
+# После выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
   - bash <(curl -s https://codecov.io/bash)

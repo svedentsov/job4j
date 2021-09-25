@@ -16,5 +16,22 @@
             <artifactId>maven-model</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>ru.job4j</groupId>
+            <artifactId>1_chapter_002</artifactId>
+            <version>3.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>1.7.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
     </dependencies>
 </project>

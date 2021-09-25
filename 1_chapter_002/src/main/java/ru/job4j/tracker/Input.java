@@ -4,10 +4,13 @@ package ru.job4j.tracker;
  * Интерфейс Input.
  */
 public interface Input {
+    /**
+     * Выводит в консоль переданную строку, возвращает полученный на неё ответ от пользователя.
+     *
+     * @param question строка в консоль
+     * @return строка из консоли
+     */
+    String ask(String question);
 
-    String askStr(String question);
-
-    int askInt(String question);
-
-    int askInt(String question, int max);
+    int ask(String question, int[] range);
 }

@@ -1,33 +1,45 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Пользовательский интерфейс.
+ * Точка входа в программу. Обеспечивает полноценную работу приложения.
  */
 public class StartUI {
     /**
-     * Основной цикл программы.
+     * Получение данных от пользователя.
      */
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
-        boolean run = true;
-        while (run) {
-            this.showMenu(actions);
-            int select = input.askInt("Select: ", actions.size());
-            UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
-        }
+    private final Input input;
+    /**
+     * Хранилище заявок.
+     */
+    private final ITracker tracker;
+    private boolean ready = true;
+
+    /**
+     * Конструктор, инициализирующий финальные поля.
+     *
+     * @param input   ввод данных от пользователя
+     * @param tracker хранилище заявок
+     */
+    public StartUI(Input input, ITracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+    }
+
+    public void finish() {
+        this.ready = false;
     }
 
     /**
-     * Меню.
+     * Основной цикл программы.
      */
-    private void showMenu(List<UserAction> actions) {
-        System.out.println("Menu.");
-        for (UserAction action : actions) {
-            System.out.println(actions.indexOf(action) + ". " + action.name());
-        }
+    public void init() {
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        menu.fillActions(this);
+        int[] range = menu.getRange();
+        do {
+            menu.show();
+            menu.select(this.input.ask("select:", range));
+        } while (this.ready);
     }
 
     /**
@@ -36,17 +48,6 @@ public class StartUI {
      * @param args входные параметры
      */
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
-        Input validate = new ValidateInput(input);
-        Tracker tracker = new Tracker();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new CreateAction());
-        actions.add(new FindAllAction());
-        actions.add(new ReplaceItemAction());
-        actions.add(new DeleteItemAction());
-        actions.add(new FindByIDAction());
-        actions.add(new FindByNameAction());
-        actions.add(new ExitAction());
-        new StartUI().init(validate, tracker, actions);
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }

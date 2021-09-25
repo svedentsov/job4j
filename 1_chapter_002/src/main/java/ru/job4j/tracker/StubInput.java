@@ -1,32 +1,39 @@
 package ru.job4j.tracker;
 
 /**
- * Класс StubInput реализует интерфейс Input.
+ * Класс реализует интерфейс Input.
  */
 public class StubInput implements Input {
-    private String[] answers;
-    private int position = 0;
+    private final ConsoleInput pseudo = new ConsoleInput();
+    /**
+     * содержит запрограммированную последовательность вводимых пользователем команд в консоль
+     */
+    private final String[] value;
+    /**
+     * счётчик продвижения методом ask по последовательности команд
+     */
+    private int position;
 
-    public StubInput(String[] answers) {
-        this.answers = answers;
+    /**
+     * Конструктор, передающий в параметрах массив с предполагаемым набором команд пользователя.
+     *
+     * @param value последовательность команд
+     */
+    public StubInput(final String[] value) {
+        this.value = value;
     }
 
     @Override
-    public String askStr(String question) {
-        return answers[position++];
+    public String ask(String question) {
+        return this.value[this.position++];
     }
 
     @Override
-    public int askInt(String question) {
-        return Integer.valueOf(askStr(question));
-    }
-
-    @Override
-    public int askInt(String question, int max) {
-        int select = askInt(question);
-        if (select < 0 || select >= max) {
-            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
+    public int ask(String question, int[] range) {
+        int key = Integer.parseInt(this.ask(question));
+        if (this.pseudo.isNotCorrect(key, range)) {
+            throw new MenuOutException("Out of menu range.");
         }
-        return select;
+        return key;
     }
 }

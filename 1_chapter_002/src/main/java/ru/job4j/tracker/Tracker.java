@@ -3,103 +3,96 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
- * Класс Tracker. Работает с заявками.
+ * Используется как хранилище заявок.
  */
-public class Tracker {
+public class Tracker implements ITracker {
     /**
      * Массив для хранения заявок.
      */
     private final List<Item> items = new ArrayList<>();
-
     /**
-     * Добавление заявки в хранилище.
-     *
-     * @param item новая заявка
+     * Для генерации уникального номера.
      */
+    private static final Random RN = new Random();
+
+    @Override
     public Item add(Item item) {
         item.setId(this.generateId());
-        items.add(item);
+        item.setCreate(System.currentTimeMillis());
+        this.items.add(item);
         return item;
     }
 
-    /**
-     * Замена заявки в хранилище.
-     *
-     * @param id   id заявки
-     * @param item новая заявка
-     * @return true если заявка заменена, иначе false
-     */
+    @Override
     public boolean replace(String id, Item item) {
-        for (int i = 0; i != this.items.size(); i++) {
-            if (this.items.get(i).getId().equals(id)) {
-                this.items.set(i, item);
-                item.setId(id);
-                return true;
-            }
+        boolean result = false;
+        int index = this.findPositionById(id);
+        if (index != -1) {
+            result = true;
+            item.setId(id);
+            item.setCreate(this.items.get(index).getCreate());
+            this.items.set(index, item);
         }
-        return false;
+        return result;
     }
 
-    /**
-     * Удаление заявки.
-     *
-     * @param id название заявки
-     * @return true если заявка удалена, иначе false
-     */
+    @Override
     public boolean delete(String id) {
-        Item item = findById(id);
-        return items.remove(item);
+        boolean result = false;
+        int index = this.findPositionById(id);
+        if (index != -1) {
+            result = true;
+            this.items.remove(index);
+        }
+        return result;
     }
 
-    /**
-     * Получить все заявки.
-     *
-     * @return список всех заявок.
-     */
+    @Override
     public List<Item> findAll() {
-        return items;
+        return this.items;
     }
 
-    /**
-     * Поиск заявки по ID.
-     *
-     * @param id идентификатор заявки
-     * @return найденная заявка
-     */
-    public Item findById(String id) {
-        for (Item item : items) {
-            if (item.getId().equals(id)) {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Поиск заявок по имени.
-     *
-     * @param key имя для поиска
-     * @return массив заявок совпадающих по имени
-     */
+    @Override
     public List<Item> findByName(String key) {
-        List<Item> foundItems = new ArrayList<>();
-        for (Item item : items) {
-            if (item.getName().contains(key)) {
-                foundItems.add(item);
-            }
-        }
-        return foundItems;
+        return this.items.stream()
+                .filter(item -> item.getName().equals(key))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Item findById(String id) {
+        int index = this.findPositionById(id);
+        return index != -1 ? this.items.get(index) : null;
+    }
+
+    @Override
+    public void clear() {
+        items.clear();
     }
 
     /**
-     * Генерация уникального ключа заявки.
+     * Сгенерировать уникальный ключ для заявки.
      *
      * @return уникальный ключ
      */
     private String generateId() {
-        Random rm = new Random();
-        return String.valueOf(rm.nextLong() + System.currentTimeMillis());
+        return String.valueOf((RN.nextInt() + System.currentTimeMillis()) % 100000000);
+    }
+
+    /**
+     * Получить позицию заявки в массиве по её уникальному ключу.
+     *
+     * @param id уникальный ключ
+     * @return позиция в массиве
+     */
+    private int findPositionById(String id) {
+        return IntStream.range(0, this.items.size())
+                .filter(index -> this.items.get(index).getId().equals(id))
+                .findFirst().orElse(-1);
+
     }
 }
