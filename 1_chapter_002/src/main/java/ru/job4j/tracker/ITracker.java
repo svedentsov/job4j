@@ -6,10 +6,6 @@ import java.util.List;
  * Шаблон для реализации классов трекера.
  */
 public interface ITracker {
-    default boolean init() {
-        return true;
-    }
-
     /**
      * Добавить заявку.
      *
@@ -55,9 +51,4 @@ public interface ITracker {
      * @return заявка
      */
     Item findById(String id);
-
-    /**
-     * Очистить хранилище.
-     */
-    void clear();
 }

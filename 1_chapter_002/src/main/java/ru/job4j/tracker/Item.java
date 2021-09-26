@@ -75,10 +75,10 @@ public class Item {
 
     @Override
     public String toString() {
-        String idString = "-ID : " + id;
-        String nameString = "-Имя : " + name;
-        String descString = "-Описание : " + description;
-        String createString = "-Дата создания : " + new Date(this.getCreate());
+        String idString = "ID : " + id;
+        String nameString = "Имя : " + name;
+        String descString = "Описание : " + description;
+        String createString = "Дата создания : " + new Date(this.getCreate());
         String LN = System.lineSeparator();
 
         return new StringJoiner(LN).add(idString).add(nameString).add(descString).add(createString).toString();

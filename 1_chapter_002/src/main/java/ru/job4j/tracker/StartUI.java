@@ -38,7 +38,7 @@ public class StartUI {
         int[] range = menu.getRange();
         do {
             menu.show();
-            menu.select(this.input.ask("select:", range));
+            menu.select(this.input.ask("Select: ", range));
         } while (this.ready);
     }
 

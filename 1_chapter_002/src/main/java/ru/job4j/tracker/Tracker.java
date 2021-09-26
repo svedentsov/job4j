@@ -68,12 +68,6 @@ public class Tracker implements ITracker {
         int index = this.findPositionById(id);
         return index != -1 ? this.items.get(index) : null;
     }
-
-    @Override
-    public void clear() {
-        items.clear();
-    }
-
     /**
      * Сгенерировать уникальный ключ для заявки.
      *
@@ -93,6 +87,5 @@ public class Tracker implements ITracker {
         return IntStream.range(0, this.items.size())
                 .filter(index -> this.items.get(index).getId().equals(id))
                 .findFirst().orElse(-1);
-
     }
 }
