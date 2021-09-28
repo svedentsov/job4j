@@ -3,15 +3,16 @@ package ru.job4j;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * Util class to handle new connections
+ * Util class to handle new connections.
  */
 public class SQLUtil {
     /**
-     * should not instantiate
+     * Should not instantiate.
      */
     private SQLUtil() {
     }
@@ -25,7 +26,7 @@ public class SQLUtil {
     }
 
     /**
-     * Creates and returns new connection factory based on connection properties submitted by the resource file
+     * Creates and returns new connection factory based on connection properties submitted by the resource file.
      *
      * @param resource connection properties file path
      * @return connection factory
@@ -51,5 +52,13 @@ public class SQLUtil {
     private static Connection getConnection(String url, String username, String password, ConnectionProxy proxy) throws SQLException {
         Connection connection = DriverManager.getConnection(url, username, password);
         return proxy == null ? connection : proxy.proxy(connection);
+    }
+
+    public interface SQLExecutor<T> {
+        T execute(Connection connection) throws SQLException;
+    }
+
+    public interface ResultSetHandler<T> {
+        T execute(ResultSet resultSet) throws SQLException;
     }
 }

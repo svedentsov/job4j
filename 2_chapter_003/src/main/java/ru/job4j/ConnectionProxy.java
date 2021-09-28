@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Represents functional interface to wrap submitted connection objects
+ * Represents functional interface to wrap submitted connection objects.
  */
 @FunctionalInterface
 public interface ConnectionProxy {

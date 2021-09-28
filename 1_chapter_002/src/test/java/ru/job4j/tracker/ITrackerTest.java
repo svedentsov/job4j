@@ -90,7 +90,6 @@ public abstract class ITrackerTest {
                         Arrays.asList(second, third)
                 )
         );
-
     }
 
     @Test
