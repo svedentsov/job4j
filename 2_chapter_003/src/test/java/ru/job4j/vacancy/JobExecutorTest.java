@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNull;
 import static ru.job4j.vacancy.util.Util.now;
 
 public class JobExecutorTest {
+
     @Test
     public void testExecute() throws Exception {
         String data = new StringJoiner("\n")

@@ -15,7 +15,6 @@ public class Client {
      * Сокет.
      */
     private final Socket socket;
-
     /**
      * Номер порта.
      */
