@@ -20,13 +20,13 @@ import java.util.NoSuchElementException;
  * <p>
  * Класс создает динамический список на базе массива.
  *
- * @param <T> тип данных в контейнере.
+ * @param <E> тип данных в контейнере.
  */
-public class SimpleArrayList<T> implements Iterable<T> {
+public class SimpleArrayList<E> implements BaseList<E> {
     /**
      * Контейнер.
      */
-    private Object[] container;
+    private E[] container;
     /**
      * Размер колелкции по умолчанию.
      */
@@ -46,6 +46,7 @@ public class SimpleArrayList<T> implements Iterable<T> {
     public SimpleArrayList() {
         this(DEFAULT_CAPACITY);
     }
+
     /**
      * Конструктор с заданной емкостью коллекции.
      *
@@ -55,7 +56,7 @@ public class SimpleArrayList<T> implements Iterable<T> {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Illegal Capacity: " + capacity);
         }
-        container = new Object[capacity];
+        this.container = (E[]) new Object[capacity];
     }
 
     /**
@@ -63,19 +64,26 @@ public class SimpleArrayList<T> implements Iterable<T> {
      *
      * @param value добавляемые объект
      */
-    public void add(T value) {
-        ensureCapacity();
-        container[counter++] = value;
+    @Override
+    public boolean add(E value) {
+        if (counter < container.length) {
+            container[counter++] = value;
+        } else {
+            container = ensureCapacity();
+            container[counter++] = value;
+        }
         modCount++;
+        return true;
     }
 
     /**
      * Метод проверяет размер коллекции, и увеличивает её если нужно.
      */
-    private void ensureCapacity() {
-        if (counter >= container.length) {
-            container = Arrays.copyOf(container, container.length * 2);
-        }
+    @Override
+    public E[] ensureCapacity() {
+        int oldCapacity = container.length;
+        int newCapacity = oldCapacity * 2;
+        return (E[]) Arrays.copyOf(container, newCapacity);
     }
 
     /**
@@ -84,17 +92,27 @@ public class SimpleArrayList<T> implements Iterable<T> {
      * @param index индекс объекта.
      * @return найденный объект.
      */
-    public T get(int index) {
+    @Override
+    public E get(int index) {
         if (index >= counter) {
             throw new IndexOutOfBoundsException();
         }
-        return (T) container[index];
+        return (E) container[index];
     }
 
     /**
      * Метод возвращает количество элементов в массиве.
      */
     public int size() {
+        return this.container.length;
+    }
+
+    /**
+     * Вспомогательный метод, получает размер заполненной части листа.
+     *
+     * @return размер листа.
+     */
+    public int getSize() {
         return this.counter;
     }
 
@@ -102,14 +120,14 @@ public class SimpleArrayList<T> implements Iterable<T> {
      * Метод возвращает итератор, предназначенный для обхода коллекции.
      */
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<E> iterator() {
         return new SimpleArrayList.DynamicArrayIterator();
     }
 
     /**
      * Класс реализует итератор с проверкой модификации коллекции при обходе.
      */
-    private class DynamicArrayIterator implements Iterator<T> {
+    private class DynamicArrayIterator implements Iterator<E> {
         private int cursor = 0;
         private int expectedModCount = modCount;
 
@@ -119,14 +137,14 @@ public class SimpleArrayList<T> implements Iterable<T> {
         }
 
         @Override
-        public T next() {
+        public E next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
             if (expectedModCount != modCount) {
                 throw new ConcurrentModificationException();
             }
-            return (T) container[cursor++];
+            return (E) container[cursor++];
         }
     }
 }
