@@ -16,13 +16,22 @@ public class SimpleBlockingQueueTest {
 
         Thread producer = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                queue.offer(source[i]);
+                try {
+                    queue.offer(source[i]);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         });
 
         Thread consumer = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                result[i] = queue.poll();
+                try {
+                    result[i] = queue.poll();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -40,13 +49,21 @@ public class SimpleBlockingQueueTest {
         SimpleBlockingQueue<Integer> simpleBlockingQueue = new SimpleBlockingQueue<>(10);
         Thread producer = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                simpleBlockingQueue.offer(i);
+                try {
+                    simpleBlockingQueue.offer(i);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         Thread consumer = new Thread(() -> {
             for (int i = 0; i < 5; i++) {
-                simpleBlockingQueue.poll();
+                try {
+                    simpleBlockingQueue.poll();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

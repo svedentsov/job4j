@@ -31,15 +31,11 @@ public class SimpleBlockingQueue<T> {
      *
      * @param value добавляемое значение.
      */
-    public void offer(T value) {
+    public void offer(T value) throws InterruptedException {
         synchronized (this) {
             while (queue.size() >= size) {
-                try {
-                    System.out.println("Queue is full, waiting for consumer.");
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("Queue is full, waiting for consumer.");
+                this.wait();
             }
             queue.add(value);
             System.out.println(String.format("Producer added value = %s", value));
@@ -53,15 +49,11 @@ public class SimpleBlockingQueue<T> {
      *
      * @return value заголовок очереди.
      */
-    public T poll() {
+    public T poll() throws InterruptedException {
         synchronized (this) {
             while (queue.isEmpty()) {
-                try {
-                    System.out.println("Queue is empty, waiting for producer.");
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("Queue is empty, waiting for producer.");
+                this.wait();
             }
             T value = queue.poll();
             System.out.println(String.format("Consumer received value = %s", value));
