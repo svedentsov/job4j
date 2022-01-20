@@ -1,19 +1,17 @@
 package ru.job4j.crud.store;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
 import ru.job4j.crud.datamodel.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Реализация кеша для хранения пользователей в памяти.
  * Persistent layout - слой для хранения данных.
  * Может быть: базой данных, памятью или файловой системой.
  */
-@ThreadSafe
 public class MemoryStore implements Store<User> {
 
     /**
@@ -24,8 +22,12 @@ public class MemoryStore implements Store<User> {
     /**
      * Поле содержит хранилище пользователей.
      */
-    @GuardedBy("this")
     private final ConcurrentHashMap<Integer, User> users = new ConcurrentHashMap<>();
+
+    /**
+     * Поле содержит базовый id пользователя, который далее инкрементируется на 1.
+     */
+    private final AtomicInteger id = new AtomicInteger(0);
 
     private MemoryStore() {
     }
@@ -36,37 +38,32 @@ public class MemoryStore implements Store<User> {
 
     @Override
     public void add(User user) {
-        synchronized (this) {
-            this.users.put(user.getId(), user);
-        }
+        user.setId(id.getAndIncrement());
+        this.users.put(user.getId(), user);
     }
 
     @Override
     public void update(User user) {
-        synchronized (this) {
-            this.users.put(user.getId(), user);
-        }
+        this.users.computeIfPresent(user.getId(), (key, value) -> {
+            value.setName(user.getName());
+            value.setLogin(user.getLogin());
+            value.setEmail(user.getEmail());
+            return value;
+        });
     }
 
     @Override
     public void delete(User user) {
-        synchronized (this) {
-            this.users.remove(user.getId());
-        }
+        this.users.remove(user.getId());
     }
 
     @Override
     public List<User> findAll() {
-        synchronized (this) {
-            //return (List) this.users.values();
-            return new ArrayList<>(this.users.values());
-        }
+        return new ArrayList<>(this.users.values());
     }
 
     @Override
     public User findById(int id) {
-        synchronized (this) {
-            return this.users.get(id);
-        }
+        return this.users.get(id);
     }
 }
