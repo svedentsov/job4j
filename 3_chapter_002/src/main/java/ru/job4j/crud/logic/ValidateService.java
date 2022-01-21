@@ -1,6 +1,6 @@
 package ru.job4j.crud.logic;
-
 import ru.job4j.crud.datamodel.User;
+import ru.job4j.crud.store.DBStore;
 import ru.job4j.crud.store.MemoryStore;
 import ru.job4j.crud.store.Store;
 
@@ -16,9 +16,10 @@ public class ValidateService {
     private static final ValidateService INSTANCE = new ValidateService();
 
     /**
-     * Ссылка на объект MemoryStore, в котором находится хранилище пользователей.
+     * Ссылка на объект хранилища пользователей.
      */
-    private final Store<User> storage = MemoryStore.getInstance();
+    //private final Store<User> storage = MemoryStore.getInstance();
+    private final Store<User> storage = DBStore.getInstance();
 
     public ValidateService() {
     }
@@ -28,20 +29,21 @@ public class ValidateService {
     }
 
     public Boolean add(User user) {
-        checkInput(user);
+        checkUser(user);
         storage.add(user);
         return true;
     }
 
-    public Boolean update(User user) {
-        checkInput(user);
-        storage.update(user);
+    public Boolean update(User user, Integer id) {
+        checkUser(user);
+        checkId(id);
+        storage.update(user, id);
         return true;
     }
 
-    public Boolean delete(User user) {
-        checkInput(user);
-        storage.delete(user);
+    public Boolean delete(Integer id) {
+        checkId(id);
+        storage.delete(id);
         return true;
     }
 
@@ -53,15 +55,19 @@ public class ValidateService {
     }
 
     public User findById(int id) {
-        if (id < 0) {
-            throw new IllegalStateException(String.format("%d such id is invalid ", id));
-        }
+        checkId(id);
         return storage.findById(id);
     }
 
-    private void checkInput(User user) {
+    private void checkUser(User user) {
         if (user == null) {
             throw new NullPointerException("User does not exist, the reference is null.");
+        }
+    }
+
+    private void checkId(Integer id) {
+        if (id < 0 || id == null) {
+            throw new IllegalStateException(String.format("%d such id is invalid ", id));
         }
     }
 }

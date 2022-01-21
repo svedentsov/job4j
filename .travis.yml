@@ -12,6 +12,7 @@ services:
 before_install:
   - psql -c 'create database tracker;' -U postgres
   - psql -c 'create database vacancies;' -U postgres
+  - psql -c 'create database users1;' -U postgres
 
 install:
   mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V

@@ -1,6 +1,5 @@
 package ru.job4j.crud.servlet;
 
-import ru.job4j.crud.datamodel.User;
 import ru.job4j.crud.logic.ValidateService;
 
 import javax.servlet.http.HttpServlet;
@@ -26,9 +25,8 @@ public class UserDeleteServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         int id = Integer.parseInt(request.getParameter("id"));
-        User user = service.findById(id);
 
-        if (service.delete(user)) {
+        if (service.delete(id)) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
         } else {
             writer.append(String.format("error delete for id=%d", id));

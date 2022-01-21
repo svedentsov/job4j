@@ -43,8 +43,8 @@ public class MemoryStore implements Store<User> {
     }
 
     @Override
-    public void update(User user) {
-        this.users.computeIfPresent(user.getId(), (key, value) -> {
+    public void update(User user, Integer id) {
+        this.users.computeIfPresent(id, (key, value) -> {
             value.setName(user.getName());
             value.setLogin(user.getLogin());
             value.setEmail(user.getEmail());
@@ -53,8 +53,8 @@ public class MemoryStore implements Store<User> {
     }
 
     @Override
-    public void delete(User user) {
-        this.users.remove(user.getId());
+    public void delete(Integer id) {
+        this.users.remove(id);
     }
 
     @Override
