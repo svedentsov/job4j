@@ -22,8 +22,7 @@ public class UserCreateServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.sendRedirect(request.getContextPath() + "/create.jsp");
+        request.getRequestDispatcher("/WEB-INF/views/create.jsp").forward(request, response);
     }
 
     /**
@@ -32,7 +31,6 @@ public class UserCreateServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
         Integer id = 0;
@@ -43,7 +41,7 @@ public class UserCreateServlet extends HttpServlet {
         User user = new User(id, name, login, email);
 
         if (service.add(user)) {
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            response.sendRedirect(String.format("%s/", request.getContextPath()));
         } else {
             writer.append("error create");
         }
