@@ -18,4 +18,6 @@ public interface Store<T extends User> {
     List<T> findAll();
 
     T findById(int id);
+
+    void uploadImage(T user);
 }

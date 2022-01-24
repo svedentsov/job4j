@@ -25,8 +25,6 @@ public class DBStore implements Store<User> {
 
     /**
      * конструктор для тестов
-     *
-     * @param connection
      */
     public DBStore(Connection connection) {
         this.connection = connection;
@@ -60,7 +58,7 @@ public class DBStore implements Store<User> {
 
     @Override
     public void add(User user) {
-        String insert = "INSERT INTO users (name, login, email, createDate) VALUES (?, ?, ?, ?)";
+        String insert = "INSERT INTO users (name, login, email, createDate, photoId) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = SOURCE.getConnection();
              PreparedStatement ps = connection.prepareStatement(insert)
         ) {
@@ -68,6 +66,7 @@ public class DBStore implements Store<User> {
             ps.setString(2, user.getLogin());
             ps.setString(3, user.getEmail());
             ps.setTimestamp(4, Timestamp.valueOf(user.getCreateDate()));
+            ps.setString(5, user.getPhotoId());
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -93,6 +92,21 @@ public class DBStore implements Store<User> {
     }
 
     @Override
+    public void uploadImage(User user) {
+        String upload = "UPDATE users SET photoId = ? WHERE id = ?";
+        try (Connection connection = SOURCE.getConnection();
+             PreparedStatement ps = connection.prepareStatement(upload)
+        ) {
+            ps.setString(1, user.getPhotoId());
+            ps.setInt(2, user.getId());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void delete(Integer id) {
         String delete = "DELETE FROM users WHERE id = ?";
         try (Connection connection = SOURCE.getConnection();
@@ -109,7 +123,7 @@ public class DBStore implements Store<User> {
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
-        String selectAll = "SELECT u.id, u.name, u.login, u.email, u.createDate FROM users AS u";
+        String selectAll = "SELECT u.id, u.name, u.login, u.email, u.createDate, u.photoId FROM users AS u";
         try (Connection connection = SOURCE.getConnection();
              PreparedStatement ps = connection.prepareStatement(selectAll)
         ) {
@@ -120,12 +134,8 @@ public class DBStore implements Store<User> {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getTimestamp(5).toLocalDateTime()
-//                        rs.getInt("id"),
-//                        rs.getString("name"),
-//                        rs.getString("login"),
-//                        rs.getString("email"),
-//                        rs.getTimestamp(5).toLocalDateTime()
+                        rs.getTimestamp(5).toLocalDateTime(),
+                        rs.getString(6)
                 );
                 users.add(user);
             }
@@ -138,7 +148,7 @@ public class DBStore implements Store<User> {
     @Override
     public User findById(int id) {
         User user = new User();
-        String selectById = "SELECT u.id, u.name, u.login, u.email, u.createDate FROM users AS u WHERE id = ?";
+        String selectById = "SELECT u.id, u.name, u.login, u.email, u.createDate, u.photoId FROM users AS u WHERE id = ?";
         try (Connection connection = SOURCE.getConnection();
              PreparedStatement ps = connection.prepareStatement(selectById)
         ) {
@@ -150,6 +160,7 @@ public class DBStore implements Store<User> {
                 user.setLogin(rs.getString(3));
                 user.setEmail(rs.getString(4));
                 user.setCreateDate(rs.getTimestamp(5).toLocalDateTime());
+                user.setPhotoId(rs.getString(6));
             }
         } catch (Exception e) {
             e.printStackTrace();

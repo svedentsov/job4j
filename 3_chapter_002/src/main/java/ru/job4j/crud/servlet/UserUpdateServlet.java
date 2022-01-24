@@ -23,13 +23,7 @@ public class UserUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        User user = service.findById(id);
-
-        request.setAttribute("id", user.getId());
-        request.setAttribute("name", user.getName());
-        request.setAttribute("login", user.getLogin());
-        request.setAttribute("email", user.getEmail());
-
+        request.setAttribute("user", service.findById(id));
         request.getRequestDispatcher("/WEB-INF/views/update.jsp").forward(request, response);
     }
 

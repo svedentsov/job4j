@@ -13,6 +13,7 @@ public class User {
     private String login;
     private String email;
     private LocalDateTime createDate;
+    private String photoId;
 
     public User() {
     }
@@ -31,6 +32,15 @@ public class User {
         this.login = login;
         this.email = email;
         this.createDate = createDate;
+    }
+
+    public User(Integer id, String name, String login, String email, LocalDateTime createDate, String photoId) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.email = email;
+        this.createDate = createDate;
+        this.photoId = photoId;
     }
 
     public Integer getId() {
@@ -71,6 +81,14 @@ public class User {
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
+    }
+
+    public String getPhotoId() {
+        return photoId;
+    }
+
+    public void setPhotoId(String photoId) {
+        this.photoId = photoId;
     }
 
     @Override

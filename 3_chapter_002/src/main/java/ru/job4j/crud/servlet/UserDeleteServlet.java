@@ -2,9 +2,11 @@ package ru.job4j.crud.servlet;
 
 import ru.job4j.crud.logic.ValidateService;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -15,12 +17,14 @@ public class UserDeleteServlet extends HttpServlet {
      */
     private final ValidateService service = ValidateService.getInstance();
 
+    private static final String FN = File.separator;
+
     /**
      * Удаляет пользователя.
      * После удаления отправляет GET сервлету UsersServlet.
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter writer = response.getWriter();
 
         int id = Integer.parseInt(request.getParameter("id"));
