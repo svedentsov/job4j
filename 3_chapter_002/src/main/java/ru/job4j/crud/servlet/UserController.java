@@ -10,23 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class UsersController extends HttpServlet {
+public class UserController extends HttpServlet {
 
-    /**
-     * Ссылка на объект ValidateService.
-     * Logic layout - слой содержит выполнение бизнес логики.
-     */
     private final Validate service = ValidateService.getInstance();
 
     /**
-     * Выполняет редирект на UsersView.jsp
+     * Обеспечивает отображение данных только текущего пользователя.
+     * Получаем атрибут сессии login, по нему находим пользователя и переходит на страницу /UserView.
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute("login");
         request.setAttribute("user", service.findByLogin(login));
-        request.setAttribute("users", service.findAll());
-        request.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(request, response);
+
+        request.getRequestDispatcher("/WEB-INF/views/UserView.jsp").forward(request, response);
     }
 }

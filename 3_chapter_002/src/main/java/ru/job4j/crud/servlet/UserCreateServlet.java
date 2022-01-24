@@ -4,7 +4,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import ru.job4j.crud.datamodel.Role;
 import ru.job4j.crud.datamodel.User;
+import ru.job4j.crud.logic.Validate;
 import ru.job4j.crud.logic.ValidateService;
 
 import javax.servlet.ServletContext;
@@ -24,7 +26,7 @@ public class UserCreateServlet extends HttpServlet {
     /**
      * Logic layout - слой содержит выполнение бизнес логики.
      */
-    private final ValidateService service = ValidateService.getInstance();
+    private final Validate service = ValidateService.getInstance();
 
     private static final String FN = File.separator;
 
@@ -49,6 +51,8 @@ public class UserCreateServlet extends HttpServlet {
         String login = "";
         String email = "";
         String photoId = "";
+        String password = "";
+        String role = "";
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletContext servletContext = this.getServletConfig().getServletContext();
         File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
@@ -80,10 +84,15 @@ public class UserCreateServlet extends HttpServlet {
                         email = item.getString();
                     } else if (item.getFieldName().equals("photoId")) {
                         photoId = item.getString();
+                    } else if (item.getFieldName().equals("password")) {
+                        password = item.getString();
+                    } else if (item.getFieldName().equals("role")) {
+                        role = item.getString();
                     }
                 }
             }
-            User user = new User(id, name, login, email, LocalDateTime.now(), photoId);
+            User user = new User(id, name, login, email, LocalDateTime.now(), photoId, password);
+            user.setRole(new Role(role));
             if (service.add(user)) {
                 response.sendRedirect(String.format("%s/", request.getContextPath()));
             } else {

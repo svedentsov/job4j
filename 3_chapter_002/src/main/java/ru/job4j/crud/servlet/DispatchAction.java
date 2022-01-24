@@ -1,7 +1,7 @@
 package ru.job4j.crud.servlet;
 
 import ru.job4j.crud.datamodel.User;
-import ru.job4j.crud.logic.ValidateService;
+import ru.job4j.crud.logic.Validate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +20,9 @@ public class DispatchAction {
     /**
      * Dispatch contains entries "action=function"
      */
-    private final ValidateService service;
+    private final Validate service;
 
-    public DispatchAction(ValidateService service) {
+    public DispatchAction(Validate service) {
         this.service = service;
     }
 

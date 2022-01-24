@@ -14,6 +14,8 @@ public class User {
     private String email;
     private LocalDateTime createDate;
     private String photoId;
+    private String password;
+    private Role role;
 
     public User() {
     }
@@ -34,13 +36,34 @@ public class User {
         this.createDate = createDate;
     }
 
-    public User(Integer id, String name, String login, String email, LocalDateTime createDate, String photoId) {
+    public User(Integer id, String name, String login, String email, String password, Role role) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.email = email;
+        this.createDate = LocalDateTime.now();
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(Integer id, String name, String login, String email, LocalDateTime createDate, String password, Role role) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.email = email;
+        this.createDate = createDate;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(Integer id, String name, String login, String email, LocalDateTime createDate, String photoId, String password) {
         this.id = id;
         this.name = name;
         this.login = login;
         this.email = email;
         this.createDate = createDate;
         this.photoId = photoId;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -91,6 +114,22 @@ public class User {
         this.photoId = photoId;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -104,12 +143,14 @@ public class User {
                 && name.equals(user.name)
                 && login.equals(user.login)
                 && email.equals(user.email)
-                && createDate.equals(user.createDate);
+                && createDate.equals(user.createDate)
+                && password.equals(user.password)
+                && role.equals(user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, login, email, createDate);
+        return Objects.hash(id, name, login, email, createDate, password, role);
     }
 
     @Override

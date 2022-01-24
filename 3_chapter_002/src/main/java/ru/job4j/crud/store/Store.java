@@ -20,4 +20,8 @@ public interface Store<T extends User> {
     T findById(int id);
 
     void uploadImage(T user);
+
+    T findByLogin(String login);
+
+    T isCredential(String login, String password);
 }

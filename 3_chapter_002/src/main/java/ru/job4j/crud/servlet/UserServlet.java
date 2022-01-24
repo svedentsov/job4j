@@ -1,6 +1,7 @@
 package ru.job4j.crud.servlet;
 
 import ru.job4j.crud.datamodel.User;
+import ru.job4j.crud.logic.Validate;
 import ru.job4j.crud.logic.ValidateService;
 
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,6 @@ import java.io.PrintWriter;
 
 /**
  * Presentation layout - слой сервлетов. В них приложение должно получать данные от клиента и отдавать данные клиенту.
- * <p>
  * GET:
  * /[no params] возвращает список всех пользователей в хранилище
  * /?id=[id] - возвращает пользователя по id
@@ -26,7 +26,7 @@ public class UserServlet extends HttpServlet {
     /**
      * Ссылка на объект ValidateService.
      */
-    private final ValidateService service = ValidateService.getInstance();
+    private final Validate service = ValidateService.getInstance();
 
     /**
      * Ссылка на объект DispatchAction, с загруженным списком операций.
@@ -43,7 +43,7 @@ public class UserServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         if (request.getParameter("id") == null) {
             if (!service.findAll().isEmpty()) {
-                for (User user : service.findAll()) {
+                for (Object user : service.findAll()) {
                     writer.append(user.toString());
                     writer.append(System.lineSeparator());
                 }
