@@ -38,7 +38,7 @@ public class SignInController extends HttpServlet {
         String password = req.getParameter("password");
         User user = service.isCredential(login, password);
 
-        if (login.equals(user.getLogin()) && password.equals(user.getPassword())) {
+        if (user != null && login.equals(user.getLogin()) && password.equals(user.getPassword())) {
             HttpSession session = req.getSession();
             session.setAttribute("login", user.getLogin());
             session.setAttribute("password", user.getPassword());

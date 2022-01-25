@@ -53,6 +53,9 @@ public class UserCreateServlet extends HttpServlet {
         String photoId = "";
         String password = "";
         String role = "";
+        //Проверяем, что у нас есть запрос на загрузку файла
+        //boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        //if (isMultipart) {
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletContext servletContext = this.getServletConfig().getServletContext();
         File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
