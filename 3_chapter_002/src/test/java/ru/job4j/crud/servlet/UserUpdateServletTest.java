@@ -7,9 +7,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import ru.job4j.crud.datamodel.Role;
 import ru.job4j.crud.datamodel.User;
-import ru.job4j.crud.logic.Validate;
-import ru.job4j.crud.logic.ValidateService;
-import ru.job4j.crud.logic.ValidateStub;
+import ru.job4j.crud.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -20,7 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(PowerMockRunner.class)

@@ -53,6 +53,9 @@ public class UserCreateServlet extends HttpServlet {
         String photoId = "";
         String password = "";
         String role = "";
+        String country = "";
+        String city = "";
+
         //Проверяем, что у нас есть запрос на загрузку файла
         //boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         //if (isMultipart) {
@@ -91,11 +94,17 @@ public class UserCreateServlet extends HttpServlet {
                         password = item.getString();
                     } else if (item.getFieldName().equals("role")) {
                         role = item.getString();
+                    } else if (item.getFieldName().equals("country")) {
+                        country = item.getString();
+                    } else if (item.getFieldName().equals("city")) {
+                        city = item.getString();
                     }
                 }
             }
             User user = new User(id, name, login, email, LocalDateTime.now(), photoId, password);
             user.setRole(new Role(role));
+            user.setCity(city);
+            user.setCountry(country);
             if (service.add(user)) {
                 response.sendRedirect(String.format("%s/", request.getContextPath()));
             } else {

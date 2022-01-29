@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Persistent layout - слой для хранения данных.
  * Может быть: базой данных, памятью или файловой системой.
  */
-public class MemoryStore implements Store<User> {
+public class MemoryStore implements Store {
 
     /**
      * Eager loading - энергичная загрузка, создаем и инициализируем объект сразу после старта виртуальной машины.
@@ -23,6 +23,11 @@ public class MemoryStore implements Store<User> {
      * Поле содержит хранилище пользователей.
      */
     private final ConcurrentHashMap<Integer, User> users = new ConcurrentHashMap<>();
+
+    /**
+     * Ссылка на объект хранилища локаций.
+     */
+    private final LocationStore locations = LocationStore.getInstance();
 
     /**
      * Поле содержит базовый id пользователя, который далее инкрементируется на 1.
@@ -99,5 +104,15 @@ public class MemoryStore implements Store<User> {
             }
         }
         return user;
+    }
+
+    @Override
+    public List<String> getCountries() {
+        return locations.getCountries();
+    }
+
+    @Override
+    public List<String> getCities(String country) {
+        return locations.getCities(country);
     }
 }

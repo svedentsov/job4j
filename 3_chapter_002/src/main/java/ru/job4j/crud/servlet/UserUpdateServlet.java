@@ -1,9 +1,9 @@
 package ru.job4j.crud.servlet;
 
-import ru.job4j.crud.datamodel.Role;
 import ru.job4j.crud.datamodel.User;
 import ru.job4j.crud.logic.Validate;
 import ru.job4j.crud.logic.ValidateService;
+import ru.job4j.crud.datamodel.Role;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +44,13 @@ public class UserUpdateServlet extends HttpServlet {
         String password = request.getParameter("password");
         String role = request.getParameter("role");
 
+        String country = request.getParameter("country");
+        String city = request.getParameter("city");
+
         User user = new User(id, name, login, email, password, new Role(role));
+
+        user.setCountry(country);
+        user.setCity(city);
 
         if (service.update(user, id)) {
             response.sendRedirect(String.format("%s/", request.getContextPath()));

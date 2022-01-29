@@ -17,7 +17,7 @@ public class ValidateService implements Validate {
     /**
      * Ссылка на объект хранилища пользователей.
      */
-    private final Store<User> storage = DBStore.getInstance();
+    private final Store storage = DBStore.getInstance();
 
     public ValidateService() {
     }
@@ -80,6 +80,24 @@ public class ValidateService implements Validate {
         checkField(login);
         checkField(password);
         return storage.isCredential(login, password);
+    }
+
+    @Override
+    public List<String> getCountries() {
+        List<String> rst = storage.getCountries();
+        if (rst.size() == 0) {
+            System.out.println("No data, countries are not found");
+        }
+        return rst;
+    }
+
+    @Override
+    public List<String> getCities(String country) {
+        List<String> rst = storage.getCities(country);
+        if (rst.size() == 0) {
+            System.out.println("No data, cities are not found");
+        }
+        return rst;
     }
 
     private void checkField(String field) {

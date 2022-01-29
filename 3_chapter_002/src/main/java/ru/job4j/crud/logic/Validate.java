@@ -4,21 +4,25 @@ import ru.job4j.crud.datamodel.User;
 
 import java.util.List;
 
-public interface Validate<T extends User> {
+public interface Validate {
 
-    Boolean add(T user);
+    Boolean add(User user);
 
-    Boolean update(T user, Integer id);
+    Boolean update(User user, Integer id);
 
-    Boolean uploadImage(T user);
+    Boolean uploadImage(User user);
 
     Boolean delete(Integer id);
 
-    List<T> findAll();
+    List<User> findAll();
 
-    T findById(int id);
+    User findById(int id);
 
-    T findByLogin(String login);
+    User findByLogin(String login);
 
-    T isCredential(String login, String password);
+    User isCredential(String login, String password);
+
+    List<String> getCountries();
+
+    List<String> getCities(String country);
 }
