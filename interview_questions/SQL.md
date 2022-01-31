@@ -93,7 +93,7 @@ https://postgrespro.ru/docs/postgresql/9.5/ddl-constraints#ddl-constraints-prima
 
 Пример: 
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/sql1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/sql1.png)
 
 Первичным ключом таблицы Themes является `id_theme`, а таблицы posts - `id_posts`. 
 Обрати внимание `id_theme` есть также в таблице Posts - каждое значение этого поля является внешним ключом. 
@@ -156,7 +156,7 @@ https://postgrespro.ru/docs/postgresql/9.5/indexes-types
 
 ## 6. Какие типы соединений join таблиц существуют В чем их разница?
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/sql_joins.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/sql_joins.png)
 
 + **`INNER JOIN`** Выбираются только совпадающие данные из объединяемых таблиц.
 
@@ -1201,7 +1201,7 @@ Dirty Read можно предотвратить, используя следу�
 В случае с SQL эти глаголы — «select» («выбрать»), «insert» («вставить»), «update» («обновить»), и «delete» («удалить»). 
 Это превращает природу языка в ряд обязательных утверждений (команд) к базе данных.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/sql2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/sql2.png)
 
 [к оглавлению](#SQL)
 

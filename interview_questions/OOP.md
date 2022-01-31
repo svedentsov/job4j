@@ -320,7 +320,7 @@ https://habr.com/ru/company/otus/blog/347900/
 
 В Java запрещено множественное наследование главным образом из-за ромбовидной проблемы. 
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/oop_1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/oop_1.png)
 
 возникает неоднозначность: если метод класса D вызывает метод класса А (и этот метод не переопределён в классе D), 
 а классы B и C по своему переопределили этот метод, то от какого класса его наследовать? от B или C?
@@ -362,7 +362,7 @@ https://habr.com/ru/company/otus/blog/347900/
 
 + модификаторы доступа - специальные слова, которые определяют доступ к данным.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/oop_2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/oop_2.png)
 
 Например, модификатором доступа private скрываются поля объекта, 
 и при необходимости к ним разрешается подкотрольный доступ через геттеры и сеттеры.
@@ -513,7 +513,7 @@ public interface Figure {
 
 **Вложенный класс** - это класс, который находится внутри класса или интерфейса.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/oop_4.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/oop_4.png)
 
 + **Статические**, пример StaticInnerClass:
 ```java
@@ -675,7 +675,7 @@ http://java-online.ru/java-interview-01.xhtml
 
 ## 32. Какие типы исключительных ситуаций бывают?
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/oop_3.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/oop_3.png)
  
 подробная иерархия исключений по ссылке
 http://i.piccy.info/i9/2579c05514d2f6424a63e4d246ffb0ad/1398970263/143501/740281/exceptions.png

@@ -105,7 +105,7 @@ GC выполняет 2 задачи:
 
 Трассировка используется в виртуальной машине HotSpot VM.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_4.1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_4.1.png)
 
 Типы корневых точек (GC Root):
 
@@ -148,7 +148,7 @@ GC выполняет 2 задачи:
 В общем виде, гипотеза о поколениях гласит, что вероятность смерти как функция от возраста снижается очень быстро. 
 Ее приложение к сборке мусора означает, что подавляющее большинство объектов живут крайне недолго.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_4.2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_4.2.png)
 
 Вот тут и возникает идея разделения объектов на младшее поколение (young generation) и старшее поколение (old generation). 
 В соответствии с этим разделением и процессы сборки мусора разделяются на малую сборку (minor GC), затрагивающую только 
@@ -158,7 +158,7 @@ GC выполняет 2 задачи:
 Объекты из младшего поколения по мере выживания в сборках мусора переходят в старшее поколение. В старшем поколении 
 объект может прожить до окончания работы приложения, либо будет удален в процессе одной из полных сборок мусора.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_4.3.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_4.3.png)
 
 Малые сборки выполняются, когда объем свободной памяти в области Eden Space становится критичным.
 В этом случае, Garbage Collector просто переносит объекты, имеющие ссылки, из области Eden Space в область 
@@ -350,7 +350,7 @@ ZGC доступен в качестве экспериментальной фу
 Целевое значением пропускной способности по умолчанию для G1 равно 90%, для Parallel GC составляет 99%. 
 Это не значит, что пропускная способность с G1 всегда будет почти на 10% меньше, но данную особенность следует учитывать.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_6.1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_6.1.png)
  
 «Монолитный» означает то, что всё поколение должно быть очищено за проход.
 
@@ -378,34 +378,34 @@ jconsole, visualvm и yourkit profiler предоставляют удобный
 
 **jps** - выводит pid-ы процессов, которые использует VM
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.1.png)
 
  
 **jmap** - выводит информацию о состоянии памяти виртуальной машины
 	
 `jmap -heap 14152` или `jhsdb jmap --heap --pid 14152`
 	
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.2.png)
  
 **jstat** - аналогично jmap
 
 **jstack** - показывает какие процессы запущены в  виртуальной машине (нет инфы о памяти)
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.3.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.3.png)
  
 ...
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.4.png) 
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.4.png) 
 
 **jconsole**
  
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.5.png) 
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.5.png) 
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.6.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.6.png)
 
 **VisualVM** (с плагином VisualGC)
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/gc_7.7.png) 
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/gc_7.7.png) 
 
 **YourKit Profiler** - универсальный расширенный профилировщик, используется не только для анализа памяти, 
 но и ,например, для поиска узких мест в коде (повторения и тп)

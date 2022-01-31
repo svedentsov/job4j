@@ -68,12 +68,12 @@ Java - интерпретируемый язык, т.е. написанный к
 
 Java состоит из компилятора языка javac, виртуальной машины, различных библиотек и утилит.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/core_1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/core_1.png)
 
 Java Development Kit (JDK) является одним из трех основных пакетов, используемых в программировании на языке Java. 
 К ним также относятся JVM (Java Virtual Machine) и JRE (Java Runtime Environment). 
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/core_2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/core_2.png)
 
 + JVM — это часть платформы Java, которая исполняет программы;
 

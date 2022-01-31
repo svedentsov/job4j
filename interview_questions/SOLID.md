@@ -173,7 +173,7 @@ class Product {
 Код, реализующий высокоуровневую политику, не должен зависеть от кода, реализующего низкоуровневые детали. 
 Напротив, детали должны зависеть от политики.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/solid.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/solid.png)
 
 [к оглавлению](#OOD)
 
@@ -199,7 +199,7 @@ A module should be responsible to one, and only one, actor *(Модуль дол
 
 Например, класс Employee из приложения платежной ведомости имеет три метода: calculatePay(), reportHours() и save()
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/srp1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/srp1.png)
 
 Этот класс нарушает принцип единственной ответственности, потому что три его метода отвечают за три разные роли.
 + Реализация метода calculatePay() определяется бухгалтерией.
@@ -213,7 +213,7 @@ A module should be responsible to one, and only one, actor *(Модуль дол
 Разработчики, старающиеся не дублировать код, поместили реализацию этого алгоритма в функцию 
 с именем regularHours()
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/srp2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/srp2.png)
 
 Допустим, сотрудники бухгалтерии решили изменить алгоритм расчета не сверхурочных часов. 
 Сотрудники отдела кадров были бы против такого изменения, т.к. вычисленное время они используют для других целей.
@@ -236,7 +236,7 @@ A module should be responsible to one, and only one, actor *(Модуль дол
 Наиболее очевидное решение - отделить данные от функций. 
 Три класса используют общие данные EmployeeData — простую структуру без методов.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/srp3.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/srp3.png)
 
 Каждый класс включает только исходный код для конкретной функции. Эти три класса никак не зависят друг от друга. 
 То есть любое непреднамеренное дублирование исключено.
@@ -245,7 +245,7 @@ A module should be responsible to one, and only one, actor *(Модуль дол
 
 Эта проблема часто решается применением шаблона проектирования «Фасад» (Facade), как показано на рис.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/srp4.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/srp4.png)
 
 Класс EmployeeFacade компактный и отвечает за создание экземпляров трех классов и делегирование вызовов методов.
 
@@ -461,7 +461,7 @@ public class OrderProcessorWithPreAndPostProcessing extends OrderProcessor {
 Существует два «подтипа» класса License: PersonalLicense и BusinessLicense. 
 Они реализуют разные алгоритмы расчета лицензионных отчислений.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/lsp1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/lsp1.png)
 
 Этот дизайн соответствует принципу подстановки Барбары Лисков, 
 потому что поведение приложения Billing не зависит от использования того или иного подтипа. 
@@ -482,7 +482,7 @@ LSP тесно связан с принципом единственной от�
 
 Проблема квадрат/прямоугольник
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/lsp2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/lsp2.png)
 
 ```java
 class Rectangle {
@@ -616,7 +616,7 @@ Make fine grained interfaces, that are client specific.
 Пусть имеется несколько классов, пользующихся операциями в классе OPS. 
 Допустим, что User1 использует только операцию op1, User2 — только op2 и User3 — только op3.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/isp1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/isp1.png)
 
 Теперь представьте, что OPS — это класс, написанный на таком языке, как Java. 
 Очевидно, что исходный код User1 непреднамеренно будет зависеть от op2 и op3, даже при том, что он не пользуется ими. 
@@ -624,7 +624,7 @@ Make fine grained interfaces, that are client specific.
 и развертывания класса User1, несмотря на то, что для него ничего не изменилось.
 Эту проблему можно решить разделением операций по интерфейсам:
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/isp2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/isp2.png)
 
 Если снова представить, что этот интерфейс реализован на языке со строгим контролем типов, таком как Java, 
 исходный код User1 будет зависеть от U1Ops и op1, но не от OPS. 
@@ -649,7 +649,7 @@ Make fine grained interfaces, that are client specific.
 Теперь представьте, что авторы F связали его с поддержкой конкретной базы данных D. 
 То есть S зависит от F, который зависит от D
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/isp3.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/isp3.png)
 
 Представьте, что D включает функции, которые не используются фреймворком F и, соответственно, не используются системой S. 
 Изменения в этих функциях внутри D могут вынудить повторно развернуть F и, соответственно, повторно развернуть S. 

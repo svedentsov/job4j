@@ -63,7 +63,7 @@
 
 наглядно из Effective Java:
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/pro_1.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/pro_1.png)
 
 [к оглавлению](#Collections-Pro)
 
@@ -296,7 +296,7 @@ Class<T> t = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).
 
 ## 17. Какая временная сложность алгоритмов добавления, замены и удаления в каждой из коллекций С чем связаны отличия?
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/pro_2.png)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/pro_2.png)
 
 + **`ArrayList`:** индекс - `O(1)`, поиск `O(n)`, вставка `O(n)`, удаление `O(n)`.
 

@@ -55,7 +55,7 @@ IO API – (Input & Output) в первую очередь это Java API, ко
 3) `System.err`, `System.in`, `System.out`;
 4) при работе с буфером.
 
-![img](https://github.com/svedentsov/job4j/interview_questions/src/main/resources/io_diagram.gif)
+![img](https://github.com/svedentsov/job4j/blob/master/interview_questions/src/main/resources/io_diagram.gif)
 
 Для разных типов данных существуют разные реализации классов
 
