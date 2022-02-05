@@ -3,6 +3,7 @@ package ru.job4j.pojo;
 import java.util.Objects;
 
 public class Product {
+
     private String name;
     private int count;
 

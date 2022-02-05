@@ -4,9 +4,15 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Класс IteratorOfIterators реализует итератор чисел из итератора итераторов.
+ * Класс реализует итератор чисел из итератора итераторов.
  */
-public class IteratorOfIterators {
+public class Converter {
+    /**
+     * Итератор итераторов.
+     *
+     * @param it итератор итераторов.
+     * @return итератор.
+     */
     Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
         return new Iterator<>() {
             Iterator<Integer> inner = it.next();

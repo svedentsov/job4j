@@ -10,8 +10,6 @@ import java.util.List;
 public class AttachmentSort {
     /**
      * Запуск программы.
-     *
-     * @param args входные параметры.
      */
     public static void main(String[] args) {
         List<Attachment> attachments = Arrays.asList(

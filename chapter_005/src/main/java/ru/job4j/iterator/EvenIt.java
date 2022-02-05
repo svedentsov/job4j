@@ -4,33 +4,32 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Класс EvenNumbersIterator реализует итератор, возвращающий только четные цифры.
- * Итератор может принимать список произвольных чисел.
+ * Итератор принимает список произвольных чисел и возвращает только четные значения.
  */
-public class EvenNumbersIterator implements Iterator {
+public class EvenIt implements Iterator {
     /**
      * Входящий массив.
      */
-    private final int[] numbers;
+    private final int[] array;
     /**
      * Позиция массива.
      */
     private int index = 0;
 
-    public EvenNumbersIterator(int[] numbers) {
-        this.numbers = numbers;
+    public EvenIt(int[] array) {
+        this.array = array;
     }
 
     /**
      * Проверить наличие следующего элемента массива.
      *
-     * @return true если элемент есть, иначе - false.
+     * @return true если элемент есть, иначе false.
      */
     @Override
     public boolean hasNext() {
         boolean result = false;
-        while (index < numbers.length) {
-            if (numbers[index] % 2 == 0) {
+        while (index < array.length) {
+            if (array[index] % 2 == 0) {
                 result = true;
                 break;
             }
@@ -49,6 +48,6 @@ public class EvenNumbersIterator implements Iterator {
         if (!this.hasNext()) {
             throw new NoSuchElementException("Элемент не найден");
         }
-        return numbers[index++];
+        return array[index++];
     }
 }

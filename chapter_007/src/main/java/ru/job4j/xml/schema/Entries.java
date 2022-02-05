@@ -7,6 +7,7 @@ import java.util.List;
 @XmlType(name = "", propOrder = {"entry"})
 @XmlRootElement(name = "entries", namespace = "http://job4j.ru")
 public class Entries {
+
     public Entries() {
     }
 

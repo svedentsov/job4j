@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class FI {
+
     public static void main(String[] args) {
         Attachment[] atts = {
                 new Attachment("image 1", 20),

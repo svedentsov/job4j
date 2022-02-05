@@ -13,7 +13,7 @@ public class SimpleStackLIFO<T> {
     private DynamicContainerLL<T> stack = new DynamicContainerLL<>();
 
     /**
-     * Метод добавлеяет объект в начало списка.
+     * Метод добавляет объект в начало списка.
      *
      * @param data данные хранящиеся в элементе списка
      */

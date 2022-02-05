@@ -1,5 +1,8 @@
 package ru.job4j.array;
 
+/**
+ * Класс реализует проверку, что слово заканчивается постфиксом.
+ */
 public class EndsWith {
     /**
      * Проверить, что слово заканчивается постфиксом.
@@ -11,8 +14,8 @@ public class EndsWith {
     public boolean endsWith(String word, String post) {
         char[] wrd = word.toCharArray();
         char[] pst = post.toCharArray();
-        for (int index = 0; index < pst.length; index++) {
-            if (wrd[wrd.length - index - 1] != pst[pst.length - index - 1]) {
+        for (int i = 0; i < pst.length; i++) {
+            if (wrd[wrd.length - i - 1] != pst[pst.length - i - 1]) {
                 return false;
             }
         }

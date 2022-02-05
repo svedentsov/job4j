@@ -12,9 +12,10 @@ public class Node<E extends Comparable<E>> {
      */
     private final E value;
     /**
-     * Дочеринй узел.
+     * Дочерний узел.
      */
     private final List<Node<E>> children = new ArrayList<>();
+
     /**
      * Конструктор инициализирует узел.
      *
@@ -23,6 +24,7 @@ public class Node<E extends Comparable<E>> {
     public Node(E value) {
         this.value = value;
     }
+
     /**
      * Добавить дочерний узел.
      *
@@ -31,23 +33,26 @@ public class Node<E extends Comparable<E>> {
     public void add(Node<E> child) {
         this.children.add(child);
     }
+
     /**
      * Получить список дочерних элементов узла.
      *
-     * @return список дочерние элементов.
+     * @return список дочерних элементов.
      */
     public List<Node<E>> leaves() {
         return this.children;
     }
+
     /**
      * Метод сравнивает значения.
      *
      * @param that значение для проверки.
-     * @return true - значение текущего узла равно переданому значению, иначе false.
+     * @return true если значение текущего узла равно переданному значению, иначе false.
      */
     public boolean eqValue(E that) {
         return this.value.compareTo(that) == 0;
     }
+
     /**
      * Получить значение текущего узла.
      *

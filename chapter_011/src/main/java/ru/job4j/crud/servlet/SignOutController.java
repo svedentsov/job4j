@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class SignOutController extends HttpServlet {
-
     /**
      * Обеспечивает выход пользователя из системы.
      * Удаляем атрибут сессии login и выполняем редирект на страницу  аутентификации.

@@ -11,6 +11,7 @@ import java.util.List;
  * Item storage based on DB connection
  */
 public class TrackerSQL implements ITracker, AutoCloseable {
+
     private static final Logger LOG = LoggerFactory.getLogger(TrackerSQL.class);
     private final Connection connection;
 

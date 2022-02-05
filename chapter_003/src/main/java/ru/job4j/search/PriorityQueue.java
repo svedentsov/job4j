@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PriorityQueue {
+
     private List<Task> tasks = new LinkedList<>();
     /**
      * Метод должен вставлять в нужную позицию элемент.

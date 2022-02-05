@@ -24,6 +24,7 @@ import static ru.job4j.vacancy.TestData.LIMIT_DATE;
 @PrepareForTest({JsoupHelper.class})
 @PowerMockIgnore({"com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "org.w3c.dom.*"})
 public abstract class AbstractJsoupProcessorTest {
+
     private final Vacancy expectedVacancy;
     private final AbstractJsoupProcessor processor;
     final JsoupProcessorTester tester;

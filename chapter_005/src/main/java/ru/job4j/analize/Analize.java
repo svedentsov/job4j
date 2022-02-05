@@ -12,9 +12,9 @@ public class Analize {
     /**
      * Получить статистику об изменении коллекции.
      *
-     * @param previous исходное состояние коллекции
-     * @param current  текущее состояние коллекции
-     * @return объект класса Info, содержащий статистику по коллекции
+     * @param previous исходное состояние коллекции.
+     * @param current  текущее состояние коллекции.
+     * @return объект класса Info, содержащий статистику по коллекции.
      */
     public Info diff(List<User> previous, List<User> current) {
         Info info = new Info();

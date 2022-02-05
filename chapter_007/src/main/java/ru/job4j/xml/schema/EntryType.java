@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "entryType", namespace = "http://job4j.ru", propOrder = {"field"})
 public class EntryType {
+
     @XmlElement(namespace = "http://job4j.ru")
     protected int field;
 

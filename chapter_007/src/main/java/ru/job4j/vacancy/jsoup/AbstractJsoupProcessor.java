@@ -23,6 +23,7 @@ import static ru.job4j.vacancy.util.JsoupHelper.buildDocument;
  * Represents template to create real site parsers
  */
 public abstract class AbstractJsoupProcessor implements JsoupProcessor {
+
     final Logger log = LoggerFactory.getLogger(getClass());
 
     protected String searchWord = "";

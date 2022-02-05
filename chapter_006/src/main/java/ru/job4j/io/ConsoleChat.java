@@ -91,8 +91,8 @@ public class ConsoleChat {
                 + "2. Бот возобновит работу, введите: %s \n"
                 + "3. Закончить работу с чатом, введите: %s \n%n", STOP, CONTINUE, OUT);
         ConsoleChat cc = new ConsoleChat(
-                "2_chapter_002/data/botDialog.txt",
-                "2_chapter_002/data/botAnswers.txt"
+                "chapter_006/data/botDialog.txt",
+                "chapter_006/data/botAnswers.txt"
         );
         cc.run();
     }

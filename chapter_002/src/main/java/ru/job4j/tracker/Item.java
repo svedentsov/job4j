@@ -9,6 +9,7 @@ import java.util.StringJoiner;
  * Заявка.
  */
 public class Item {
+
     private String id;
     private String name;
     private String description;

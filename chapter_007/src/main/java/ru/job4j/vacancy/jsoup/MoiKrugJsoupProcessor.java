@@ -18,6 +18,7 @@ import static java.lang.String.format;
  * Represents program strategy of moikrug.ru parsing.
  */
 public class MoiKrugJsoupProcessor extends AbstractJsoupProcessor {
+
     private static final String SITE_NAME = "https://moikrug.ru";
     private static final String URL_TEMPLATE = "https://moikrug.ru/vacancies?q=%s&page=%d&sort=date";
 

@@ -18,6 +18,7 @@ import java.util.function.Predicate;
  * Contains utility logic for jsoup working
  */
 public class JsoupHelper {
+
     public static final String USER_AGENT = "Mozilla/5.0 (jsoup)";
 
     /**

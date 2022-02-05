@@ -17,6 +17,7 @@ import static java.lang.System.lineSeparator;
 import static org.junit.Assert.assertEquals;
 
 public class XMLTransformerTest {
+
     private static final String LS = lineSeparator();
     @Rule
     public ExpectedException thrown = ExpectedException.none();

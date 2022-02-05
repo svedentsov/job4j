@@ -11,18 +11,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Presentation layout - слой сервлетов. В них приложение должно получать данные от клиента и отдавать данные клиенту.
+ * Presentation layout - слой сервлетов.
+ * В них приложение должно получать данные от клиента и отдавать данные клиенту.
  * GET:
  * /[no params] возвращает список всех пользователей в хранилище
  * /?id=[id] - возвращает пользователя по id
- * если полоьзователей нет, то "No such user."
+ * если пользователей нет, то "No such user."
  * POST:
  * /?action=add&id=[id]&name=[name]&login=[login]&email=[email] - создание пользователя
  * /?action=update&id=[id]&name=[name]&login=[login]&email=[email] - обновление пользователя
  * /?action=delete&id=[id] - удаление пользователя по id.
  */
 public class UserServlet extends HttpServlet {
-
     /**
      * Ссылка на объект ValidateService.
      */

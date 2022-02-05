@@ -28,7 +28,7 @@ public class SimpleArrayList<E> implements BaseList<E> {
      */
     private E[] container;
     /**
-     * Размер колелкции по умолчанию.
+     * Размер коллекции по умолчанию.
      */
     private static final int DEFAULT_CAPACITY = 10;
     /**

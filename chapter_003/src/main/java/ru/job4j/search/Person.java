@@ -4,6 +4,7 @@ package ru.job4j.search;
  * Абонент.
  */
 public class Person {
+
     private String name;
     private String surname;
     private String phone;

@@ -14,6 +14,7 @@ import static org.mockito.BDDMockito.given;
 import static ru.job4j.vacancy.util.JsoupHelper.buildDocument;
 
 public class MoiKrugRuJsoupProcessorTest extends AbstractJsoupProcessorTest {
+
     private static final Vacancy EXPECTED_VACANCY = new Vacancy(
             "Требуется программист (Москва, Сбербанк)", "https://moikrug.ru/mock.url", "test description\ntest details",
             LocalDateTime.of(2019, 8, 12, 0, 0));

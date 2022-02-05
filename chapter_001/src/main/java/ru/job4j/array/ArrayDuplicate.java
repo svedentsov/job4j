@@ -9,8 +9,8 @@ public class ArrayDuplicate {
     /**
      * Удалить дубликаты в массиве.
      *
-     * @param array исходный массив с дубликатами
-     * @return массив без дубликатов
+     * @param array исходный массив с дубликатами.
+     * @return массив без дубликатов.
      */
     public String[] remove(String[] array) {
         int unique = array.length;

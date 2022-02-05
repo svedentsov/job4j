@@ -8,12 +8,13 @@ import java.util.NoSuchElementException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class EvenNumbersIteratorTest {
-    private EvenNumbersIterator it;
+public class EvenItTest {
+
+    private EvenIt it;
 
     @Before
     public void setUp() {
-        it = new EvenNumbersIterator(new int[]{1, 2, 3, 4, 5, 6, 7});
+        it = new EvenIt(new int[]{1, 2, 3, 4, 5, 6, 7});
     }
 
     @Test
@@ -36,7 +37,7 @@ public class EvenNumbersIteratorTest {
 
     @Test
     public void shouldReturnFalseIfNoAnyEvenNumbers() {
-        it = new EvenNumbersIterator(new int[]{1});
+        it = new EvenIt(new int[]{1});
         assertThat(it.hasNext(), is(false));
     }
 

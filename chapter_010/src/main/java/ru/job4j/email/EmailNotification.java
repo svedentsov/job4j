@@ -23,11 +23,10 @@ public class EmailNotification {
     private static final String BODY_TEMPLATE = "body = Add a new event to %1$s";
 
     /**
-     * Отправляет почту через ExecutorService,
-     * формирует тему и содержание письма,
+     * Отправляет почту через ExecutorService, формирует тему и содержание письма,
      * добавляет задачу по отправке уведомления в пул и сразу ее выполняет.
      *
-     * @param user объект пользователь
+     * @param user объект пользователь.
      */
     public void emailTo(User user) {
         String subject = String.format(SUBJECT_TEMPLATE, user.getUsername(), user.getEmail());
@@ -42,9 +41,9 @@ public class EmailNotification {
     /**
      * выполняет отправку письма с указанными параметрами.
      *
-     * @param subject тема
-     * @param body    содержание
-     * @param email   адрес получателя
+     * @param subject тема.
+     * @param body    содержание.
+     * @param email   адрес получателя.
      */
     public void send(String subject, String body, String email) {
         System.out.println("subject: " + subject);

@@ -14,6 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ServerTest {
+
     private static final String LN = System.lineSeparator();
 
     /**

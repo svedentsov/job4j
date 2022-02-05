@@ -18,10 +18,10 @@ public class AuthenticationFilter implements Filter {
 
     /**
      * Если URI запроса содержит /signin, то обрабатываем фильтры дальше.
-     * В противном случае проверяем, залогинился ли пользователь с помощью проверки атрибута сессии login.
+     * В противном случае проверяем, авторизовался ли пользователь с помощью проверки атрибута сессии login.
      * <p>
      * Если у сессии нет атрибута login, то переходим на страницу /signin.
-     * Если атрибут login установлен, то пользователь уже залогинился, обрабатываем фильтры дальше.
+     * Если атрибут login установлен, то пользователь уже авторизовался, обрабатываем фильтры дальше.
      */
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {

@@ -17,6 +17,7 @@ import static com.google.common.io.Resources.getResource;
  * Provides transforming entries xml file to another one.
  */
 public class XMLTransformer {
+
     private final Transformer transformer;
 
     public XMLTransformer() {

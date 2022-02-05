@@ -14,8 +14,7 @@ public interface SimpleTree<E extends Comparable<E>> extends Iterable<E> {
      *
      * @param parent родительский узел.
      * @param child  дочерний узел.
-     * @return true - узел добавлен в дерево,
-     * false - узел добавить не удалось, parent и child уже есть в дереве.
+     * @return true если узел добавлен в дерево, false если узел добавить не удалось, parent и child уже есть в дереве.
      */
     boolean add(E parent, E child);
 

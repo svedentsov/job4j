@@ -7,8 +7,8 @@ public class Check {
     /**
      * Проверить, что все элементы в массиве являются true или false.
      *
-     * @param data массив булевых значений
-     * @return true - значения однотипны, иначе false
+     * @param data массив булевых значений.
+     * @return true если значения однотипны, иначе false.
      */
     public boolean mono(boolean[] data) {
         boolean result = true;

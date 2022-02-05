@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class JobSorter {
+
     public static void main(String[] args) {
         List<Job> jobs = Arrays.asList(
                 new Job("Impl task", 2),

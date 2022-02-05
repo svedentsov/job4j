@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
  * Проверка класса Profiles.
  */
 public class ProfilesTest {
+
     Profiles profiles = new Profiles();
     List<Profile> profileList = List.of(
             new Profile(new Address("City 1", "Lenana", 12, 5)),

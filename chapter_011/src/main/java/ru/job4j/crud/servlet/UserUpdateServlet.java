@@ -1,9 +1,9 @@
 package ru.job4j.crud.servlet;
 
+import ru.job4j.crud.datamodel.Role;
 import ru.job4j.crud.datamodel.User;
 import ru.job4j.crud.logic.Validate;
 import ru.job4j.crud.logic.ValidateService;
-import ru.job4j.crud.datamodel.Role;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +13,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class UserUpdateServlet extends HttpServlet {
-
     /**
      * Logic layout - слой содержит выполнение бизнес логики.
      */
     private final Validate service = ValidateService.getInstance();
 
     /**
-     * Открывает форму для редактирования с заполенными полями.
+     * Открывает форму для редактирования с заполненными полями.
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -68,7 +68,7 @@ public class DynamicLinkedListStackContainer<E> implements Iterable<E> {
     /**
      * Удалить элемент из начала списка и получить его значение.
      *
-     * @return значение удаляемого элемента
+     * @return значение удаляемого элемента.
      */
     public E deleteFirst() {
         E deletedData = null;

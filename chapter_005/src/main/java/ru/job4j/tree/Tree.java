@@ -58,7 +58,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     /**
      * Метод проверяет, является ли дерево бинарным.
      *
-     * @return true - дерево бинарное, false - дерево не бинарное.
+     * @return true если дерево бинарное, false если дерево не бинарное.
      */
     public boolean isBinary() {
         boolean result = true;

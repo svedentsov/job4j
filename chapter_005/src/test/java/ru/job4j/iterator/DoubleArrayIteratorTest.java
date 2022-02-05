@@ -5,15 +5,16 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-public class ArrayIteratorTest {
-    private ArrayIterator it;
+public class DoubleArrayIteratorTest {
+
+    private DoubleArrayIterator it;
 
     @Before
     public void setUp() {
-        it = new ArrayIterator(new int[][]{{1}, {3, 4}, {6, 7}});
+        it = new DoubleArrayIterator(new int[][]{{1}, {3, 4}, {6, 7}});
     }
 
     @Test
@@ -54,7 +55,7 @@ public class ArrayIteratorTest {
 
     @Test
     public void whenThreeArrayWithoutNull() {
-        ArrayIterator it = new ArrayIterator(new int[][]{{1}, {2}, {3, 5}});
+        DoubleArrayIterator it = new DoubleArrayIterator(new int[][]{{1}, {2}, {3, 5}});
         assertThat(it.next(), is(1));
         assertThat(it.next(), is(2));
         assertThat(it.next(), is(3));
@@ -73,7 +74,7 @@ public class ArrayIteratorTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testShouldThrowNoSuchElementException() {
-        it = new ArrayIterator(new int[][]{});
+        it = new DoubleArrayIterator(new int[][]{});
         it.next();
     }
 }

@@ -21,6 +21,7 @@ import static java.util.Arrays.asList;
  * Starter class to execute Job implemented tasks.
  */
 public class JobMainStarter {
+
     private static final Map<Class<? extends Job>, List<String>> REQUIRED_KEYS
             = Map.of(VacancyCollectorJob.class, List.of("db.driver", "db.url", "db.username", "db.password"));
     private static final Map<Class<? extends Job>, List<String>> ADDITIONAL_KEYS

@@ -14,6 +14,7 @@ import java.io.InputStream;
  * Provides storing sum of entries' field value.
  */
 public class SAXStore {
+
     private final SAXParser parser;
     private final SAXHandler handler;
 

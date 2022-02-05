@@ -9,9 +9,9 @@ public class ExamTask {
     /**
      * Сравнить состоят ли два слова из одинаковых символов.
      *
-     * @param s1 первое слово
-     * @param s2 второе слово
-     * @return true, если два слова из одинаковых символов, иначе false
+     * @param s1 первое слово.
+     * @param s2 второе слово.
+     * @return true, если два слова из одинаковых символов, иначе false.
      */
     public boolean compareStructureWords(String s1, String s2) {
         return this.getMapFromString(s1).equals(this.getMapFromString(s2));
@@ -20,8 +20,8 @@ public class ExamTask {
     /**
      * Получить символы встречающиеся в слове несколько раз.
      *
-     * @param s слово
-     * @return дубликаты слова
+     * @param s слово.
+     * @return дубликаты слова.
      */
     public List<Character> duplicatedSymbols(String s) {
         Map<Character, Integer> map = this.getMapFromString(s);
@@ -37,9 +37,9 @@ public class ExamTask {
     /**
      * Проверить что два слова отличаются на одну перестановку символов.
      *
-     * @param s1 первое слово
-     * @param s2 второе слова
-     * @return true, если отличаются на одну перестановку, иначе false
+     * @param s1 первое слово.
+     * @param s2 второе слова.
+     * @return true, если отличаются на одну перестановку, иначе false.
      */
     public boolean differByOnePermutation(String s1, String s2) {
         List<Character> differSymbols = new ArrayList<>();
@@ -59,8 +59,8 @@ public class ExamTask {
     /**
      * Получить коллекцию уникальных символов из слова.
      *
-     * @param s слово
-     * @return коллекция уникальных символов
+     * @param s слово.
+     * @return коллекция уникальных символов.
      */
     public Map<Character, Integer> getMapFromString(String s) {
         Map<Character, Integer> result = new HashMap<>();

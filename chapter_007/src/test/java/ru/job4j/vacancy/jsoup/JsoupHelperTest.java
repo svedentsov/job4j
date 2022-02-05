@@ -19,6 +19,7 @@ import static ru.job4j.vacancy.util.JsoupHelper.specifyJsoupProcessor;
 import static ru.job4j.vacancy.util.Util.isNotBefore;
 
 public class JsoupHelperTest {
+
     @Test
     public void specifySqlRuJsoupProcessor() {
         Map<String, Object> properties = Map.of(

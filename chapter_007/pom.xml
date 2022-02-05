@@ -222,5 +222,11 @@
             <version>3.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>ru.job4j</groupId>
+            <artifactId>chapter_002</artifactId>
+            <version>3.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -2,8 +2,8 @@ package ru.job4j.calculator;
 
 import org.junit.Test;
 
-import static org.hamcrest.number.IsCloseTo.closeTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.closeTo;
 
 public class FitTest {
     @Test

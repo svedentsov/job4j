@@ -7,8 +7,8 @@ public class DummyBot {
     /**
      * Отвечает на вопросы.
      *
-     * @param question вопрос от клиента
-     * @return ответ
+     * @param question вопрос от клиента.
+     * @return ответ.
      */
     public String answer(String question) {
         String result = "Это ставит меня в тупик. Задайте другой вопрос.";

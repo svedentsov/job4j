@@ -8,11 +8,9 @@ import java.util.function.Predicate;
  * Фильтрация вложений.
  */
 public class SearchAtt {
+
     /**
      * Фильтр по названию.
-     *
-     * @param list
-     * @return
      */
     public static List<Attachment> filterSize(List<Attachment> list) {
         List<Attachment> rsl = new ArrayList<>();
@@ -26,9 +24,6 @@ public class SearchAtt {
 
     /**
      * Фильтр по имени.
-     *
-     * @param list
-     * @return
      */
     public static List<Attachment> filterName(List<Attachment> list) {
         List<Attachment> rsl = new ArrayList<>();
@@ -42,10 +37,6 @@ public class SearchAtt {
 
     /**
      * Универсальный фильтр.
-     *
-     * @param list
-     * @param predicate
-     * @return
      */
     public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predicate) {
         List<Attachment> rsl = new ArrayList<>();
@@ -59,8 +50,6 @@ public class SearchAtt {
 
     /**
      * Запуск программы.
-     *
-     * @param args
      */
     public static void main(String[] args) {
         List<Attachment> list = new ArrayList<>();

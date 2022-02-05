@@ -12,6 +12,7 @@ import java.util.List;
  * For manual testing
  */
 public class ManualTest {
+
     public static void main(String[] args) {
         //System.out.println(getVacancies(new SqlRuJsoupProcessor()).size());
         System.out.println(getVacancies(new HhRuJsoupProcessor()).size());

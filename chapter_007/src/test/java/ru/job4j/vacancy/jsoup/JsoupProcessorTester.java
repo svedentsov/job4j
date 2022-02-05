@@ -19,6 +19,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 public class JsoupProcessorTester {
+
     private final AbstractJsoupProcessor processor;
 
     JsoupProcessorTester(AbstractJsoupProcessor processor) {

@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 /**
- * Класс тестирует функционал класса RoleStoreTest
+ * Класс тестирует функционал класса RoleStore.
  */
 public class RoleStoreTest {
     @Test

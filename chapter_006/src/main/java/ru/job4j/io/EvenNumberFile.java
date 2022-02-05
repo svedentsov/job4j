@@ -12,7 +12,7 @@ import java.io.IOException;
 public class EvenNumberFile {
 
     public static void main(String[] args) {
-        try (FileInputStream in = new FileInputStream("./2_chapter_002/src/main/resources/even.txt")) {
+        try (FileInputStream in = new FileInputStream("./chapter_006/src/main/resources/even.txt")) {
             StringBuilder text = new StringBuilder();
             int read;
             while ((read = in.read()) != -1) {

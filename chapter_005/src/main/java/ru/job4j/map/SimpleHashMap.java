@@ -62,9 +62,8 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
      * 4. Если дубликатов не найдено записываем новое значение.
      *
      * @param key   ключ.
-     * @param value значение
-     * @return true - если значение добавлено,
-     * false - если значение перезаписано.
+     * @param value значение.
+     * @return true если значение добавлено, false если значение перезаписано.
      */
     public boolean insert(K key, V value) {
         boolean duplicate = false;
@@ -218,9 +217,9 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
         }
 
         /**
-         * Возвращает true, если есть очередной элемент для итерации
+         * Возвращает true, если есть очередной элемент для итерации.
          *
-         * @return - true, если есть очередной элемент для итерации
+         * @return - true, если есть очередной элемент для итерации.
          */
         public boolean hasNext() {
             return this.next != null;
@@ -233,9 +232,9 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
          * ячейке.
          *
          * @return - возвращает очередную пару ключ-значение.
-         * @throws NoSuchElementException          - выбрасывается в случае отсутствия очередного
+         * @throws NoSuchElementException          выбрасывается в случае отсутствия очередного
          *                                         элемента для итерации.
-         * @throws ConcurrentModificationException - выбрасывается в случае изменения
+         * @throws ConcurrentModificationException выбрасывается в случае изменения
          *                                         (добавление, удалении) в контейнере в момент итерации элементов.
          */
         public Entry<K, V> nextEntry() {

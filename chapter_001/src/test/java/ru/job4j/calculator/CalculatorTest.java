@@ -2,43 +2,31 @@ package ru.job4j.calculator;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class CalculatorTest {
     @Test
     public void whenAddFourPlusTwoThenSix() {
-        Calculator calc = new Calculator();
-        calc.add(4, 2);
-        double result = calc.getResult();
-        double expected = 6;
-        assertThat(result, is(expected));
+        double result = new Calculator().add(4, 2).getResult();
+        assertThat(result, is(6.0));
     }
 
     @Test
     public void whenSubtractTwoMinusOneThenOne() {
-        Calculator calc = new Calculator();
-        calc.subtract(2, 1);
-        double result = calc.getResult();
-        double expected = 1;
-        assertThat(result, is(expected));
+        double result = new Calculator().subtract(2, 1).getResult();
+        assertThat(result, is(1.0));
     }
 
     @Test
     public void whenDivNineByThreeThenThree() {
-        Calculator calc = new Calculator();
-        calc.div(9, 3);
-        double result = calc.getResult();
-        double expected = 3;
-        assertThat(result, is(expected));
+        double result = new Calculator().div(9, 3).getResult();
+        assertThat(result, is(3.0));
     }
 
     @Test
     public void whenMultipleTwoToSevenThenFourteen() {
-        Calculator calc = new Calculator();
-        calc.multiply(2, 7);
-        double result = calc.getResult();
-        double expected = 14;
-        assertThat(result, is(expected));
+        double result = new Calculator().multiply(2, 7).getResult();
+        assertThat(result, is(14.0));
     }
 }

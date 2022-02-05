@@ -8,10 +8,9 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SoftReferenceFileCacheTest {
-
     @Test
     public void whenReadFirstTimeThenLoadFromFile() throws IOException {
         String expected = "John" + System.lineSeparator() + "Bob" + System.lineSeparator() + "Alex";
@@ -26,7 +25,6 @@ public class SoftReferenceFileCacheTest {
 
         SoftReferenceFileCache softReferenceFileCache = new SoftReferenceFileCache(tempFilePath);
         assertThat(softReferenceFileCache.getValue(name), is(expected));
-
     }
 
     @Test

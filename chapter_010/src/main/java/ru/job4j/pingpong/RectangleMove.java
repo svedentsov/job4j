@@ -3,27 +3,22 @@ package ru.job4j.pingpong;
 import javafx.scene.shape.Rectangle;
 
 public class RectangleMove implements Runnable {
-
     /**
      * Поле содержит объект класса прямоугольник.
      */
     private final Rectangle rect;
-
     /**
      * Поле содержит размер стороны X игрового поля.
      */
     private final int limitX;
-
     /**
      * Поле содержит размер стороны Y игрового поля.
      */
     private final int limitY;
-
     /**
      * Поле содержит направление движения по оси X.
      */
     private int xDirection;
-
     /**
      * Поле содержит направление движения по оси Y.
      */
@@ -66,7 +61,7 @@ public class RectangleMove implements Runnable {
 
     /**
      * Проверяет, достиг ли прямоугольник границ поля.
-     * Если достиг - напрвление движения меняется.
+     * Если достиг - направление движения меняется.
      * По координате, равной соответствующей границе, в противоположную сторону.
      * По второй координате - случайным образом.
      */

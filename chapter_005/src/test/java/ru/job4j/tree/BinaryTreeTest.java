@@ -2,11 +2,10 @@ package ru.job4j.tree;
 
 import org.junit.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class BinaryTreeTest {
-
     @Test
     public void whenAddElementInEmptyBSTThenTrue() {
         BinaryTree<String> bst = new BinaryTree<>();

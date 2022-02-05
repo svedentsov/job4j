@@ -8,6 +8,7 @@ import java.util.function.Consumer;
  * Замена лямбды ссылкой на метод.
  */
 public class RefMethod {
+
     public static void main(String[] args) {
         List<String> names = Arrays.asList(
                 "Ivan",

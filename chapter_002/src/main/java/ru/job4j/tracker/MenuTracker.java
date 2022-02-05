@@ -7,6 +7,7 @@ import java.util.List;
  * Меню трекера.
  */
 public class MenuTracker {
+
     private Input input;
     private ITracker tracker;
     private List<UserAction> actions;

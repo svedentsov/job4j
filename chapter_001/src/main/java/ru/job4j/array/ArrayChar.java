@@ -1,32 +1,22 @@
 package ru.job4j.array;
 
 /**
- * Обертка над строкой.
+ * Класс реализует проверку, что слово начинается с префикса.
  */
 public class ArrayChar {
-
-    private final char[] data;
-
     /**
-     * Преобразовать строку в массив символов и присваивает его массиву data.
+     * Проверить, что слово начинается с префикса.
      *
-     * @param line строка содержащая полное слово
+     * @param word   строка содержащая слово.
+     * @param prefix строка содержащая часть слова.
+     * @return true если слово начинается с префикса, иначе false.
      */
-    public ArrayChar(String line) {
-        this.data = line.toCharArray();
-    }
-
-    /**
-     * Проверка, что слово начинается с префикса.
-     *
-     * @param prefix строка содержащая часть слова
-     * @return true - слово начинается с префикса, иначе false
-     */
-    public boolean startWith(String prefix) {
+    public boolean startWith(String word, String prefix) {
         boolean result = true;
-        char[] value = prefix.toCharArray();
-        for (int i = 0; i < value.length; i++) {
-            if (data[i] != value[i]) {
+        char[] pref = prefix.toCharArray();
+        char[] wrd = word.toCharArray();
+        for (int i = 0; i < pref.length; i++) {
+            if (pref[i] != wrd[i]) {
                 result = false;
                 break;
             }

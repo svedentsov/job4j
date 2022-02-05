@@ -6,7 +6,6 @@ import java.io.File;
 import java.util.List;
 
 public interface Converter {
-
     /**
      * Method save. Генерация из значений полей объектов в файл target.
      *

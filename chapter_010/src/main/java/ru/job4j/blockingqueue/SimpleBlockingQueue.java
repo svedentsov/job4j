@@ -8,7 +8,6 @@ import java.util.Queue;
 
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
-
     /**
      * Очередь - общий ресурс.
      */

@@ -15,7 +15,6 @@ import java.util.List;
  * Presentation layout - слой сервлетов.
  */
 public class UsersServlet extends HttpServlet {
-
     /**
      * Ссылка на объект ValidateService.
      * Logic layout - слой содержит выполнение бизнес логики.

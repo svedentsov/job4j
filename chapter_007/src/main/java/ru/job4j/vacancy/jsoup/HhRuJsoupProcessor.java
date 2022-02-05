@@ -18,6 +18,7 @@ import static java.lang.String.format;
  * Represents program strategy of sql.ru parsing.
  */
 public class HhRuJsoupProcessor extends AbstractJsoupProcessor {
+
     private static final String URL_TEMPLATE
             = "http://hh.ru/search/vacancy?text=%s&page=%d&items_on_page=100&order_by=publication_time";
 

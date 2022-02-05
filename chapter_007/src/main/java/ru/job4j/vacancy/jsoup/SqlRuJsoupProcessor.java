@@ -23,6 +23,7 @@ import static ru.job4j.vacancy.util.JsoupHelper.buildDocument;
  * Represents program strategy of sql.ru parsing.
  */
 public class SqlRuJsoupProcessor extends AbstractJsoupProcessor {
+
     private static final String URL = "https://www.sql.ru/forum/job-offers/";
 
     @Override

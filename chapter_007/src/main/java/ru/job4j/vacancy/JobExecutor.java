@@ -19,6 +19,7 @@ import static org.quartz.impl.StdSchedulerFactory.getDefaultScheduler;
  * Represents universal scheduler executor of any class implementing {@link Job}.
  */
 public class JobExecutor {
+
     private final Properties properties = new Properties();
     private final Scheduler scheduler;
 

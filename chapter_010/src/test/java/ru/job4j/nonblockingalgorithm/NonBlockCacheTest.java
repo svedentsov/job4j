@@ -5,12 +5,11 @@ import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class NonBlockCacheTest {
-
     @Test
     public void whenAdd2BaseThenCacheSizeIs2() {
         NonBlockCache cache = new NonBlockCache();

@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThat;
  * Проверка класса School.
  */
 public class SchoolTest {
+
     private School school = new School();
     private List<Student> students = List.of(
             new Student("Студент 1", 10),

@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.is;
  * Класс тестирует статистику об изменении коллекции.
  */
 public class AnalizeTest {
+
     Analize.User user1 = new Analize.User(1, "A");
     Analize.User user2 = new Analize.User(2, "B");
     Analize.User user2Changed = new Analize.User(2, "BB");

@@ -18,6 +18,7 @@ import static ru.job4j.vacancy.util.Util.firstDayOfYear;
  * Also provides another required operations with the DB
  */
 public class SQLProcessor {
+
     private static final Logger LOG = LoggerFactory.getLogger(SQLProcessor.class);
     private final ConnectionFactory connectionFactory;
 

@@ -2,8 +2,8 @@ package ru.job4j.array;
 
 import org.junit.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
-import static org.junit.Assert.assertThat;
 
 /**
  * Проверка класса ArrayDuplicate.
@@ -17,8 +17,7 @@ public class ArrayDuplicateTest {
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
         String[] input = {"Привет", "Мир", "Привет", "Супер", "Мир"};
         String[] expect = {"Привет", "Мир", "Супер"};
-        ArrayDuplicate duplicate = new ArrayDuplicate();
-        String[] result = duplicate.remove(input);
+        String[] result = new ArrayDuplicate().remove(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
     }
 
@@ -29,8 +28,7 @@ public class ArrayDuplicateTest {
     public void removeDuplicatesThenInArrayFiveDuplicateWords() {
         String[] input = {"Тест", "Тест", "Тест", "Тест", "Тест"};
         String[] expect = {"Тест"};
-        ArrayDuplicate duplicate = new ArrayDuplicate();
-        String[] result = duplicate.remove(input);
+        String[] result = new ArrayDuplicate().remove(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
     }
 
@@ -41,8 +39,7 @@ public class ArrayDuplicateTest {
     public void removeDuplicatesThenAllWordsUnique() {
         String[] input = {"Привет", "Мир", "Здравствуй", "Java"};
         String[] expect = {"Мир", "Привет", "Java", "Здравствуй"};
-        ArrayDuplicate duplicate = new ArrayDuplicate();
-        String[] result = duplicate.remove(input);
+        String[] result = new ArrayDuplicate().remove(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
     }
 }

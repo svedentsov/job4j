@@ -42,8 +42,8 @@ public class LogFilter {
     }
 
     public static void main(String[] args) {
-        List<String> log = filter("./2_chapter_002/src/main/resources/log.txt");
-        save(log, "./2_chapter_002/src/main/resources/404.txt");
+        List<String> log = filter("./chapter_006/src/main/resources/log.txt");
+        save(log, "./chapter_006/src/main/resources/404.txt");
         System.out.println("Результат фильтрации строк из файла log.txt");
         log.forEach(System.out::println);
     }

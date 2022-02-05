@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
  * Main executable class to start sql.ru vacancy parser
  */
 public class VacancyCollector {
+
     private static final Logger LOG = LoggerFactory.getLogger(VacancyCollector.class);
 
     public static void main(String[] args) {

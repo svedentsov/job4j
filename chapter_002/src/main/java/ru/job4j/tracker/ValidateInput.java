@@ -4,6 +4,7 @@ package ru.job4j.tracker;
  * Расширенный класс для ввода пользовательских данных из консоли, ввод проверяется на соответствие логике программы.
  */
 public class ValidateInput implements Input {
+
     private final Input input;
 
     public ValidateInput(final Input input) {

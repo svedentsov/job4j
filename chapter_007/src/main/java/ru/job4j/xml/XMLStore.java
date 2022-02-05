@@ -26,6 +26,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * Provides storing entries to xml file
  */
 public class XMLStore {
+
     public static final ObjectFactory ENRTY_OBJECTS_FACTORY = new ObjectFactory();
     private final JAXBContext jaxbContext;
     private Marshaller marshaller;

@@ -4,11 +4,10 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class ThreadSafeListTest {
-
     @Test
     public void whenConcurrentAdd20ThenListSizeIs20() throws InterruptedException {
         final ThreadSafeList threadSafeList = new ThreadSafeList();

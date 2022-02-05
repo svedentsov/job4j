@@ -13,7 +13,7 @@ public class NodeTest {
     Node<Integer> four = new Node<>(4);
 
     /**
-     * Тест проверяет незацикленный список на наличие зацикленностей.
+     * Тест проверяет не зацикленный список на наличие зацикленностей.
      */
     @Test
     public void whenHasNoCycleShouldFalse() {

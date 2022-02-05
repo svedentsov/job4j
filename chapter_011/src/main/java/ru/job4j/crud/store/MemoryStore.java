@@ -13,22 +13,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Может быть: базой данных, памятью или файловой системой.
  */
 public class MemoryStore implements Store {
-
     /**
      * Eager loading - энергичная загрузка, создаем и инициализируем объект сразу после старта виртуальной машины.
      */
     private static final MemoryStore INSTANCE = new MemoryStore();
-
     /**
      * Поле содержит хранилище пользователей.
      */
     private final ConcurrentHashMap<Integer, User> users = new ConcurrentHashMap<>();
-
     /**
      * Ссылка на объект хранилища локаций.
      */
     private final LocationStore locations = LocationStore.getInstance();
-
     /**
      * Поле содержит базовый id пользователя, который далее инкрементируется на 1.
      */
