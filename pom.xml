@@ -23,6 +23,7 @@
         <module>chapter_011</module>
         <module>interview_questions</module>
         <module>tictactoe</module>
+        <module>chess</module>
     </modules>
 
     <properties>
