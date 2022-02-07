@@ -26,6 +26,7 @@
         <module>chess</module>
         <module>cinema</module>
         <module>puzzle</module>
+        <module>vacancy_parser</module>
     </modules>
 
     <properties>
