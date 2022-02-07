@@ -25,6 +25,7 @@
         <module>tictactoe</module>
         <module>chess</module>
         <module>cinema</module>
+        <module>puzzle</module>
     </modules>
 
     <properties>
