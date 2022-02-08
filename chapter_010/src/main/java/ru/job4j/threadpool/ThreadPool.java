@@ -1,4 +1,4 @@
-package ru.job4j.pool;
+package ru.job4j.threadpool;
 
 import ru.job4j.blockingqueue.SimpleBlockingQueue;
 
@@ -8,17 +8,17 @@ import java.util.List;
 public class ThreadPool {
 
     private final List<Thread> threads = new LinkedList<>();
-    private final SimpleBlockingQueue<Runnable> taskQueue;
+    private final SimpleBlockingQueue<Runnable> tasks;
 
     private volatile boolean isStopped = false;
 
-    public ThreadPool(SimpleBlockingQueue<Runnable> taskQueue) {
-        this.taskQueue = taskQueue;
+    public ThreadPool(SimpleBlockingQueue<Runnable> tasks) {
+        this.tasks = tasks;
         int sizeOfPool = Runtime.getRuntime().availableProcessors();
         System.out.println("sizeOfPool = " + sizeOfPool);
 
         for (int i = 0; i < sizeOfPool; i++) {
-            Thread taskExecutor = new TaskExecutor(taskQueue);
+            Thread taskExecutor = new TaskExecutor(tasks);
             threads.add(taskExecutor);
         }
         for (Thread thread : threads) {
@@ -26,11 +26,11 @@ public class ThreadPool {
         }
     }
 
-    public void work(Runnable task) throws InterruptedException {
+    public void work(Runnable job) throws InterruptedException {
         if (isStopped) {
             throw new IllegalStateException("ThreadPool is stopped");
         }
-        this.taskQueue.offer(task);
+        this.tasks.offer(job);
     }
 
     public void shutdown() {

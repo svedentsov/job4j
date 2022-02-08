@@ -13,7 +13,6 @@ public class SimpleBlockingQueue<T> {
      */
     @GuardedBy("this")
     private final Queue<T> queue;
-
     /**
      * Размер очереди.
      */

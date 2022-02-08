@@ -2,6 +2,9 @@ package ru.job4j.crud.datamodel;
 
 import java.util.Objects;
 
+/**
+ * Модель роли.
+ */
 public class Role {
 
     private String role;

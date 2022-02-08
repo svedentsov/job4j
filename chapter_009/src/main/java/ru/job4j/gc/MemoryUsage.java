@@ -1,57 +1,105 @@
 package ru.job4j.gc;
 
-import java.lang.ref.WeakReference;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static com.carrotsearch.sizeof.RamUsageEstimator.sizeOf;
 
+/**
+ * VM options -Xmx8m
+ * размер кучи устанавливаем 8MB
+ * <p>
+ * Далее поочередно устанавливаем параметры для выполнения класса с соответствующим GC:
+ * -XX:+UseConcMarkSweepGC
+ * -XX:+UseSerialGC
+ * -XX:+UseParallelGC
+ * -XX:+UseG1GC
+ * и наблюдаем сборки мусора и время потраченное на работу GC.
+ */
 public class MemoryUsage {
 
+    private static final Logger LOG = LogManager.getLogger(MemoryUsage.class.getName());
+
     public static class User {
-        private final String name;
+        public String name;
 
         public User(String name) {
             this.name = name;
         }
 
         @Override
-        protected void finalize() {
-            System.out.println(String.format("finalize %s", name));
+        protected void finalize() throws Throwable {
+            super.finalize();
+            System.out.println(String.format("finalize: destroy object %s", this));
+        }
+
+        @Override
+        public String toString() {
+            return "User{"
+                    + "name='"
+                    + name
+                    + '\''
+                    + '}';
         }
     }
 
-    public static class SimpleUser {
+    public static class EmptyUser {
     }
 
     public static void main(String[] args) {
+        System.out.println(String.format("empty object size %s B", sizeOf(new EmptyUser())));
+        System.out.println(String.format("String \"name\" size %s B", sizeOf(new String("name"))));
+        System.out.println(String.format("user size %s B", sizeOf(new User("name"))));
+
+        System.out.println("start");
         info();
 
-        System.out.println(String.format("integer size %s B", sizeOf(new Integer(5))));
-        System.out.println(String.format("string size %s B", sizeOf(new String())));
-        System.out.println(String.format("simple object size %s B", sizeOf(new SimpleUser())));
-        System.out.println(String.format("bare object size %s B", sizeOf(new Object())));
-        System.out.println(String.format("user size %s B", sizeOf(new User("name"))));
-        System.out.println(String.format("weak user size %s B", sizeOf(new WeakReference<>(new User("User")))));
+        for (int i = 1; i < 1_000_000; i++) {
+            User user = new User("u " + i);
+            Runtime runtime = Runtime.getRuntime();
+            System.out.println(String.format(
+                    "Used memory %s B. Average user%s size %s B.",
+                    (runtime.totalMemory() - runtime.freeMemory()),
+                    i,
+                    (runtime.totalMemory() - runtime.freeMemory()) / i)
+            );
 
-        for (int i = 0; i < 10000; i++) {
-            WeakReference<User> user = new WeakReference<>(new User("User " + i));
-            usedMemory(i + 1);
             System.out.println(String.format("estimated object size %s", sizeOf(user)));
             user = null;
         }
-        System.out.println("finish");
     }
 
-    public static void info() {
+    /**
+     * Выдает статистику использования кучи.
+     */
+    protected static void info() {
         int kb = 1024;
-        Runtime runtime = Runtime.getRuntime();
-        System.out.println(String.format("Total memory %s KB", runtime.totalMemory() / kb));
-    }
 
-    public static void usedMemory(int count) {
-        int kb = 1024;
+        // Ссылка на среду выполнения из системы.
+        // Позволяет получать необходимую информацию об использовании JVM памяти.
         Runtime runtime = Runtime.getRuntime();
-        long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / kb;
 
-        System.out.println(String.format("Used memory %s KB. Average user size %s B", usedMemory, (runtime.totalMemory() - runtime.freeMemory()) / count));
+        System.out.println("Heap utilization statistics [KB]");
+
+        System.out.println("Used memory:"
+                + (runtime.totalMemory() - runtime.freeMemory()) / kb
+        );
+
+        System.out.println(
+                "Free memory:"
+                        + runtime.freeMemory() / kb
+        );
+
+        // Всего доступно памяти.
+        System.out.println(
+                "Total memory:"
+                        + runtime.totalMemory() / kb
+        );
+
+        // Максимальный объем памяти используемой JVM.
+        System.out.println(
+                "Max memory:"
+                        + runtime.maxMemory() / kb
+        );
     }
 }
