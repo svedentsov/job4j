@@ -1,5 +1,8 @@
 package ru.job4j.loop;
 
+/**
+ * Вычисление факториала.
+ */
 public class Factorial {
     /**
      * Получить факториал указанного числа.

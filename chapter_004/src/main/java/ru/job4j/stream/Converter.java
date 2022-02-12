@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 /**
  * Конвертер.
  */
-public class Convert {
+public class Converter {
     /**
      * Конвертировать матрицу чисел в список чисел.
      *
-     * @param integers массив чисел
-     * @return список чисел
+     * @param integers массив чисел.
+     * @return список чисел.
      */
     public List<Integer> convertMatrixToList(Integer[][] integers) {
         return Stream.of(integers)

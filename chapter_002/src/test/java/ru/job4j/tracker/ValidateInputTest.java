@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ValidateInputTest {
     private final OutputStream buffer = new ByteArrayOutputStream();

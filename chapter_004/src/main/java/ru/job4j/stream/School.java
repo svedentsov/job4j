@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Класс School.
+ * Класс для работы со списком учеников.
  */
 public class School {
     /**
-     * Получить список учеников по выбранному условию.
+     * Фильтрация учеников в зависимости от заданного диапазона баллов.
      *
-     * @param students ученики
-     * @param predict  условие
-     * @return список учеников
+     * @param students список учеников.
+     * @param predict  условие фильтрации учеников.
+     * @return отфильтрованный список учеников.
      */
     List<Student> collect(List<Student> students, Predicate<Student> predict) {
         return students.stream()
@@ -24,23 +24,23 @@ public class School {
     }
 
     /**
-     * Получить Map из List.
+     * Преобразование списка учеников из List в Map.
      *
-     * @param students список студентов.
-     * @return карта студентов.
+     * @param students список учеников.
+     * @return Map учеников (ключ: фамилия ученика; значение: объект ученика).
      */
     public Map<String, Student> convertListToMap(List<Student> students) {
         return students.stream()
                 .distinct()
-                .collect(Collectors.toMap(Student::getSurname, o -> o)
-        );
+                .collect(Collectors.toMap(Student::getSurname, o -> o));
     }
 
     /**
-     * Получить список студентов у которых балл аттестата больше bound.
-     * @param students список студентов.
-     * @param bound    бал аттестата.
-     * @return результат.
+     * Фильтрация учеников по количеству баллов больше bound.
+     *
+     * @param students список учеников.
+     * @param bound    количество баллов.
+     * @return List учеников с количеством баллов больше bound.
      */
     public List<Student> levelOf(List<Student> students, int bound) {
         return students.stream()

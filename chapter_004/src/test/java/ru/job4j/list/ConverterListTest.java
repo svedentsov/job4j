@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConvertListTest {
+public class ConverterListTest {
     @Test
     public void whenTwoList() {
         List<int[]> in = new ArrayList<>(

@@ -13,7 +13,7 @@ public class FunctionCalc {
      * @param func  функциональный интерфейс.
      * @return подсчитанное значение.
      */
-    public static List<Double> diapason(int start, int end, Function<Double, Double> func) {
+    public List<Double> diapason(int start, int end, Function<Double, Double> func) {
         List<Double> result = new ArrayList<>();
         for (int i = start; i < end; i++) {
             result.add((double) Math.round(func.apply((double) i)));

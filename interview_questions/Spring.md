@@ -598,7 +598,7 @@ Spring обеспечивает интеграцию с Jackson JSON API для 
     </beans:property>
 </beans:bean>
   
-<!-- Configure bean to convert JSON to POJO and vice versa -->
+<!-- Configure bean to converter JSON to POJO and vice versa -->
 <beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 </beans:bean>
 ```

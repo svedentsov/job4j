@@ -8,7 +8,6 @@ import java.util.function.Predicate;
  * Фильтрация вложений.
  */
 public class SearchAtt {
-
     /**
      * Фильтр по названию.
      */

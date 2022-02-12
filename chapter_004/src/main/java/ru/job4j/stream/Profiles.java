@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Список адресов клиентов.
+ * Составляет список адресов клиентов из списка анкет.
  */
 public class Profiles {
     /**

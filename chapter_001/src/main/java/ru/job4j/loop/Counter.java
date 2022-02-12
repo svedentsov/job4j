@@ -1,18 +1,23 @@
 package ru.job4j.loop;
 
+/**
+ * Расчет суммы четных числе в диапазоне.
+ */
 public class Counter {
     /**
-     * Получить сумму всех чётных значений от start до finish.
+     * Метод для расчета суммы четных числе в диапазоне.
      *
-     * @param start  начальное значение
-     * @param finish конечное значение
+     * @param start  первое значение диапазона.
+     * @param finish второе значение диапазона.
+     * @return сумма четных числе в диапазоне.
      */
     public int add(int start, int finish) {
         int sum = 0;
-        for (int i = start; i <= finish; i++) {
-            if (i % 2 == 0) {
-                sum += i;
-            }
+        if (start % 2 != 0) {
+            start++;
+        }
+        for (int i = start; i <= finish; i = i + 2) {
+            sum = sum + i;
         }
         return sum;
     }
