@@ -1,6 +1,8 @@
 package ru.job4j.bank;
 
 import org.junit.Test;
+import ru.job4j.bank.model.Account;
+import ru.job4j.bank.model.User;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;

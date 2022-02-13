@@ -3,12 +3,11 @@ package ru.job4j.tree;
 import java.util.*;
 
 /**
- * Класс реализует элементарную структуру дерева.
+ * Древовидная структура для хранения элементов.
  *
  * @param <E> тип значения, хранящегося в узле дерева.
  */
 public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
-
     /**
      * Корневой элемент дерева.
      */

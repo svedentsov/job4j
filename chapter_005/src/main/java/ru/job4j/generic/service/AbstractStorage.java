@@ -1,4 +1,7 @@
-package ru.job4j.generic;
+package ru.job4j.generic.service;
+
+import ru.job4j.generic.SimpleArray;
+import ru.job4j.generic.model.Base;
 
 import java.util.Iterator;
 
@@ -68,10 +71,5 @@ public abstract class AbstractStorage<T extends Base> implements Store<T> {
             return null;
         }
         return this.container.get(index);
-    }
-
-    @Override
-    public Iterator<T> iter() {
-        return container.iterator();
     }
 }

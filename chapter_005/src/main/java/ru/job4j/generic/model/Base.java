@@ -1,4 +1,4 @@
-package ru.job4j.generic;
+package ru.job4j.generic.model;
 
 /**
  * Абстрактный класс для моделей c методами String getId().

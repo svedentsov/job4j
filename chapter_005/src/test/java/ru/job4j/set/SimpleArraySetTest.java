@@ -9,13 +9,13 @@ import java.util.Iterator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class SimpleSetTest {
+public class SimpleArraySetTest {
 
-    private SimpleSet<Integer> container;
+    private SimpleArraySet<Integer> container;
 
     @Before
     public void beforeTest() {
-        container = new SimpleSet<>();
+        container = new SimpleArraySet<>();
         container.add(1);
         container.add(2);
         container.add(3);
@@ -55,7 +55,7 @@ public class SimpleSetTest {
 
     @Test(expected = ConcurrentModificationException.class)
     public void whenIterateAndModifiedThenException() {
-        container = new SimpleSet<>(2);
+        container = new SimpleArraySet<>(2);
         container.add(1);
         container.add(2);
         Iterator<Integer> it = container.iterator();

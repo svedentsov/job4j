@@ -12,25 +12,30 @@ import java.util.NoSuchElementException;
  */
 public class SimpleArray<T> implements Iterable<T> {
     /**
-     * Массив всех элементов.
+     * Массив для хранения объектов.
      */
-    private final Object[] objects;
+    private final Object[] array;
     /**
-     * Индекс для корректного перемещения по массиву.
+     * Индекс текущей ячейки массива.
      */
     private int index = 0;
 
+    /**
+     * Конструктор, инициализирующий массив с размеров size.
+     *
+     * @param size размер массива.
+     */
     public SimpleArray(int size) {
-        this.objects = new Object[size];
+        this.array = new Object[size];
     }
 
     /**
-     * Добавить элемент в первую свободную ячейку.
+     * Добавить элемент в массив. После каждого добавления значение индекса увеличивается.
      *
      * @param model новый элемент
      */
     public void add(T model) throws ArrayIndexOutOfBoundsException {
-        this.objects[this.index++] = model;
+        this.array[this.index++] = model;
     }
 
     /**
@@ -41,29 +46,29 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public void set(int position, T model) throws ArrayIndexOutOfBoundsException {
         checkSizeContainer(position);
-        this.objects[position] = model;
+        this.array[position] = model;
     }
 
     /**
-     * Метод возвращает элемент, расположенный по указанному индексу.
+     * Получить элемент, расположенный по указанному индексу.
      *
-     * @param position индекс для доступа к значению
-     * @return значение полученное по индексу
+     * @param index индекс для доступа к значению.
+     * @return значение полученное по индексу.
      */
-    public T get(int position) {
-        return (T) this.objects[position];
+    public T get(int index) {
+        return (T) this.array[index];
     }
 
     /**
      * Удалить элемент по указанному индексу.
      * Все находящиеся справа элементы при этом необходимо сдвинуть на единицу влево.
      *
-     * @param position позиция удаляемого элемента
+     * @param position позиция удаляемого элемента.
      */
     public void remove(int position) throws ArrayIndexOutOfBoundsException {
         checkSizeContainer(position);
-        System.arraycopy(this.objects, position + 1, this.objects, position, index - position);
-        this.objects[index] = null;
+        System.arraycopy(this.array, position + 1, this.array, position, index - position);
+        this.array[index] = null;
         index--;
     }
 
@@ -94,7 +99,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return (T) objects[iter++];
+                return (T) array[iter++];
             }
         };
     }

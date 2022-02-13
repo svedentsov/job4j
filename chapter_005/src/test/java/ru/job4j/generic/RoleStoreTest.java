@@ -1,6 +1,8 @@
 package ru.job4j.generic;
 
 import org.junit.Test;
+import ru.job4j.generic.model.Role;
+import ru.job4j.generic.service.RoleStore;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;

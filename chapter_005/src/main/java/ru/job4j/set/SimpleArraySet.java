@@ -14,7 +14,7 @@ import java.util.Objects;
  * Контейнер типа Set, позволяющий хранить только уникальные значения элементов.
  * Реализован на базе массивов.
  */
-public class SimpleSet<E> implements Iterable<E> {
+public class SimpleArraySet<E> implements Iterable<E> {
     /**
      * Хранилище элементов на базе массива.
      */
@@ -23,7 +23,7 @@ public class SimpleSet<E> implements Iterable<E> {
     /**
      * Конструктор, инициализирует хранилище.
      */
-    public SimpleSet() {
+    public SimpleArraySet() {
         this.container = new SimpleArrayList<E>();
     }
 
@@ -32,7 +32,7 @@ public class SimpleSet<E> implements Iterable<E> {
      *
      * @param size заданный размер.
      */
-    public SimpleSet(int size) {
+    public SimpleArraySet(int size) {
         this.container = new SimpleArrayList<E>(size);
     }
 
@@ -48,11 +48,10 @@ public class SimpleSet<E> implements Iterable<E> {
     }
 
     /**
-     * Метод выполняет проверку является ли элемент уникальным для коллекции.
+     * Проверить наличие переданного объекта в множестве.
      *
      * @param e проверяемое значение.
-     * @return true - если значение присутствует,
-     * false - если значение отсутствует.
+     * @return true значение присутствует, false значение отсутствует.
      */
     private boolean contains(E e) {
         for (E current : this.container) {
